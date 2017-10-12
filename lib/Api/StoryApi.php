@@ -169,10 +169,6 @@ class StoryApi
                     $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RadioManager\Model\Forbidden', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
-                case 404:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RadioManager\Model\NotFound', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
                 case 422:
                     $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RadioManager\Model\UnprocessableEntity', $e->getResponseHeaders());
                     $e->setResponseObject($data);
@@ -405,16 +401,19 @@ class StoryApi
      * Get all stories.
      *
      * @param int $page Current page *(Optional)* (optional, default to 1)
-     * @param int $model_type_id Search on ModelType ID *(Optional)* (optional)
-     * @param int $tag_id Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; (optional)
      * @param int $item_id Search on Item ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $model_type_id Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $tag_id Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $limit Results per page *(Optional)* (optional)
+     * @param string $order_by Field to order the results *(Optional)* (optional)
+     * @param string $order_direction Direction of ordering *(Optional)* (optional)
      * @param int $_external_station_id Query on a different (content providing) station *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return \RadioManager\Model\StoryResults
      */
-    public function listStories($page = '1', $model_type_id = null, $tag_id = null, $item_id = null, $_external_station_id = null)
+    public function listStories($page = '1', $item_id = null, $model_type_id = null, $tag_id = null, $limit = null, $order_by = null, $order_direction = null, $_external_station_id = null)
     {
-        list($response) = $this->listStoriesWithHttpInfo($page, $model_type_id, $tag_id, $item_id, $_external_station_id);
+        list($response) = $this->listStoriesWithHttpInfo($page, $item_id, $model_type_id, $tag_id, $limit, $order_by, $order_direction, $_external_station_id);
         return $response;
     }
 
@@ -424,17 +423,27 @@ class StoryApi
      * Get all stories.
      *
      * @param int $page Current page *(Optional)* (optional, default to 1)
-     * @param int $model_type_id Search on ModelType ID *(Optional)* (optional)
-     * @param int $tag_id Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; (optional)
      * @param int $item_id Search on Item ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $model_type_id Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $tag_id Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $limit Results per page *(Optional)* (optional)
+     * @param string $order_by Field to order the results *(Optional)* (optional)
+     * @param string $order_direction Direction of ordering *(Optional)* (optional)
      * @param int $_external_station_id Query on a different (content providing) station *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return array of \RadioManager\Model\StoryResults, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listStoriesWithHttpInfo($page = '1', $model_type_id = null, $tag_id = null, $item_id = null, $_external_station_id = null)
+    public function listStoriesWithHttpInfo($page = '1', $item_id = null, $model_type_id = null, $tag_id = null, $limit = null, $order_by = null, $order_direction = null, $_external_station_id = null)
     {
         if (!is_null($page) && ($page < 0)) {
             throw new \InvalidArgumentException('invalid value for "$page" when calling StoryApi.listStories, must be bigger than or equal to 0.');
+        }
+
+        if (!is_null($limit) && ($limit > 50)) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling StoryApi.listStories, must be smaller than or equal to 50.');
+        }
+        if (!is_null($limit) && ($limit < 1)) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling StoryApi.listStories, must be bigger than or equal to 1.');
         }
 
         // parse inputs
@@ -454,6 +463,10 @@ class StoryApi
             $queryParams['page'] = $this->apiClient->getSerializer()->toQueryValue($page);
         }
         // query params
+        if ($item_id !== null) {
+            $queryParams['item_id'] = $this->apiClient->getSerializer()->toQueryValue($item_id);
+        }
+        // query params
         if ($model_type_id !== null) {
             $queryParams['model_type_id'] = $this->apiClient->getSerializer()->toQueryValue($model_type_id);
         }
@@ -462,8 +475,16 @@ class StoryApi
             $queryParams['tag_id'] = $this->apiClient->getSerializer()->toQueryValue($tag_id);
         }
         // query params
-        if ($item_id !== null) {
-            $queryParams['item_id'] = $this->apiClient->getSerializer()->toQueryValue($item_id);
+        if ($limit !== null) {
+            $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
+        }
+        // query params
+        if ($order_by !== null) {
+            $queryParams['order-by'] = $this->apiClient->getSerializer()->toQueryValue($order_by);
+        }
+        // query params
+        if ($order_direction !== null) {
+            $queryParams['order-direction'] = $this->apiClient->getSerializer()->toQueryValue($order_direction);
         }
         // query params
         if ($_external_station_id !== null) {

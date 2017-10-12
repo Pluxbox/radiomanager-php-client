@@ -490,12 +490,13 @@ class BroadcastApi
      * Get daily EPG
      *
      * @param \DateTime $date Date *(Optional)* (optional)
+     * @param bool $withunpublished Show Unpublished *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return \RadioManager\Model\EPGBroadcast
      */
-    public function getDailyEPG($date = null)
+    public function getDailyEPG($date = null, $withunpublished = null)
     {
-        list($response) = $this->getDailyEPGWithHttpInfo($date);
+        list($response) = $this->getDailyEPGWithHttpInfo($date, $withunpublished);
         return $response;
     }
 
@@ -505,10 +506,11 @@ class BroadcastApi
      * Get daily EPG
      *
      * @param \DateTime $date Date *(Optional)* (optional)
+     * @param bool $withunpublished Show Unpublished *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return array of \RadioManager\Model\EPGBroadcast, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getDailyEPGWithHttpInfo($date = null)
+    public function getDailyEPGWithHttpInfo($date = null, $withunpublished = null)
     {
         // parse inputs
         $resourcePath = "/broadcasts/epg/daily";
@@ -525,6 +527,10 @@ class BroadcastApi
         // query params
         if ($date !== null) {
             $queryParams['date'] = $this->apiClient->getSerializer()->toQueryValue($date);
+        }
+        // query params
+        if ($withunpublished !== null) {
+            $queryParams['withunpublished'] = $this->apiClient->getSerializer()->toQueryValue($withunpublished);
         }
 
         // for model (json/xml)
@@ -581,12 +587,13 @@ class BroadcastApi
      * Get EPG by date
      *
      * @param \DateTime $date Date *(Optional)* (optional)
+     * @param bool $withunpublished Show Unpublished *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return \RadioManager\Model\EPGBroadcast
      */
-    public function getEPGByDate($date = null)
+    public function getEPGByDate($date = null, $withunpublished = null)
     {
-        list($response) = $this->getEPGByDateWithHttpInfo($date);
+        list($response) = $this->getEPGByDateWithHttpInfo($date, $withunpublished);
         return $response;
     }
 
@@ -596,10 +603,11 @@ class BroadcastApi
      * Get EPG by date
      *
      * @param \DateTime $date Date *(Optional)* (optional)
+     * @param bool $withunpublished Show Unpublished *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return array of \RadioManager\Model\EPGBroadcast, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getEPGByDateWithHttpInfo($date = null)
+    public function getEPGByDateWithHttpInfo($date = null, $withunpublished = null)
     {
         // parse inputs
         $resourcePath = "/broadcasts/epg";
@@ -616,6 +624,10 @@ class BroadcastApi
         // query params
         if ($date !== null) {
             $queryParams['date'] = $this->apiClient->getSerializer()->toQueryValue($date);
+        }
+        // query params
+        if ($withunpublished !== null) {
+            $queryParams['withunpublished'] = $this->apiClient->getSerializer()->toQueryValue($withunpublished);
         }
 
         // for model (json/xml)
@@ -757,12 +769,13 @@ class BroadcastApi
      * Get weekly EPG
      *
      * @param string $date Date *(Optional)* (optional)
+     * @param bool $withunpublished Show Unpublished *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return \RadioManager\Model\EPGBroadcast
      */
-    public function getWeeklyEPG($date = null)
+    public function getWeeklyEPG($date = null, $withunpublished = null)
     {
-        list($response) = $this->getWeeklyEPGWithHttpInfo($date);
+        list($response) = $this->getWeeklyEPGWithHttpInfo($date, $withunpublished);
         return $response;
     }
 
@@ -772,10 +785,11 @@ class BroadcastApi
      * Get weekly EPG
      *
      * @param string $date Date *(Optional)* (optional)
+     * @param bool $withunpublished Show Unpublished *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return array of \RadioManager\Model\EPGBroadcast, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getWeeklyEPGWithHttpInfo($date = null)
+    public function getWeeklyEPGWithHttpInfo($date = null, $withunpublished = null)
     {
         // parse inputs
         $resourcePath = "/broadcasts/epg/weekly";
@@ -792,6 +806,10 @@ class BroadcastApi
         // query params
         if ($date !== null) {
             $queryParams['date'] = $this->apiClient->getSerializer()->toQueryValue($date);
+        }
+        // query params
+        if ($withunpublished !== null) {
+            $queryParams['withunpublished'] = $this->apiClient->getSerializer()->toQueryValue($withunpublished);
         }
 
         // for model (json/xml)
@@ -844,22 +862,25 @@ class BroadcastApi
      * Get all broadcasts.
      *
      * @param int $page Current page *(Optional)* (optional, default to 1)
-     * @param \DateTime $start_min Minimum start date *(Optional)* (optional)
-     * @param \DateTime $start_max Maximum start date *(Optional)* (optional)
-     * @param int $model_type_id Search on ModelType ID *(Optional)* (optional)
+     * @param int $program_id Search on Program ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $block_id Search on Block ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $model_type_id Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60; (optional)
      * @param int $tag_id Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; (optional)
      * @param int $presenter_id Search on Presenter ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $item_id Search on Item ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $block_id Search on Block ID *(Optional)* &#x60;(Relation)&#x60; (optional)
      * @param int $genre_id Search on Genre ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $program_id Search on Program ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $item_id Search on Item ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param \DateTime $start_min Minimum start date *(Optional)* (optional)
+     * @param \DateTime $start_max Maximum start date *(Optional)* (optional)
+     * @param int $limit Results per page *(Optional)* (optional)
+     * @param string $order_by Field to order the results *(Optional)* (optional)
+     * @param string $order_direction Direction of ordering *(Optional)* (optional)
      * @param int $_external_station_id Query on a different (content providing) station *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return \RadioManager\Model\BroadcastResults
      */
-    public function listBroadcasts($page = '1', $start_min = null, $start_max = null, $model_type_id = null, $tag_id = null, $presenter_id = null, $item_id = null, $block_id = null, $genre_id = null, $program_id = null, $_external_station_id = null)
+    public function listBroadcasts($page = '1', $program_id = null, $block_id = null, $model_type_id = null, $tag_id = null, $presenter_id = null, $genre_id = null, $item_id = null, $start_min = null, $start_max = null, $limit = null, $order_by = null, $order_direction = null, $_external_station_id = null)
     {
-        list($response) = $this->listBroadcastsWithHttpInfo($page, $start_min, $start_max, $model_type_id, $tag_id, $presenter_id, $item_id, $block_id, $genre_id, $program_id, $_external_station_id);
+        list($response) = $this->listBroadcastsWithHttpInfo($page, $program_id, $block_id, $model_type_id, $tag_id, $presenter_id, $genre_id, $item_id, $start_min, $start_max, $limit, $order_by, $order_direction, $_external_station_id);
         return $response;
     }
 
@@ -869,23 +890,33 @@ class BroadcastApi
      * Get all broadcasts.
      *
      * @param int $page Current page *(Optional)* (optional, default to 1)
-     * @param \DateTime $start_min Minimum start date *(Optional)* (optional)
-     * @param \DateTime $start_max Maximum start date *(Optional)* (optional)
-     * @param int $model_type_id Search on ModelType ID *(Optional)* (optional)
+     * @param int $program_id Search on Program ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $block_id Search on Block ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $model_type_id Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60; (optional)
      * @param int $tag_id Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; (optional)
      * @param int $presenter_id Search on Presenter ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $item_id Search on Item ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $block_id Search on Block ID *(Optional)* &#x60;(Relation)&#x60; (optional)
      * @param int $genre_id Search on Genre ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $program_id Search on Program ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $item_id Search on Item ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param \DateTime $start_min Minimum start date *(Optional)* (optional)
+     * @param \DateTime $start_max Maximum start date *(Optional)* (optional)
+     * @param int $limit Results per page *(Optional)* (optional)
+     * @param string $order_by Field to order the results *(Optional)* (optional)
+     * @param string $order_direction Direction of ordering *(Optional)* (optional)
      * @param int $_external_station_id Query on a different (content providing) station *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return array of \RadioManager\Model\BroadcastResults, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listBroadcastsWithHttpInfo($page = '1', $start_min = null, $start_max = null, $model_type_id = null, $tag_id = null, $presenter_id = null, $item_id = null, $block_id = null, $genre_id = null, $program_id = null, $_external_station_id = null)
+    public function listBroadcastsWithHttpInfo($page = '1', $program_id = null, $block_id = null, $model_type_id = null, $tag_id = null, $presenter_id = null, $genre_id = null, $item_id = null, $start_min = null, $start_max = null, $limit = null, $order_by = null, $order_direction = null, $_external_station_id = null)
     {
         if (!is_null($page) && ($page < 0)) {
             throw new \InvalidArgumentException('invalid value for "$page" when calling BroadcastApi.listBroadcasts, must be bigger than or equal to 0.');
+        }
+
+        if (!is_null($limit) && ($limit > 50)) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling BroadcastApi.listBroadcasts, must be smaller than or equal to 50.');
+        }
+        if (!is_null($limit) && ($limit < 1)) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling BroadcastApi.listBroadcasts, must be bigger than or equal to 1.');
         }
 
         // parse inputs
@@ -905,12 +936,12 @@ class BroadcastApi
             $queryParams['page'] = $this->apiClient->getSerializer()->toQueryValue($page);
         }
         // query params
-        if ($start_min !== null) {
-            $queryParams['start-min'] = $this->apiClient->getSerializer()->toQueryValue($start_min);
+        if ($program_id !== null) {
+            $queryParams['program_id'] = $this->apiClient->getSerializer()->toQueryValue($program_id);
         }
         // query params
-        if ($start_max !== null) {
-            $queryParams['start-max'] = $this->apiClient->getSerializer()->toQueryValue($start_max);
+        if ($block_id !== null) {
+            $queryParams['block_id'] = $this->apiClient->getSerializer()->toQueryValue($block_id);
         }
         // query params
         if ($model_type_id !== null) {
@@ -925,20 +956,32 @@ class BroadcastApi
             $queryParams['presenter_id'] = $this->apiClient->getSerializer()->toQueryValue($presenter_id);
         }
         // query params
-        if ($item_id !== null) {
-            $queryParams['item_id'] = $this->apiClient->getSerializer()->toQueryValue($item_id);
-        }
-        // query params
-        if ($block_id !== null) {
-            $queryParams['block_id'] = $this->apiClient->getSerializer()->toQueryValue($block_id);
-        }
-        // query params
         if ($genre_id !== null) {
             $queryParams['genre_id'] = $this->apiClient->getSerializer()->toQueryValue($genre_id);
         }
         // query params
-        if ($program_id !== null) {
-            $queryParams['program_id'] = $this->apiClient->getSerializer()->toQueryValue($program_id);
+        if ($item_id !== null) {
+            $queryParams['item_id'] = $this->apiClient->getSerializer()->toQueryValue($item_id);
+        }
+        // query params
+        if ($start_min !== null) {
+            $queryParams['start-min'] = $this->apiClient->getSerializer()->toQueryValue($start_min);
+        }
+        // query params
+        if ($start_max !== null) {
+            $queryParams['start-max'] = $this->apiClient->getSerializer()->toQueryValue($start_max);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
+        }
+        // query params
+        if ($order_by !== null) {
+            $queryParams['order-by'] = $this->apiClient->getSerializer()->toQueryValue($order_by);
+        }
+        // query params
+        if ($order_direction !== null) {
+            $queryParams['order-direction'] = $this->apiClient->getSerializer()->toQueryValue($order_direction);
         }
         // query params
         if ($_external_station_id !== null) {

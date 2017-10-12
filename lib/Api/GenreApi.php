@@ -205,13 +205,16 @@ class GenreApi
      * @param int $parent_id Search on Parent ID of Genre *(Optional)* (optional)
      * @param int $program_id Search on Program ID *(Optional)* &#x60;(Relation)&#x60; (optional)
      * @param int $broadcast_id Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $limit Results per page *(Optional)* (optional)
+     * @param string $order_by Field to order the results *(Optional)* (optional)
+     * @param string $order_direction Direction of ordering *(Optional)* (optional)
      * @param int $_external_station_id Query on a different (content providing) station *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return \RadioManager\Model\GenreResults
      */
-    public function listGenres($page = null, $parent_id = null, $program_id = null, $broadcast_id = null, $_external_station_id = null)
+    public function listGenres($page = null, $parent_id = null, $program_id = null, $broadcast_id = null, $limit = null, $order_by = null, $order_direction = null, $_external_station_id = null)
     {
-        list($response) = $this->listGenresWithHttpInfo($page, $parent_id, $program_id, $broadcast_id, $_external_station_id);
+        list($response) = $this->listGenresWithHttpInfo($page, $parent_id, $program_id, $broadcast_id, $limit, $order_by, $order_direction, $_external_station_id);
         return $response;
     }
 
@@ -224,14 +227,24 @@ class GenreApi
      * @param int $parent_id Search on Parent ID of Genre *(Optional)* (optional)
      * @param int $program_id Search on Program ID *(Optional)* &#x60;(Relation)&#x60; (optional)
      * @param int $broadcast_id Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $limit Results per page *(Optional)* (optional)
+     * @param string $order_by Field to order the results *(Optional)* (optional)
+     * @param string $order_direction Direction of ordering *(Optional)* (optional)
      * @param int $_external_station_id Query on a different (content providing) station *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return array of \RadioManager\Model\GenreResults, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listGenresWithHttpInfo($page = null, $parent_id = null, $program_id = null, $broadcast_id = null, $_external_station_id = null)
+    public function listGenresWithHttpInfo($page = null, $parent_id = null, $program_id = null, $broadcast_id = null, $limit = null, $order_by = null, $order_direction = null, $_external_station_id = null)
     {
         if (!is_null($page) && ($page < 0)) {
             throw new \InvalidArgumentException('invalid value for "$page" when calling GenreApi.listGenres, must be bigger than or equal to 0.');
+        }
+
+        if (!is_null($limit) && ($limit > 50)) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling GenreApi.listGenres, must be smaller than or equal to 50.');
+        }
+        if (!is_null($limit) && ($limit < 1)) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling GenreApi.listGenres, must be bigger than or equal to 1.');
         }
 
         // parse inputs
@@ -261,6 +274,18 @@ class GenreApi
         // query params
         if ($broadcast_id !== null) {
             $queryParams['broadcast_id'] = $this->apiClient->getSerializer()->toQueryValue($broadcast_id);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
+        }
+        // query params
+        if ($order_by !== null) {
+            $queryParams['order-by'] = $this->apiClient->getSerializer()->toQueryValue($order_by);
+        }
+        // query params
+        if ($order_direction !== null) {
+            $queryParams['order-direction'] = $this->apiClient->getSerializer()->toQueryValue($order_direction);
         }
         // query params
         if ($_external_station_id !== null) {

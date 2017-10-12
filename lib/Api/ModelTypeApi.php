@@ -202,20 +202,23 @@ class ModelTypeApi
      * Get all modelTypes.
      *
      * @param int $page Current page *(Optional)* (optional)
-     * @param string $model  (optional)
      * @param int $program_id Search on Program ID *(Optional)* (optional)
      * @param int $broadcast_id Search on Broadcast ID *(Optional)* (optional)
      * @param int $item_id Search on Item ID *(Optional)* (optional)
      * @param int $campaign_id Search on Campaign ID *(Optional)* (optional)
      * @param int $presenter_id Search on Presenter ID *(Optional)* (optional)
      * @param int $contact_id Search on Contact ID *(Optional)* (optional)
+     * @param string $model Search Modeltypes for certain Model *(Optional)* (optional)
+     * @param int $limit Results per page *(Optional)* (optional)
+     * @param string $order_by Field to order the results *(Optional)* (optional)
+     * @param string $order_direction Direction of ordering *(Optional)* (optional)
      * @param int $_external_station_id Query on a different (content providing) station *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return \RadioManager\Model\ModelTypeResults
      */
-    public function listModelTypes($page = null, $model = null, $program_id = null, $broadcast_id = null, $item_id = null, $campaign_id = null, $presenter_id = null, $contact_id = null, $_external_station_id = null)
+    public function listModelTypes($page = null, $program_id = null, $broadcast_id = null, $item_id = null, $campaign_id = null, $presenter_id = null, $contact_id = null, $model = null, $limit = null, $order_by = null, $order_direction = null, $_external_station_id = null)
     {
-        list($response) = $this->listModelTypesWithHttpInfo($page, $model, $program_id, $broadcast_id, $item_id, $campaign_id, $presenter_id, $contact_id, $_external_station_id);
+        list($response) = $this->listModelTypesWithHttpInfo($page, $program_id, $broadcast_id, $item_id, $campaign_id, $presenter_id, $contact_id, $model, $limit, $order_by, $order_direction, $_external_station_id);
         return $response;
     }
 
@@ -225,21 +228,31 @@ class ModelTypeApi
      * Get all modelTypes.
      *
      * @param int $page Current page *(Optional)* (optional)
-     * @param string $model  (optional)
      * @param int $program_id Search on Program ID *(Optional)* (optional)
      * @param int $broadcast_id Search on Broadcast ID *(Optional)* (optional)
      * @param int $item_id Search on Item ID *(Optional)* (optional)
      * @param int $campaign_id Search on Campaign ID *(Optional)* (optional)
      * @param int $presenter_id Search on Presenter ID *(Optional)* (optional)
      * @param int $contact_id Search on Contact ID *(Optional)* (optional)
+     * @param string $model Search Modeltypes for certain Model *(Optional)* (optional)
+     * @param int $limit Results per page *(Optional)* (optional)
+     * @param string $order_by Field to order the results *(Optional)* (optional)
+     * @param string $order_direction Direction of ordering *(Optional)* (optional)
      * @param int $_external_station_id Query on a different (content providing) station *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return array of \RadioManager\Model\ModelTypeResults, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listModelTypesWithHttpInfo($page = null, $model = null, $program_id = null, $broadcast_id = null, $item_id = null, $campaign_id = null, $presenter_id = null, $contact_id = null, $_external_station_id = null)
+    public function listModelTypesWithHttpInfo($page = null, $program_id = null, $broadcast_id = null, $item_id = null, $campaign_id = null, $presenter_id = null, $contact_id = null, $model = null, $limit = null, $order_by = null, $order_direction = null, $_external_station_id = null)
     {
         if (!is_null($page) && ($page < 0)) {
             throw new \InvalidArgumentException('invalid value for "$page" when calling ModelTypeApi.listModelTypes, must be bigger than or equal to 0.');
+        }
+
+        if (!is_null($limit) && ($limit > 50)) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling ModelTypeApi.listModelTypes, must be smaller than or equal to 50.');
+        }
+        if (!is_null($limit) && ($limit < 1)) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling ModelTypeApi.listModelTypes, must be bigger than or equal to 1.');
         }
 
         // parse inputs
@@ -257,10 +270,6 @@ class ModelTypeApi
         // query params
         if ($page !== null) {
             $queryParams['page'] = $this->apiClient->getSerializer()->toQueryValue($page);
-        }
-        // query params
-        if ($model !== null) {
-            $queryParams['model'] = $this->apiClient->getSerializer()->toQueryValue($model);
         }
         // query params
         if ($program_id !== null) {
@@ -285,6 +294,22 @@ class ModelTypeApi
         // query params
         if ($contact_id !== null) {
             $queryParams['contact_id'] = $this->apiClient->getSerializer()->toQueryValue($contact_id);
+        }
+        // query params
+        if ($model !== null) {
+            $queryParams['model'] = $this->apiClient->getSerializer()->toQueryValue($model);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
+        }
+        // query params
+        if ($order_by !== null) {
+            $queryParams['order-by'] = $this->apiClient->getSerializer()->toQueryValue($order_by);
+        }
+        // query params
+        if ($order_direction !== null) {
+            $queryParams['order-direction'] = $this->apiClient->getSerializer()->toQueryValue($order_direction);
         }
         // query params
         if ($_external_station_id !== null) {

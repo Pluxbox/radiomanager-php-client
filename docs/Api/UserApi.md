@@ -1,6 +1,6 @@
 # RadioManager\UserApi
 
-All URIs are relative to *https://staging.radiomanager.pluxbox.com/api/v2*
+All URIs are relative to *https://radiomanager.pb/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listUsers**
-> \RadioManager\Model\UserResults listUsers($page, $role_id)
+> \RadioManager\Model\UserResults listUsers($page, $role_id, $limit, $order_by, $order_direction)
 
 Get all users.
 
@@ -180,9 +180,12 @@ RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOU
 $api_instance = new RadioManager\Api\UserApi();
 $page = 1; // int | Current page *(Optional)*
 $role_id = 789; // int | Search on Role ID *(Optional)*
+$limit = 789; // int | Results per page *(Optional)*
+$order_by = "order_by_example"; // string | Field to order the results *(Optional)*
+$order_direction = "order_direction_example"; // string | Direction of ordering *(Optional)*
 
 try {
-    $result = $api_instance->listUsers($page, $role_id);
+    $result = $api_instance->listUsers($page, $role_id, $limit, $order_by, $order_direction);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserApi->listUsers: ', $e->getMessage(), PHP_EOL;
@@ -196,6 +199,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Current page *(Optional)* | [optional] [default to 1]
  **role_id** | **int**| Search on Role ID *(Optional)* | [optional]
+ **limit** | **int**| Results per page *(Optional)* | [optional]
+ **order_by** | **string**| Field to order the results *(Optional)* | [optional]
+ **order_direction** | **string**| Direction of ordering *(Optional)* | [optional]
 
 ### Return type
 

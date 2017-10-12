@@ -1,6 +1,6 @@
 # RadioManager\ProgramApi
 
-All URIs are relative to *https://staging.radiomanager.pluxbox.com/api/v2*
+All URIs are relative to *https://radiomanager.pb/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listPrograms**
-> \RadioManager\Model\ProgramResults listPrograms($page, $genre_id, $model_type_id, $presenter_id, $tag_id, $broadcast_id, $item_id, $block_id, $_external_station_id)
+> \RadioManager\Model\ProgramResults listPrograms($page, $broadcast_id, $model_type_id, $tag_id, $presenter_id, $genre_id, $block_id, $item_id, $limit, $order_by, $order_direction, $_external_station_id)
 
 Get all programs.
 
@@ -182,17 +182,20 @@ RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOU
 
 $api_instance = new RadioManager\Api\ProgramApi();
 $page = 789; // int | Current page *(Optional)*
-$genre_id = 789; // int | Search on Genre ID *(Optional)*
-$model_type_id = 789; // int | Search on ModelType ID *(Optional)*
-$presenter_id = 789; // int | Search on Presenter ID *(Optional)* `(Relation)`
-$tag_id = 789; // int | Search on Tag ID *(Optional)* `(Relation)`
 $broadcast_id = 789; // int | Search on Broadcast ID *(Optional)* `(Relation)`
-$item_id = 789; // int | Search on Item ID *(Optional)* `(Relation)`
+$model_type_id = 789; // int | Search on ModelType ID *(Optional)* `(Relation)`
+$tag_id = 789; // int | Search on Tag ID *(Optional)* `(Relation)`
+$presenter_id = 789; // int | Search on Presenter ID *(Optional)* `(Relation)`
+$genre_id = 789; // int | Search on Genre ID *(Optional)*
 $block_id = 789; // int | Search on Block ID *(Optional)* `(Relation)`
+$item_id = 789; // int | Search on Item ID *(Optional)* `(Relation)`
+$limit = 789; // int | Results per page *(Optional)*
+$order_by = "order_by_example"; // string | Field to order the results *(Optional)*
+$order_direction = "order_direction_example"; // string | Direction of ordering *(Optional)*
 $_external_station_id = 789; // int | Query on a different (content providing) station *(Optional)*
 
 try {
-    $result = $api_instance->listPrograms($page, $genre_id, $model_type_id, $presenter_id, $tag_id, $broadcast_id, $item_id, $block_id, $_external_station_id);
+    $result = $api_instance->listPrograms($page, $broadcast_id, $model_type_id, $tag_id, $presenter_id, $genre_id, $block_id, $item_id, $limit, $order_by, $order_direction, $_external_station_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProgramApi->listPrograms: ', $e->getMessage(), PHP_EOL;
@@ -205,13 +208,16 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Current page *(Optional)* | [optional]
- **genre_id** | **int**| Search on Genre ID *(Optional)* | [optional]
- **model_type_id** | **int**| Search on ModelType ID *(Optional)* | [optional]
- **presenter_id** | **int**| Search on Presenter ID *(Optional)* &#x60;(Relation)&#x60; | [optional]
- **tag_id** | **int**| Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; | [optional]
  **broadcast_id** | **int**| Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; | [optional]
- **item_id** | **int**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | [optional]
+ **model_type_id** | **int**| Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60; | [optional]
+ **tag_id** | **int**| Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; | [optional]
+ **presenter_id** | **int**| Search on Presenter ID *(Optional)* &#x60;(Relation)&#x60; | [optional]
+ **genre_id** | **int**| Search on Genre ID *(Optional)* | [optional]
  **block_id** | **int**| Search on Block ID *(Optional)* &#x60;(Relation)&#x60; | [optional]
+ **item_id** | **int**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | [optional]
+ **limit** | **int**| Results per page *(Optional)* | [optional]
+ **order_by** | **string**| Field to order the results *(Optional)* | [optional]
+ **order_direction** | **string**| Direction of ordering *(Optional)* | [optional]
  **_external_station_id** | **int**| Query on a different (content providing) station *(Optional)* | [optional]
 
 ### Return type

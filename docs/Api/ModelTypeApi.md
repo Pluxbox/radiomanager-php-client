@@ -1,6 +1,6 @@
 # RadioManager\ModelTypeApi
 
-All URIs are relative to *https://staging.radiomanager.pluxbox.com/api/v2*
+All URIs are relative to *https://radiomanager.pb/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listModelTypes**
-> \RadioManager\Model\ModelTypeResults listModelTypes($page, $model, $program_id, $broadcast_id, $item_id, $campaign_id, $presenter_id, $contact_id, $_external_station_id)
+> \RadioManager\Model\ModelTypeResults listModelTypes($page, $program_id, $broadcast_id, $item_id, $campaign_id, $presenter_id, $contact_id, $model, $limit, $order_by, $order_direction, $_external_station_id)
 
 Get all modelTypes.
 
@@ -79,17 +79,20 @@ RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOU
 
 $api_instance = new RadioManager\Api\ModelTypeApi();
 $page = 789; // int | Current page *(Optional)*
-$model = "model_example"; // string | 
 $program_id = 789; // int | Search on Program ID *(Optional)*
 $broadcast_id = 789; // int | Search on Broadcast ID *(Optional)*
 $item_id = 789; // int | Search on Item ID *(Optional)*
 $campaign_id = 789; // int | Search on Campaign ID *(Optional)*
 $presenter_id = 789; // int | Search on Presenter ID *(Optional)*
 $contact_id = 789; // int | Search on Contact ID *(Optional)*
+$model = "model_example"; // string | Search Modeltypes for certain Model *(Optional)*
+$limit = 789; // int | Results per page *(Optional)*
+$order_by = "order_by_example"; // string | Field to order the results *(Optional)*
+$order_direction = "order_direction_example"; // string | Direction of ordering *(Optional)*
 $_external_station_id = 789; // int | Query on a different (content providing) station *(Optional)*
 
 try {
-    $result = $api_instance->listModelTypes($page, $model, $program_id, $broadcast_id, $item_id, $campaign_id, $presenter_id, $contact_id, $_external_station_id);
+    $result = $api_instance->listModelTypes($page, $program_id, $broadcast_id, $item_id, $campaign_id, $presenter_id, $contact_id, $model, $limit, $order_by, $order_direction, $_external_station_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModelTypeApi->listModelTypes: ', $e->getMessage(), PHP_EOL;
@@ -102,13 +105,16 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Current page *(Optional)* | [optional]
- **model** | **string**|  | [optional]
  **program_id** | **int**| Search on Program ID *(Optional)* | [optional]
  **broadcast_id** | **int**| Search on Broadcast ID *(Optional)* | [optional]
  **item_id** | **int**| Search on Item ID *(Optional)* | [optional]
  **campaign_id** | **int**| Search on Campaign ID *(Optional)* | [optional]
  **presenter_id** | **int**| Search on Presenter ID *(Optional)* | [optional]
  **contact_id** | **int**| Search on Contact ID *(Optional)* | [optional]
+ **model** | **string**| Search Modeltypes for certain Model *(Optional)* | [optional]
+ **limit** | **int**| Results per page *(Optional)* | [optional]
+ **order_by** | **string**| Field to order the results *(Optional)* | [optional]
+ **order_direction** | **string**| Direction of ordering *(Optional)* | [optional]
  **_external_station_id** | **int**| Query on a different (content providing) station *(Optional)* | [optional]
 
 ### Return type

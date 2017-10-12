@@ -573,30 +573,31 @@ class ItemApi
      * Get a list of all the items currently in your station.
      *
      * @param int $page Current page *(Optional)* (optional)
-     * @param string $order_by Field to order the results *(Optional)* (optional)
-     * @param string $order_direction Direction of ordering *(Optional)* (optional)
+     * @param int $block_id Search on Block ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $broadcast_id Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $model_type_id Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $tag_id Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $campaign_id Search on Campaign ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $contact_id Search on Contact ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $program_draft_id Search on Program Draft ID *(Optional)* (optional)
+     * @param int $user_draft_id Search on User Draft ID *(Optional)* (optional)
+     * @param int $station_draft_id Search on Station Draft ID *(Optional)* (optional)
+     * @param int $program_id Search on Program ID *(Optional)* &#x60;(Relation)&#x60; (optional)
      * @param \DateTime $start_min Minimum start date *(Optional)* (optional)
      * @param \DateTime $start_max Maximum start date *(Optional)* (optional)
      * @param int $duration_min Minimum duration (seconds) *(Optional)* (optional)
      * @param int $duration_max Maximum duration (seconds) *(Optional)* (optional)
      * @param string $status Play Status of item *(Optional)* (optional)
-     * @param int $model_type_id Search on ModelType ID *(Optional)* (optional)
-     * @param int $program_draft_id Search on Program Draft ID *(Optional)* (optional)
-     * @param int $user_draft_id Search on User Draft ID *(Optional)* (optional)
-     * @param int $station_draft_id Search on Station Draft ID *(Optional)* (optional)
-     * @param int $block_id Search on Block ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $broadcast_id Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $campaign_id Search on Campaign ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $contact_id Search on Contact ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $program_id Search on Program ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $tag_id Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $limit Results per page *(Optional)* (optional)
+     * @param string $order_by Field to order the results *(Optional)* (optional)
+     * @param string $order_direction Direction of ordering *(Optional)* (optional)
      * @param int $_external_station_id Query on a different (content providing) station *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return \RadioManager\Model\ItemResults
      */
-    public function listItems($page = null, $order_by = null, $order_direction = null, $start_min = null, $start_max = null, $duration_min = null, $duration_max = null, $status = null, $model_type_id = null, $program_draft_id = null, $user_draft_id = null, $station_draft_id = null, $block_id = null, $broadcast_id = null, $campaign_id = null, $contact_id = null, $program_id = null, $tag_id = null, $_external_station_id = null)
+    public function listItems($page = null, $block_id = null, $broadcast_id = null, $model_type_id = null, $tag_id = null, $campaign_id = null, $contact_id = null, $program_draft_id = null, $user_draft_id = null, $station_draft_id = null, $program_id = null, $start_min = null, $start_max = null, $duration_min = null, $duration_max = null, $status = null, $limit = null, $order_by = null, $order_direction = null, $_external_station_id = null)
     {
-        list($response) = $this->listItemsWithHttpInfo($page, $order_by, $order_direction, $start_min, $start_max, $duration_min, $duration_max, $status, $model_type_id, $program_draft_id, $user_draft_id, $station_draft_id, $block_id, $broadcast_id, $campaign_id, $contact_id, $program_id, $tag_id, $_external_station_id);
+        list($response) = $this->listItemsWithHttpInfo($page, $block_id, $broadcast_id, $model_type_id, $tag_id, $campaign_id, $contact_id, $program_draft_id, $user_draft_id, $station_draft_id, $program_id, $start_min, $start_max, $duration_min, $duration_max, $status, $limit, $order_by, $order_direction, $_external_station_id);
         return $response;
     }
 
@@ -606,31 +607,39 @@ class ItemApi
      * Get a list of all the items currently in your station.
      *
      * @param int $page Current page *(Optional)* (optional)
-     * @param string $order_by Field to order the results *(Optional)* (optional)
-     * @param string $order_direction Direction of ordering *(Optional)* (optional)
+     * @param int $block_id Search on Block ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $broadcast_id Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $model_type_id Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $tag_id Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $campaign_id Search on Campaign ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $contact_id Search on Contact ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $program_draft_id Search on Program Draft ID *(Optional)* (optional)
+     * @param int $user_draft_id Search on User Draft ID *(Optional)* (optional)
+     * @param int $station_draft_id Search on Station Draft ID *(Optional)* (optional)
+     * @param int $program_id Search on Program ID *(Optional)* &#x60;(Relation)&#x60; (optional)
      * @param \DateTime $start_min Minimum start date *(Optional)* (optional)
      * @param \DateTime $start_max Maximum start date *(Optional)* (optional)
      * @param int $duration_min Minimum duration (seconds) *(Optional)* (optional)
      * @param int $duration_max Maximum duration (seconds) *(Optional)* (optional)
      * @param string $status Play Status of item *(Optional)* (optional)
-     * @param int $model_type_id Search on ModelType ID *(Optional)* (optional)
-     * @param int $program_draft_id Search on Program Draft ID *(Optional)* (optional)
-     * @param int $user_draft_id Search on User Draft ID *(Optional)* (optional)
-     * @param int $station_draft_id Search on Station Draft ID *(Optional)* (optional)
-     * @param int $block_id Search on Block ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $broadcast_id Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $campaign_id Search on Campaign ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $contact_id Search on Contact ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $program_id Search on Program ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $tag_id Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $limit Results per page *(Optional)* (optional)
+     * @param string $order_by Field to order the results *(Optional)* (optional)
+     * @param string $order_direction Direction of ordering *(Optional)* (optional)
      * @param int $_external_station_id Query on a different (content providing) station *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return array of \RadioManager\Model\ItemResults, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listItemsWithHttpInfo($page = null, $order_by = null, $order_direction = null, $start_min = null, $start_max = null, $duration_min = null, $duration_max = null, $status = null, $model_type_id = null, $program_draft_id = null, $user_draft_id = null, $station_draft_id = null, $block_id = null, $broadcast_id = null, $campaign_id = null, $contact_id = null, $program_id = null, $tag_id = null, $_external_station_id = null)
+    public function listItemsWithHttpInfo($page = null, $block_id = null, $broadcast_id = null, $model_type_id = null, $tag_id = null, $campaign_id = null, $contact_id = null, $program_draft_id = null, $user_draft_id = null, $station_draft_id = null, $program_id = null, $start_min = null, $start_max = null, $duration_min = null, $duration_max = null, $status = null, $limit = null, $order_by = null, $order_direction = null, $_external_station_id = null)
     {
         if (!is_null($page) && ($page < 1)) {
             throw new \InvalidArgumentException('invalid value for "$page" when calling ItemApi.listItems, must be bigger than or equal to 1.');
+        }
+
+        if (!is_null($limit) && ($limit > 50)) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling ItemApi.listItems, must be smaller than or equal to 50.');
+        }
+        if (!is_null($limit) && ($limit < 1)) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling ItemApi.listItems, must be bigger than or equal to 1.');
         }
 
         // parse inputs
@@ -650,12 +659,44 @@ class ItemApi
             $queryParams['page'] = $this->apiClient->getSerializer()->toQueryValue($page);
         }
         // query params
-        if ($order_by !== null) {
-            $queryParams['order-by'] = $this->apiClient->getSerializer()->toQueryValue($order_by);
+        if ($block_id !== null) {
+            $queryParams['block_id'] = $this->apiClient->getSerializer()->toQueryValue($block_id);
         }
         // query params
-        if ($order_direction !== null) {
-            $queryParams['order-direction'] = $this->apiClient->getSerializer()->toQueryValue($order_direction);
+        if ($broadcast_id !== null) {
+            $queryParams['broadcast_id'] = $this->apiClient->getSerializer()->toQueryValue($broadcast_id);
+        }
+        // query params
+        if ($model_type_id !== null) {
+            $queryParams['model_type_id'] = $this->apiClient->getSerializer()->toQueryValue($model_type_id);
+        }
+        // query params
+        if ($tag_id !== null) {
+            $queryParams['tag_id'] = $this->apiClient->getSerializer()->toQueryValue($tag_id);
+        }
+        // query params
+        if ($campaign_id !== null) {
+            $queryParams['campaign_id'] = $this->apiClient->getSerializer()->toQueryValue($campaign_id);
+        }
+        // query params
+        if ($contact_id !== null) {
+            $queryParams['contact_id'] = $this->apiClient->getSerializer()->toQueryValue($contact_id);
+        }
+        // query params
+        if ($program_draft_id !== null) {
+            $queryParams['program_draft_id'] = $this->apiClient->getSerializer()->toQueryValue($program_draft_id);
+        }
+        // query params
+        if ($user_draft_id !== null) {
+            $queryParams['user_draft_id'] = $this->apiClient->getSerializer()->toQueryValue($user_draft_id);
+        }
+        // query params
+        if ($station_draft_id !== null) {
+            $queryParams['station_draft_id'] = $this->apiClient->getSerializer()->toQueryValue($station_draft_id);
+        }
+        // query params
+        if ($program_id !== null) {
+            $queryParams['program_id'] = $this->apiClient->getSerializer()->toQueryValue($program_id);
         }
         // query params
         if ($start_min !== null) {
@@ -678,44 +719,16 @@ class ItemApi
             $queryParams['status'] = $this->apiClient->getSerializer()->toQueryValue($status);
         }
         // query params
-        if ($model_type_id !== null) {
-            $queryParams['model_type_id'] = $this->apiClient->getSerializer()->toQueryValue($model_type_id);
+        if ($limit !== null) {
+            $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
         }
         // query params
-        if ($program_draft_id !== null) {
-            $queryParams['program_draft_id'] = $this->apiClient->getSerializer()->toQueryValue($program_draft_id);
+        if ($order_by !== null) {
+            $queryParams['order-by'] = $this->apiClient->getSerializer()->toQueryValue($order_by);
         }
         // query params
-        if ($user_draft_id !== null) {
-            $queryParams['user_draft_id'] = $this->apiClient->getSerializer()->toQueryValue($user_draft_id);
-        }
-        // query params
-        if ($station_draft_id !== null) {
-            $queryParams['station_draft_id'] = $this->apiClient->getSerializer()->toQueryValue($station_draft_id);
-        }
-        // query params
-        if ($block_id !== null) {
-            $queryParams['block_id'] = $this->apiClient->getSerializer()->toQueryValue($block_id);
-        }
-        // query params
-        if ($broadcast_id !== null) {
-            $queryParams['broadcast_id'] = $this->apiClient->getSerializer()->toQueryValue($broadcast_id);
-        }
-        // query params
-        if ($campaign_id !== null) {
-            $queryParams['campaign_id'] = $this->apiClient->getSerializer()->toQueryValue($campaign_id);
-        }
-        // query params
-        if ($contact_id !== null) {
-            $queryParams['contact_id'] = $this->apiClient->getSerializer()->toQueryValue($contact_id);
-        }
-        // query params
-        if ($program_id !== null) {
-            $queryParams['program_id'] = $this->apiClient->getSerializer()->toQueryValue($program_id);
-        }
-        // query params
-        if ($tag_id !== null) {
-            $queryParams['tag_id'] = $this->apiClient->getSerializer()->toQueryValue($tag_id);
+        if ($order_direction !== null) {
+            $queryParams['order-direction'] = $this->apiClient->getSerializer()->toQueryValue($order_direction);
         }
         // query params
         if ($_external_station_id !== null) {

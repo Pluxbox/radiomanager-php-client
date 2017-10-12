@@ -1,6 +1,6 @@
 # RadioManager\CampaignApi
 
-All URIs are relative to *https://staging.radiomanager.pluxbox.com/api/v2*
+All URIs are relative to *https://radiomanager.pb/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listCampaigns**
-> \RadioManager\Model\CampaignResults listCampaigns($page, $model_type_id, $item_id, $start_min, $start_max, $_external_station_id)
+> \RadioManager\Model\CampaignResults listCampaigns($page, $item_id, $model_type_id, $start_min, $start_max, $limit, $order_by, $order_direction, $_external_station_id)
 
 Get all campaigns.
 
@@ -182,14 +182,17 @@ RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOU
 
 $api_instance = new RadioManager\Api\CampaignApi();
 $page = 789; // int | Current page *(Optional)*
-$model_type_id = 789; // int | Search on ModelType ID *(Optional)*
 $item_id = 789; // int | Search on Item ID *(Optional)* `(Relation)`
+$model_type_id = 789; // int | Search on ModelType ID *(Optional)* `(Relation)`
 $start_min = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Minimum start date *(Optional)*
 $start_max = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Maximum start date *(Optional)*
+$limit = 789; // int | Results per page *(Optional)*
+$order_by = "order_by_example"; // string | Field to order the results *(Optional)*
+$order_direction = "order_direction_example"; // string | Direction of ordering *(Optional)*
 $_external_station_id = 789; // int | Query on a different (content providing) station *(Optional)*
 
 try {
-    $result = $api_instance->listCampaigns($page, $model_type_id, $item_id, $start_min, $start_max, $_external_station_id);
+    $result = $api_instance->listCampaigns($page, $item_id, $model_type_id, $start_min, $start_max, $limit, $order_by, $order_direction, $_external_station_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->listCampaigns: ', $e->getMessage(), PHP_EOL;
@@ -202,10 +205,13 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Current page *(Optional)* | [optional]
- **model_type_id** | **int**| Search on ModelType ID *(Optional)* | [optional]
  **item_id** | **int**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | [optional]
+ **model_type_id** | **int**| Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60; | [optional]
  **start_min** | **\DateTime**| Minimum start date *(Optional)* | [optional]
  **start_max** | **\DateTime**| Maximum start date *(Optional)* | [optional]
+ **limit** | **int**| Results per page *(Optional)* | [optional]
+ **order_by** | **string**| Field to order the results *(Optional)* | [optional]
+ **order_direction** | **string**| Direction of ordering *(Optional)* | [optional]
  **_external_station_id** | **int**| Query on a different (content providing) station *(Optional)* | [optional]
 
 ### Return type

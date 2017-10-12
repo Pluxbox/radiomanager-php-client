@@ -372,18 +372,21 @@ class BlockApi
      * Get a list of all blocks currently in your station.
      *
      * @param int $page Current page *(Optional)* (optional, default to 1)
+     * @param int $broadcast_id Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $item_id Search on Item ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $program_id Search on Program ID *(Optional)* &#x60;(Relation)&#x60; (optional)
      * @param \DateTime $start_min Minimum start date *(Optional)* (optional)
      * @param \DateTime $start_max Maximum start date *(Optional)* (optional)
-     * @param int $broadcast_id Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $program_id Search on Program ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $item_id Search on Item ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $limit Results per page *(Optional)* (optional)
+     * @param string $order_by Field to order the results *(Optional)* (optional)
+     * @param string $order_direction Direction of ordering *(Optional)* (optional)
      * @param int $_external_station_id Query on a different (content providing) station *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return \RadioManager\Model\BlockResults
      */
-    public function listBlocks($page = '1', $start_min = null, $start_max = null, $broadcast_id = null, $program_id = null, $item_id = null, $_external_station_id = null)
+    public function listBlocks($page = '1', $broadcast_id = null, $item_id = null, $program_id = null, $start_min = null, $start_max = null, $limit = null, $order_by = null, $order_direction = null, $_external_station_id = null)
     {
-        list($response) = $this->listBlocksWithHttpInfo($page, $start_min, $start_max, $broadcast_id, $program_id, $item_id, $_external_station_id);
+        list($response) = $this->listBlocksWithHttpInfo($page, $broadcast_id, $item_id, $program_id, $start_min, $start_max, $limit, $order_by, $order_direction, $_external_station_id);
         return $response;
     }
 
@@ -393,19 +396,29 @@ class BlockApi
      * Get a list of all blocks currently in your station.
      *
      * @param int $page Current page *(Optional)* (optional, default to 1)
+     * @param int $broadcast_id Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $item_id Search on Item ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $program_id Search on Program ID *(Optional)* &#x60;(Relation)&#x60; (optional)
      * @param \DateTime $start_min Minimum start date *(Optional)* (optional)
      * @param \DateTime $start_max Maximum start date *(Optional)* (optional)
-     * @param int $broadcast_id Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $program_id Search on Program ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $item_id Search on Item ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $limit Results per page *(Optional)* (optional)
+     * @param string $order_by Field to order the results *(Optional)* (optional)
+     * @param string $order_direction Direction of ordering *(Optional)* (optional)
      * @param int $_external_station_id Query on a different (content providing) station *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return array of \RadioManager\Model\BlockResults, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listBlocksWithHttpInfo($page = '1', $start_min = null, $start_max = null, $broadcast_id = null, $program_id = null, $item_id = null, $_external_station_id = null)
+    public function listBlocksWithHttpInfo($page = '1', $broadcast_id = null, $item_id = null, $program_id = null, $start_min = null, $start_max = null, $limit = null, $order_by = null, $order_direction = null, $_external_station_id = null)
     {
         if (!is_null($page) && ($page < 0)) {
             throw new \InvalidArgumentException('invalid value for "$page" when calling BlockApi.listBlocks, must be bigger than or equal to 0.');
+        }
+
+        if (!is_null($limit) && ($limit > 50)) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling BlockApi.listBlocks, must be smaller than or equal to 50.');
+        }
+        if (!is_null($limit) && ($limit < 1)) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling BlockApi.listBlocks, must be bigger than or equal to 1.');
         }
 
         // parse inputs
@@ -425,6 +438,18 @@ class BlockApi
             $queryParams['page'] = $this->apiClient->getSerializer()->toQueryValue($page);
         }
         // query params
+        if ($broadcast_id !== null) {
+            $queryParams['broadcast_id'] = $this->apiClient->getSerializer()->toQueryValue($broadcast_id);
+        }
+        // query params
+        if ($item_id !== null) {
+            $queryParams['item_id'] = $this->apiClient->getSerializer()->toQueryValue($item_id);
+        }
+        // query params
+        if ($program_id !== null) {
+            $queryParams['program_id'] = $this->apiClient->getSerializer()->toQueryValue($program_id);
+        }
+        // query params
         if ($start_min !== null) {
             $queryParams['start-min'] = $this->apiClient->getSerializer()->toQueryValue($start_min);
         }
@@ -433,16 +458,16 @@ class BlockApi
             $queryParams['start-max'] = $this->apiClient->getSerializer()->toQueryValue($start_max);
         }
         // query params
-        if ($broadcast_id !== null) {
-            $queryParams['broadcast_id'] = $this->apiClient->getSerializer()->toQueryValue($broadcast_id);
+        if ($limit !== null) {
+            $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
         }
         // query params
-        if ($program_id !== null) {
-            $queryParams['program_id'] = $this->apiClient->getSerializer()->toQueryValue($program_id);
+        if ($order_by !== null) {
+            $queryParams['order-by'] = $this->apiClient->getSerializer()->toQueryValue($order_by);
         }
         // query params
-        if ($item_id !== null) {
-            $queryParams['item_id'] = $this->apiClient->getSerializer()->toQueryValue($item_id);
+        if ($order_direction !== null) {
+            $queryParams['order-direction'] = $this->apiClient->getSerializer()->toQueryValue($order_direction);
         }
         // query params
         if ($_external_station_id !== null) {

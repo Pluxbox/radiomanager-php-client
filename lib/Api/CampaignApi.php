@@ -405,17 +405,20 @@ class CampaignApi
      * Get all campaigns.
      *
      * @param int $page Current page *(Optional)* (optional)
-     * @param int $model_type_id Search on ModelType ID *(Optional)* (optional)
      * @param int $item_id Search on Item ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $model_type_id Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60; (optional)
      * @param \DateTime $start_min Minimum start date *(Optional)* (optional)
      * @param \DateTime $start_max Maximum start date *(Optional)* (optional)
+     * @param int $limit Results per page *(Optional)* (optional)
+     * @param string $order_by Field to order the results *(Optional)* (optional)
+     * @param string $order_direction Direction of ordering *(Optional)* (optional)
      * @param int $_external_station_id Query on a different (content providing) station *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return \RadioManager\Model\CampaignResults
      */
-    public function listCampaigns($page = null, $model_type_id = null, $item_id = null, $start_min = null, $start_max = null, $_external_station_id = null)
+    public function listCampaigns($page = null, $item_id = null, $model_type_id = null, $start_min = null, $start_max = null, $limit = null, $order_by = null, $order_direction = null, $_external_station_id = null)
     {
-        list($response) = $this->listCampaignsWithHttpInfo($page, $model_type_id, $item_id, $start_min, $start_max, $_external_station_id);
+        list($response) = $this->listCampaignsWithHttpInfo($page, $item_id, $model_type_id, $start_min, $start_max, $limit, $order_by, $order_direction, $_external_station_id);
         return $response;
     }
 
@@ -425,18 +428,28 @@ class CampaignApi
      * Get all campaigns.
      *
      * @param int $page Current page *(Optional)* (optional)
-     * @param int $model_type_id Search on ModelType ID *(Optional)* (optional)
      * @param int $item_id Search on Item ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $model_type_id Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60; (optional)
      * @param \DateTime $start_min Minimum start date *(Optional)* (optional)
      * @param \DateTime $start_max Maximum start date *(Optional)* (optional)
+     * @param int $limit Results per page *(Optional)* (optional)
+     * @param string $order_by Field to order the results *(Optional)* (optional)
+     * @param string $order_direction Direction of ordering *(Optional)* (optional)
      * @param int $_external_station_id Query on a different (content providing) station *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return array of \RadioManager\Model\CampaignResults, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listCampaignsWithHttpInfo($page = null, $model_type_id = null, $item_id = null, $start_min = null, $start_max = null, $_external_station_id = null)
+    public function listCampaignsWithHttpInfo($page = null, $item_id = null, $model_type_id = null, $start_min = null, $start_max = null, $limit = null, $order_by = null, $order_direction = null, $_external_station_id = null)
     {
         if (!is_null($page) && ($page < 0)) {
             throw new \InvalidArgumentException('invalid value for "$page" when calling CampaignApi.listCampaigns, must be bigger than or equal to 0.');
+        }
+
+        if (!is_null($limit) && ($limit > 50)) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.listCampaigns, must be smaller than or equal to 50.');
+        }
+        if (!is_null($limit) && ($limit < 1)) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.listCampaigns, must be bigger than or equal to 1.');
         }
 
         // parse inputs
@@ -456,12 +469,12 @@ class CampaignApi
             $queryParams['page'] = $this->apiClient->getSerializer()->toQueryValue($page);
         }
         // query params
-        if ($model_type_id !== null) {
-            $queryParams['model_type_id'] = $this->apiClient->getSerializer()->toQueryValue($model_type_id);
-        }
-        // query params
         if ($item_id !== null) {
             $queryParams['item_id'] = $this->apiClient->getSerializer()->toQueryValue($item_id);
+        }
+        // query params
+        if ($model_type_id !== null) {
+            $queryParams['model_type_id'] = $this->apiClient->getSerializer()->toQueryValue($model_type_id);
         }
         // query params
         if ($start_min !== null) {
@@ -470,6 +483,18 @@ class CampaignApi
         // query params
         if ($start_max !== null) {
             $queryParams['start-max'] = $this->apiClient->getSerializer()->toQueryValue($start_max);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
+        }
+        // query params
+        if ($order_by !== null) {
+            $queryParams['order-by'] = $this->apiClient->getSerializer()->toQueryValue($order_by);
+        }
+        // query params
+        if ($order_direction !== null) {
+            $queryParams['order-direction'] = $this->apiClient->getSerializer()->toQueryValue($order_direction);
         }
         // query params
         if ($_external_station_id !== null) {

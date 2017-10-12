@@ -1,6 +1,6 @@
 # RadioManager\BroadcastApi
 
-All URIs are relative to *https://staging.radiomanager.pluxbox.com/api/v2*
+All URIs are relative to *https://radiomanager.pb/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -216,7 +216,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getDailyEPG**
-> \RadioManager\Model\EPGBroadcast getDailyEPG($date)
+> \RadioManager\Model\EPGBroadcast getDailyEPG($date, $withunpublished)
 
 Get daily EPG
 
@@ -234,9 +234,10 @@ RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOU
 
 $api_instance = new RadioManager\Api\BroadcastApi();
 $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Date *(Optional)*
+$withunpublished = true; // bool | Show Unpublished *(Optional)*
 
 try {
-    $result = $api_instance->getDailyEPG($date);
+    $result = $api_instance->getDailyEPG($date, $withunpublished);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BroadcastApi->getDailyEPG: ', $e->getMessage(), PHP_EOL;
@@ -249,6 +250,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **date** | **\DateTime**| Date *(Optional)* | [optional]
+ **withunpublished** | **bool**| Show Unpublished *(Optional)* | [optional]
 
 ### Return type
 
@@ -266,7 +268,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getEPGByDate**
-> \RadioManager\Model\EPGBroadcast getEPGByDate($date)
+> \RadioManager\Model\EPGBroadcast getEPGByDate($date, $withunpublished)
 
 Get EPG by date
 
@@ -284,9 +286,10 @@ RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOU
 
 $api_instance = new RadioManager\Api\BroadcastApi();
 $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Date *(Optional)*
+$withunpublished = true; // bool | Show Unpublished *(Optional)*
 
 try {
-    $result = $api_instance->getEPGByDate($date);
+    $result = $api_instance->getEPGByDate($date, $withunpublished);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BroadcastApi->getEPGByDate: ', $e->getMessage(), PHP_EOL;
@@ -299,6 +302,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **date** | **\DateTime**| Date *(Optional)* | [optional]
+ **withunpublished** | **bool**| Show Unpublished *(Optional)* | [optional]
 
 ### Return type
 
@@ -362,7 +366,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getWeeklyEPG**
-> \RadioManager\Model\EPGBroadcast getWeeklyEPG($date)
+> \RadioManager\Model\EPGBroadcast getWeeklyEPG($date, $withunpublished)
 
 Get weekly EPG
 
@@ -380,9 +384,10 @@ RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOU
 
 $api_instance = new RadioManager\Api\BroadcastApi();
 $date = "date_example"; // string | Date *(Optional)*
+$withunpublished = true; // bool | Show Unpublished *(Optional)*
 
 try {
-    $result = $api_instance->getWeeklyEPG($date);
+    $result = $api_instance->getWeeklyEPG($date, $withunpublished);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BroadcastApi->getWeeklyEPG: ', $e->getMessage(), PHP_EOL;
@@ -395,6 +400,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **date** | **string**| Date *(Optional)* | [optional]
+ **withunpublished** | **bool**| Show Unpublished *(Optional)* | [optional]
 
 ### Return type
 
@@ -412,7 +418,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listBroadcasts**
-> \RadioManager\Model\BroadcastResults listBroadcasts($page, $start_min, $start_max, $model_type_id, $tag_id, $presenter_id, $item_id, $block_id, $genre_id, $program_id, $_external_station_id)
+> \RadioManager\Model\BroadcastResults listBroadcasts($page, $program_id, $block_id, $model_type_id, $tag_id, $presenter_id, $genre_id, $item_id, $start_min, $start_max, $limit, $order_by, $order_direction, $_external_station_id)
 
 Get all broadcasts.
 
@@ -430,19 +436,22 @@ RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOU
 
 $api_instance = new RadioManager\Api\BroadcastApi();
 $page = 1; // int | Current page *(Optional)*
-$start_min = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Minimum start date *(Optional)*
-$start_max = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Maximum start date *(Optional)*
-$model_type_id = 789; // int | Search on ModelType ID *(Optional)*
+$program_id = 789; // int | Search on Program ID *(Optional)* `(Relation)`
+$block_id = 789; // int | Search on Block ID *(Optional)* `(Relation)`
+$model_type_id = 789; // int | Search on ModelType ID *(Optional)* `(Relation)`
 $tag_id = 789; // int | Search on Tag ID *(Optional)* `(Relation)`
 $presenter_id = 789; // int | Search on Presenter ID *(Optional)* `(Relation)`
-$item_id = 789; // int | Search on Item ID *(Optional)* `(Relation)`
-$block_id = 789; // int | Search on Block ID *(Optional)* `(Relation)`
 $genre_id = 789; // int | Search on Genre ID *(Optional)* `(Relation)`
-$program_id = 789; // int | Search on Program ID *(Optional)* `(Relation)`
+$item_id = 789; // int | Search on Item ID *(Optional)* `(Relation)`
+$start_min = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Minimum start date *(Optional)*
+$start_max = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Maximum start date *(Optional)*
+$limit = 789; // int | Results per page *(Optional)*
+$order_by = "order_by_example"; // string | Field to order the results *(Optional)*
+$order_direction = "order_direction_example"; // string | Direction of ordering *(Optional)*
 $_external_station_id = 789; // int | Query on a different (content providing) station *(Optional)*
 
 try {
-    $result = $api_instance->listBroadcasts($page, $start_min, $start_max, $model_type_id, $tag_id, $presenter_id, $item_id, $block_id, $genre_id, $program_id, $_external_station_id);
+    $result = $api_instance->listBroadcasts($page, $program_id, $block_id, $model_type_id, $tag_id, $presenter_id, $genre_id, $item_id, $start_min, $start_max, $limit, $order_by, $order_direction, $_external_station_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BroadcastApi->listBroadcasts: ', $e->getMessage(), PHP_EOL;
@@ -455,15 +464,18 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Current page *(Optional)* | [optional] [default to 1]
- **start_min** | **\DateTime**| Minimum start date *(Optional)* | [optional]
- **start_max** | **\DateTime**| Maximum start date *(Optional)* | [optional]
- **model_type_id** | **int**| Search on ModelType ID *(Optional)* | [optional]
+ **program_id** | **int**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | [optional]
+ **block_id** | **int**| Search on Block ID *(Optional)* &#x60;(Relation)&#x60; | [optional]
+ **model_type_id** | **int**| Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60; | [optional]
  **tag_id** | **int**| Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; | [optional]
  **presenter_id** | **int**| Search on Presenter ID *(Optional)* &#x60;(Relation)&#x60; | [optional]
- **item_id** | **int**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | [optional]
- **block_id** | **int**| Search on Block ID *(Optional)* &#x60;(Relation)&#x60; | [optional]
  **genre_id** | **int**| Search on Genre ID *(Optional)* &#x60;(Relation)&#x60; | [optional]
- **program_id** | **int**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | [optional]
+ **item_id** | **int**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | [optional]
+ **start_min** | **\DateTime**| Minimum start date *(Optional)* | [optional]
+ **start_max** | **\DateTime**| Maximum start date *(Optional)* | [optional]
+ **limit** | **int**| Results per page *(Optional)* | [optional]
+ **order_by** | **string**| Field to order the results *(Optional)* | [optional]
+ **order_direction** | **string**| Direction of ordering *(Optional)* | [optional]
  **_external_station_id** | **int**| Query on a different (content providing) station *(Optional)* | [optional]
 
 ### Return type

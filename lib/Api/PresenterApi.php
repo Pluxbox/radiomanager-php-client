@@ -405,16 +405,19 @@ class PresenterApi
      * Get all presenters.
      *
      * @param int $page Current page *(Optional)* (optional)
-     * @param int $model_type_id Search on ModelType ID (Optional) (optional)
      * @param int $program_id Search on Program ID *(Optional)* &#x60;(Relation)&#x60; (optional)
      * @param int $broadcast_id Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $model_type_id Search on ModelType ID (Optional) (optional)
+     * @param int $limit Results per page *(Optional)* (optional)
+     * @param string $order_by Field to order the results *(Optional)* (optional)
+     * @param string $order_direction Direction of ordering *(Optional)* (optional)
      * @param int $_external_station_id Query on a different (content providing) station *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return \RadioManager\Model\PresenterResults
      */
-    public function listPresenters($page = null, $model_type_id = null, $program_id = null, $broadcast_id = null, $_external_station_id = null)
+    public function listPresenters($page = null, $program_id = null, $broadcast_id = null, $model_type_id = null, $limit = null, $order_by = null, $order_direction = null, $_external_station_id = null)
     {
-        list($response) = $this->listPresentersWithHttpInfo($page, $model_type_id, $program_id, $broadcast_id, $_external_station_id);
+        list($response) = $this->listPresentersWithHttpInfo($page, $program_id, $broadcast_id, $model_type_id, $limit, $order_by, $order_direction, $_external_station_id);
         return $response;
     }
 
@@ -424,17 +427,27 @@ class PresenterApi
      * Get all presenters.
      *
      * @param int $page Current page *(Optional)* (optional)
-     * @param int $model_type_id Search on ModelType ID (Optional) (optional)
      * @param int $program_id Search on Program ID *(Optional)* &#x60;(Relation)&#x60; (optional)
      * @param int $broadcast_id Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $model_type_id Search on ModelType ID (Optional) (optional)
+     * @param int $limit Results per page *(Optional)* (optional)
+     * @param string $order_by Field to order the results *(Optional)* (optional)
+     * @param string $order_direction Direction of ordering *(Optional)* (optional)
      * @param int $_external_station_id Query on a different (content providing) station *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return array of \RadioManager\Model\PresenterResults, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listPresentersWithHttpInfo($page = null, $model_type_id = null, $program_id = null, $broadcast_id = null, $_external_station_id = null)
+    public function listPresentersWithHttpInfo($page = null, $program_id = null, $broadcast_id = null, $model_type_id = null, $limit = null, $order_by = null, $order_direction = null, $_external_station_id = null)
     {
         if (!is_null($page) && ($page < 0)) {
             throw new \InvalidArgumentException('invalid value for "$page" when calling PresenterApi.listPresenters, must be bigger than or equal to 0.');
+        }
+
+        if (!is_null($limit) && ($limit > 50)) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling PresenterApi.listPresenters, must be smaller than or equal to 50.');
+        }
+        if (!is_null($limit) && ($limit < 1)) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling PresenterApi.listPresenters, must be bigger than or equal to 1.');
         }
 
         // parse inputs
@@ -454,16 +467,28 @@ class PresenterApi
             $queryParams['page'] = $this->apiClient->getSerializer()->toQueryValue($page);
         }
         // query params
-        if ($model_type_id !== null) {
-            $queryParams['model_type_id'] = $this->apiClient->getSerializer()->toQueryValue($model_type_id);
-        }
-        // query params
         if ($program_id !== null) {
             $queryParams['program_id'] = $this->apiClient->getSerializer()->toQueryValue($program_id);
         }
         // query params
         if ($broadcast_id !== null) {
             $queryParams['broadcast_id'] = $this->apiClient->getSerializer()->toQueryValue($broadcast_id);
+        }
+        // query params
+        if ($model_type_id !== null) {
+            $queryParams['model_type_id'] = $this->apiClient->getSerializer()->toQueryValue($model_type_id);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
+        }
+        // query params
+        if ($order_by !== null) {
+            $queryParams['order-by'] = $this->apiClient->getSerializer()->toQueryValue($order_by);
+        }
+        // query params
+        if ($order_direction !== null) {
+            $queryParams['order-direction'] = $this->apiClient->getSerializer()->toQueryValue($order_direction);
         }
         // query params
         if ($_external_station_id !== null) {

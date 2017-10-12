@@ -400,12 +400,15 @@ class UserApi
      *
      * @param int $page Current page *(Optional)* (optional, default to 1)
      * @param int $role_id Search on Role ID *(Optional)* (optional)
+     * @param int $limit Results per page *(Optional)* (optional)
+     * @param string $order_by Field to order the results *(Optional)* (optional)
+     * @param string $order_direction Direction of ordering *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return \RadioManager\Model\UserResults
      */
-    public function listUsers($page = '1', $role_id = null)
+    public function listUsers($page = '1', $role_id = null, $limit = null, $order_by = null, $order_direction = null)
     {
-        list($response) = $this->listUsersWithHttpInfo($page, $role_id);
+        list($response) = $this->listUsersWithHttpInfo($page, $role_id, $limit, $order_by, $order_direction);
         return $response;
     }
 
@@ -416,13 +419,23 @@ class UserApi
      *
      * @param int $page Current page *(Optional)* (optional, default to 1)
      * @param int $role_id Search on Role ID *(Optional)* (optional)
+     * @param int $limit Results per page *(Optional)* (optional)
+     * @param string $order_by Field to order the results *(Optional)* (optional)
+     * @param string $order_direction Direction of ordering *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return array of \RadioManager\Model\UserResults, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listUsersWithHttpInfo($page = '1', $role_id = null)
+    public function listUsersWithHttpInfo($page = '1', $role_id = null, $limit = null, $order_by = null, $order_direction = null)
     {
         if (!is_null($page) && ($page < 0)) {
             throw new \InvalidArgumentException('invalid value for "$page" when calling UserApi.listUsers, must be bigger than or equal to 0.');
+        }
+
+        if (!is_null($limit) && ($limit > 50)) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling UserApi.listUsers, must be smaller than or equal to 50.');
+        }
+        if (!is_null($limit) && ($limit < 1)) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling UserApi.listUsers, must be bigger than or equal to 1.');
         }
 
         // parse inputs
@@ -444,6 +457,18 @@ class UserApi
         // query params
         if ($role_id !== null) {
             $queryParams['role_id'] = $this->apiClient->getSerializer()->toQueryValue($role_id);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
+        }
+        // query params
+        if ($order_by !== null) {
+            $queryParams['order-by'] = $this->apiClient->getSerializer()->toQueryValue($order_by);
+        }
+        // query params
+        if ($order_direction !== null) {
+            $queryParams['order-direction'] = $this->apiClient->getSerializer()->toQueryValue($order_direction);
         }
 
         // for model (json/xml)

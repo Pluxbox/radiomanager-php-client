@@ -409,13 +409,16 @@ class TagApi
      * @param int $item_id Search on Item ID *(Optional)* &#x60;(Relation)&#x60; (optional)
      * @param int $broadcast_id Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; (optional)
      * @param int $contact_id Search on Contact ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $limit Results per page *(Optional)* (optional)
+     * @param string $order_by Field to order the results *(Optional)* (optional)
+     * @param string $order_direction Direction of ordering *(Optional)* (optional)
      * @param int $_external_station_id Query on a different (content providing) station *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return \RadioManager\Model\TagResults
      */
-    public function listTags($page = null, $program_id = null, $item_id = null, $broadcast_id = null, $contact_id = null, $_external_station_id = null)
+    public function listTags($page = null, $program_id = null, $item_id = null, $broadcast_id = null, $contact_id = null, $limit = null, $order_by = null, $order_direction = null, $_external_station_id = null)
     {
-        list($response) = $this->listTagsWithHttpInfo($page, $program_id, $item_id, $broadcast_id, $contact_id, $_external_station_id);
+        list($response) = $this->listTagsWithHttpInfo($page, $program_id, $item_id, $broadcast_id, $contact_id, $limit, $order_by, $order_direction, $_external_station_id);
         return $response;
     }
 
@@ -429,14 +432,24 @@ class TagApi
      * @param int $item_id Search on Item ID *(Optional)* &#x60;(Relation)&#x60; (optional)
      * @param int $broadcast_id Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; (optional)
      * @param int $contact_id Search on Contact ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $limit Results per page *(Optional)* (optional)
+     * @param string $order_by Field to order the results *(Optional)* (optional)
+     * @param string $order_direction Direction of ordering *(Optional)* (optional)
      * @param int $_external_station_id Query on a different (content providing) station *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return array of \RadioManager\Model\TagResults, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listTagsWithHttpInfo($page = null, $program_id = null, $item_id = null, $broadcast_id = null, $contact_id = null, $_external_station_id = null)
+    public function listTagsWithHttpInfo($page = null, $program_id = null, $item_id = null, $broadcast_id = null, $contact_id = null, $limit = null, $order_by = null, $order_direction = null, $_external_station_id = null)
     {
         if (!is_null($page) && ($page < 1)) {
             throw new \InvalidArgumentException('invalid value for "$page" when calling TagApi.listTags, must be bigger than or equal to 1.');
+        }
+
+        if (!is_null($limit) && ($limit > 50)) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling TagApi.listTags, must be smaller than or equal to 50.');
+        }
+        if (!is_null($limit) && ($limit < 1)) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling TagApi.listTags, must be bigger than or equal to 1.');
         }
 
         // parse inputs
@@ -470,6 +483,18 @@ class TagApi
         // query params
         if ($contact_id !== null) {
             $queryParams['contact_id'] = $this->apiClient->getSerializer()->toQueryValue($contact_id);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
+        }
+        // query params
+        if ($order_by !== null) {
+            $queryParams['order-by'] = $this->apiClient->getSerializer()->toQueryValue($order_by);
+        }
+        // query params
+        if ($order_direction !== null) {
+            $queryParams['order-direction'] = $this->apiClient->getSerializer()->toQueryValue($order_direction);
         }
         // query params
         if ($_external_station_id !== null) {

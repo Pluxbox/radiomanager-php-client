@@ -1,6 +1,6 @@
 # RadioManager\PresenterApi
 
-All URIs are relative to *https://staging.radiomanager.pluxbox.com/api/v2*
+All URIs are relative to *https://radiomanager.pb/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listPresenters**
-> \RadioManager\Model\PresenterResults listPresenters($page, $model_type_id, $program_id, $broadcast_id, $_external_station_id)
+> \RadioManager\Model\PresenterResults listPresenters($page, $program_id, $broadcast_id, $model_type_id, $limit, $order_by, $order_direction, $_external_station_id)
 
 Get all presenters.
 
@@ -182,13 +182,16 @@ RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOU
 
 $api_instance = new RadioManager\Api\PresenterApi();
 $page = 789; // int | Current page *(Optional)*
-$model_type_id = 789; // int | Search on ModelType ID (Optional)
 $program_id = 789; // int | Search on Program ID *(Optional)* `(Relation)`
 $broadcast_id = 789; // int | Search on Broadcast ID *(Optional)* `(Relation)`
+$model_type_id = 789; // int | Search on ModelType ID (Optional)
+$limit = 789; // int | Results per page *(Optional)*
+$order_by = "order_by_example"; // string | Field to order the results *(Optional)*
+$order_direction = "order_direction_example"; // string | Direction of ordering *(Optional)*
 $_external_station_id = 789; // int | Query on a different (content providing) station *(Optional)*
 
 try {
-    $result = $api_instance->listPresenters($page, $model_type_id, $program_id, $broadcast_id, $_external_station_id);
+    $result = $api_instance->listPresenters($page, $program_id, $broadcast_id, $model_type_id, $limit, $order_by, $order_direction, $_external_station_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PresenterApi->listPresenters: ', $e->getMessage(), PHP_EOL;
@@ -201,9 +204,12 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Current page *(Optional)* | [optional]
- **model_type_id** | **int**| Search on ModelType ID (Optional) | [optional]
  **program_id** | **int**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | [optional]
  **broadcast_id** | **int**| Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; | [optional]
+ **model_type_id** | **int**| Search on ModelType ID (Optional) | [optional]
+ **limit** | **int**| Results per page *(Optional)* | [optional]
+ **order_by** | **string**| Field to order the results *(Optional)* | [optional]
+ **order_direction** | **string**| Direction of ordering *(Optional)* | [optional]
  **_external_station_id** | **int**| Query on a different (content providing) station *(Optional)* | [optional]
 
 ### Return type

@@ -405,20 +405,23 @@ class ProgramApi
      * Get all programs.
      *
      * @param int $page Current page *(Optional)* (optional)
-     * @param int $genre_id Search on Genre ID *(Optional)* (optional)
-     * @param int $model_type_id Search on ModelType ID *(Optional)* (optional)
-     * @param int $presenter_id Search on Presenter ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $tag_id Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; (optional)
      * @param int $broadcast_id Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $item_id Search on Item ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $model_type_id Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $tag_id Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $presenter_id Search on Presenter ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $genre_id Search on Genre ID *(Optional)* (optional)
      * @param int $block_id Search on Block ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $item_id Search on Item ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $limit Results per page *(Optional)* (optional)
+     * @param string $order_by Field to order the results *(Optional)* (optional)
+     * @param string $order_direction Direction of ordering *(Optional)* (optional)
      * @param int $_external_station_id Query on a different (content providing) station *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return \RadioManager\Model\ProgramResults
      */
-    public function listPrograms($page = null, $genre_id = null, $model_type_id = null, $presenter_id = null, $tag_id = null, $broadcast_id = null, $item_id = null, $block_id = null, $_external_station_id = null)
+    public function listPrograms($page = null, $broadcast_id = null, $model_type_id = null, $tag_id = null, $presenter_id = null, $genre_id = null, $block_id = null, $item_id = null, $limit = null, $order_by = null, $order_direction = null, $_external_station_id = null)
     {
-        list($response) = $this->listProgramsWithHttpInfo($page, $genre_id, $model_type_id, $presenter_id, $tag_id, $broadcast_id, $item_id, $block_id, $_external_station_id);
+        list($response) = $this->listProgramsWithHttpInfo($page, $broadcast_id, $model_type_id, $tag_id, $presenter_id, $genre_id, $block_id, $item_id, $limit, $order_by, $order_direction, $_external_station_id);
         return $response;
     }
 
@@ -428,21 +431,31 @@ class ProgramApi
      * Get all programs.
      *
      * @param int $page Current page *(Optional)* (optional)
-     * @param int $genre_id Search on Genre ID *(Optional)* (optional)
-     * @param int $model_type_id Search on ModelType ID *(Optional)* (optional)
-     * @param int $presenter_id Search on Presenter ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $tag_id Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; (optional)
      * @param int $broadcast_id Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $item_id Search on Item ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $model_type_id Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $tag_id Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $presenter_id Search on Presenter ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $genre_id Search on Genre ID *(Optional)* (optional)
      * @param int $block_id Search on Block ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $item_id Search on Item ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $limit Results per page *(Optional)* (optional)
+     * @param string $order_by Field to order the results *(Optional)* (optional)
+     * @param string $order_direction Direction of ordering *(Optional)* (optional)
      * @param int $_external_station_id Query on a different (content providing) station *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return array of \RadioManager\Model\ProgramResults, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listProgramsWithHttpInfo($page = null, $genre_id = null, $model_type_id = null, $presenter_id = null, $tag_id = null, $broadcast_id = null, $item_id = null, $block_id = null, $_external_station_id = null)
+    public function listProgramsWithHttpInfo($page = null, $broadcast_id = null, $model_type_id = null, $tag_id = null, $presenter_id = null, $genre_id = null, $block_id = null, $item_id = null, $limit = null, $order_by = null, $order_direction = null, $_external_station_id = null)
     {
         if (!is_null($page) && ($page < 0)) {
             throw new \InvalidArgumentException('invalid value for "$page" when calling ProgramApi.listPrograms, must be bigger than or equal to 0.');
+        }
+
+        if (!is_null($limit) && ($limit > 50)) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling ProgramApi.listPrograms, must be smaller than or equal to 50.');
+        }
+        if (!is_null($limit) && ($limit < 1)) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling ProgramApi.listPrograms, must be bigger than or equal to 1.');
         }
 
         // parse inputs
@@ -462,32 +475,44 @@ class ProgramApi
             $queryParams['page'] = $this->apiClient->getSerializer()->toQueryValue($page);
         }
         // query params
-        if ($genre_id !== null) {
-            $queryParams['genre_id'] = $this->apiClient->getSerializer()->toQueryValue($genre_id);
+        if ($broadcast_id !== null) {
+            $queryParams['broadcast_id'] = $this->apiClient->getSerializer()->toQueryValue($broadcast_id);
         }
         // query params
         if ($model_type_id !== null) {
             $queryParams['model_type_id'] = $this->apiClient->getSerializer()->toQueryValue($model_type_id);
         }
         // query params
-        if ($presenter_id !== null) {
-            $queryParams['presenter_id'] = $this->apiClient->getSerializer()->toQueryValue($presenter_id);
-        }
-        // query params
         if ($tag_id !== null) {
             $queryParams['tag_id'] = $this->apiClient->getSerializer()->toQueryValue($tag_id);
         }
         // query params
-        if ($broadcast_id !== null) {
-            $queryParams['broadcast_id'] = $this->apiClient->getSerializer()->toQueryValue($broadcast_id);
+        if ($presenter_id !== null) {
+            $queryParams['presenter_id'] = $this->apiClient->getSerializer()->toQueryValue($presenter_id);
+        }
+        // query params
+        if ($genre_id !== null) {
+            $queryParams['genre_id'] = $this->apiClient->getSerializer()->toQueryValue($genre_id);
+        }
+        // query params
+        if ($block_id !== null) {
+            $queryParams['block_id'] = $this->apiClient->getSerializer()->toQueryValue($block_id);
         }
         // query params
         if ($item_id !== null) {
             $queryParams['item_id'] = $this->apiClient->getSerializer()->toQueryValue($item_id);
         }
         // query params
-        if ($block_id !== null) {
-            $queryParams['block_id'] = $this->apiClient->getSerializer()->toQueryValue($block_id);
+        if ($limit !== null) {
+            $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
+        }
+        // query params
+        if ($order_by !== null) {
+            $queryParams['order-by'] = $this->apiClient->getSerializer()->toQueryValue($order_by);
+        }
+        // query params
+        if ($order_direction !== null) {
+            $queryParams['order-direction'] = $this->apiClient->getSerializer()->toQueryValue($order_direction);
         }
         // query params
         if ($_external_station_id !== null) {

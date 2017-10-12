@@ -88,7 +88,7 @@ class Configuration
      *
      * @var string
      */
-    protected $host = 'https://staging.radiomanager.pluxbox.com/api/v2';
+    protected $host = 'https://radiomanager.pb/api/v2';
 
     /**
      * Timeout (second) of the HTTP request, by default set to 0, no timeout

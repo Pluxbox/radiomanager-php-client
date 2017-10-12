@@ -1,18 +1,18 @@
-# RadioManager\VisualSlideApi
+# RadioManager\StationApi
 
 All URIs are relative to *https://radiomanager.pb/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getVisualSlide**](VisualSlideApi.md#getVisualSlide) | **GET** /visual | Get Visual Slide Image as Base64
+[**getStation**](StationApi.md#getStation) | **GET** /station | Get own station only
 
 
-# **getVisualSlide**
-> \RadioManager\Model\VisualResult getVisualSlide()
+# **getStation**
+> \RadioManager\Model\StationResult getStation()
 
-Get Visual Slide Image as Base64
+Get own station only
 
-Get Visual Slide Image as Base64
+Get own station only
 
 ### Example
 ```php
@@ -24,13 +24,13 @@ RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOU
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
-$api_instance = new RadioManager\Api\VisualSlideApi();
+$api_instance = new RadioManager\Api\StationApi();
 
 try {
-    $result = $api_instance->getVisualSlide();
+    $result = $api_instance->getStation();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling VisualSlideApi->getVisualSlide: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling StationApi->getStation: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -40,7 +40,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\RadioManager\Model\VisualResult**](../Model/VisualResult.md)
+[**\RadioManager\Model\StationResult**](../Model/StationResult.md)
 
 ### Authorization
 
