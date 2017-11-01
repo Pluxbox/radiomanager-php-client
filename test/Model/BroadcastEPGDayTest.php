@@ -1,6 +1,6 @@
 <?php
 /**
- * ItemInputOnlyTest
+ * BroadcastEPGDayTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace RadioManager;
 
 /**
- * ItemInputOnlyTest Class Doc Comment
+ * BroadcastEPGDayTest Class Doc Comment
  *
  * @category    Class */
-// * @description ItemInputOnly
+// * @description BroadcastEPGDay
 /**
  * @package     RadioManager
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class ItemInputOnlyTest extends \PHPUnit_Framework_TestCase
+class BroadcastEPGDayTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,30 +71,23 @@ class ItemInputOnlyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "ItemInputOnly"
+     * Test "BroadcastEPGDay"
      */
-    public function testItemInputOnly()
+    public function testBroadcastEPGDay()
     {
     }
 
     /**
-     * Test attribute "previous_id"
+     * Test attribute "day"
      */
-    public function testPropertyPreviousId()
+    public function testPropertyDay()
     {
     }
 
     /**
-     * Test attribute "contacts"
+     * Test attribute "results"
      */
-    public function testPropertyContacts()
-    {
-    }
-
-    /**
-     * Test attribute "tags"
-     */
-    public function testPropertyTags()
+    public function testPropertyResults()
     {
     }
 }

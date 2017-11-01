@@ -55,7 +55,7 @@ class Presenter implements ArrayAccess
       */
     protected static $swaggerTypes = [
         'model_type_id' => 'int',
-        'field_values' => 'object[]',
+        'field_values' => 'object',
         'firstname' => 'string',
         'lastname' => 'string',
         'active' => 'bool',
@@ -219,7 +219,7 @@ class Presenter implements ArrayAccess
 
     /**
      * Gets field_values
-     * @return object[]
+     * @return object
      */
     public function getFieldValues()
     {
@@ -228,7 +228,7 @@ class Presenter implements ArrayAccess
 
     /**
      * Sets field_values
-     * @param object[] $field_values
+     * @param object $field_values
      * @return $this
      */
     public function setFieldValues($field_values)

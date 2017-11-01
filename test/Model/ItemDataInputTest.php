@@ -190,7 +190,7 @@ class ItemDataInputTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "_previous_id"
+     * Test attribute "previous_id"
      */
     public function testPropertyPreviousId()
     {

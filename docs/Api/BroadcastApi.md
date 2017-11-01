@@ -1,6 +1,6 @@
 # RadioManager\BroadcastApi
 
-All URIs are relative to *https://radiomanager.pb/api/v2*
+All URIs are relative to *https://staging.radiomanager.io/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getCurrentBroadcast**
-> \RadioManager\Model\Broadcast getCurrentBroadcast()
+> \RadioManager\Model\BroadcastResult getCurrentBroadcast($withunpublished)
 
 Get current Broadcast
 
@@ -187,9 +187,10 @@ RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOU
 // RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
 $api_instance = new RadioManager\Api\BroadcastApi();
+$withunpublished = true; // bool | Show Unpublished *(Optional)*
 
 try {
-    $result = $api_instance->getCurrentBroadcast();
+    $result = $api_instance->getCurrentBroadcast($withunpublished);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BroadcastApi->getCurrentBroadcast: ', $e->getMessage(), PHP_EOL;
@@ -198,11 +199,14 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **withunpublished** | **bool**| Show Unpublished *(Optional)* | [optional]
 
 ### Return type
 
-[**\RadioManager\Model\Broadcast**](../Model/Broadcast.md)
+[**\RadioManager\Model\BroadcastResult**](../Model/BroadcastResult.md)
 
 ### Authorization
 
@@ -216,7 +220,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getDailyEPG**
-> \RadioManager\Model\EPGBroadcast getDailyEPG($date, $withunpublished)
+> \RadioManager\Model\EPGResults getDailyEPG($date, $withunpublished)
 
 Get daily EPG
 
@@ -254,7 +258,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RadioManager\Model\EPGBroadcast**](../Model/EPGBroadcast.md)
+[**\RadioManager\Model\EPGResults**](../Model/EPGResults.md)
 
 ### Authorization
 
@@ -268,7 +272,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getEPGByDate**
-> \RadioManager\Model\EPGBroadcast getEPGByDate($date, $withunpublished)
+> \RadioManager\Model\EPGResults getEPGByDate($date, $withunpublished)
 
 Get EPG by date
 
@@ -306,7 +310,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RadioManager\Model\EPGBroadcast**](../Model/EPGBroadcast.md)
+[**\RadioManager\Model\EPGResults**](../Model/EPGResults.md)
 
 ### Authorization
 
@@ -320,7 +324,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getNextBroadcast**
-> \RadioManager\Model\Broadcast getNextBroadcast()
+> \RadioManager\Model\BroadcastResult getNextBroadcast($withunpublished)
 
 Get next Broadcast
 
@@ -337,9 +341,10 @@ RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOU
 // RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
 $api_instance = new RadioManager\Api\BroadcastApi();
+$withunpublished = true; // bool | Show Unpublished *(Optional)*
 
 try {
-    $result = $api_instance->getNextBroadcast();
+    $result = $api_instance->getNextBroadcast($withunpublished);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BroadcastApi->getNextBroadcast: ', $e->getMessage(), PHP_EOL;
@@ -348,11 +353,14 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **withunpublished** | **bool**| Show Unpublished *(Optional)* | [optional]
 
 ### Return type
 
-[**\RadioManager\Model\Broadcast**](../Model/Broadcast.md)
+[**\RadioManager\Model\BroadcastResult**](../Model/BroadcastResult.md)
 
 ### Authorization
 
@@ -366,7 +374,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getWeeklyEPG**
-> \RadioManager\Model\EPGBroadcast getWeeklyEPG($date, $withunpublished)
+> \RadioManager\Model\EPGResults getWeeklyEPG($date, $withunpublished)
 
 Get weekly EPG
 
@@ -404,7 +412,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RadioManager\Model\EPGBroadcast**](../Model/EPGBroadcast.md)
+[**\RadioManager\Model\EPGResults**](../Model/EPGResults.md)
 
 ### Authorization
 
@@ -494,7 +502,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **printBroadcastById**
-> \RadioManager\Model\EPGBroadcast printBroadcastById($id, $program_id, $presenter_id, $tag_id)
+> \RadioManager\Model\EPGResults printBroadcastById($id, $program_id, $presenter_id, $tag_id)
 
 Print Broadcast by id
 
@@ -536,7 +544,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\RadioManager\Model\EPGBroadcast**](../Model/EPGBroadcast.md)
+[**\RadioManager\Model\EPGResults**](../Model/EPGResults.md)
 
 ### Authorization
 

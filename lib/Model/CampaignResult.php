@@ -61,7 +61,7 @@ class CampaignResult implements ArrayAccess
         'item' => '\RadioManager\Model\Item[]',
         '_external_station_id' => 'int',
         'model_type_id' => 'int',
-        'field_values' => 'object[]',
+        'field_values' => 'object',
         'title' => 'string',
         'start' => '\DateTime',
         'stop' => '\DateTime',
@@ -435,7 +435,7 @@ class CampaignResult implements ArrayAccess
 
     /**
      * Gets field_values
-     * @return object[]
+     * @return object
      */
     public function getFieldValues()
     {
@@ -444,7 +444,7 @@ class CampaignResult implements ArrayAccess
 
     /**
      * Sets field_values
-     * @param object[] $field_values
+     * @param object $field_values
      * @return $this
      */
     public function setFieldValues($field_values)

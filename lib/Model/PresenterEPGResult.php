@@ -1,6 +1,6 @@
 <?php
 /**
- * Campaign
+ * PresenterEPGResult
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace RadioManager\Model;
 use \ArrayAccess;
 
 /**
- * Campaign Class Doc Comment
+ * PresenterEPGResult Class Doc Comment
  *
  * @category    Class
  * @package     RadioManager
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Campaign implements ArrayAccess
+class PresenterEPGResult implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class Campaign implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'Campaign';
+    protected static $swaggerModelName = 'PresenterEPGResult';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,11 +56,15 @@ class Campaign implements ArrayAccess
     protected static $swaggerTypes = [
         'model_type_id' => 'int',
         'field_values' => 'object',
-        'title' => 'string',
-        'start' => '\DateTime',
-        'stop' => '\DateTime',
-        'recommended' => 'bool',
-        'description' => 'string'
+        'firstname' => 'string',
+        'lastname' => 'string',
+        'active' => 'bool',
+        'name' => 'string',
+        'id' => 'int',
+        'updated_at' => '\DateTime',
+        'created_at' => '\DateTime',
+        'deleted_at' => '\DateTime',
+        '_external_station_id' => 'int'
     ];
 
     /**
@@ -70,11 +74,15 @@ class Campaign implements ArrayAccess
     protected static $swaggerFormats = [
         'model_type_id' => 'int64',
         'field_values' => null,
-        'title' => null,
-        'start' => 'date-time',
-        'stop' => 'date-time',
-        'recommended' => null,
-        'description' => null
+        'firstname' => null,
+        'lastname' => null,
+        'active' => null,
+        'name' => null,
+        'id' => 'int64',
+        'updated_at' => 'date-time',
+        'created_at' => 'date-time',
+        'deleted_at' => 'date-time',
+        '_external_station_id' => 'int64'
     ];
 
     public static function swaggerTypes()
@@ -94,11 +102,15 @@ class Campaign implements ArrayAccess
     protected static $attributeMap = [
         'model_type_id' => 'model_type_id',
         'field_values' => 'field_values',
-        'title' => 'title',
-        'start' => 'start',
-        'stop' => 'stop',
-        'recommended' => 'recommended',
-        'description' => 'description'
+        'firstname' => 'firstname',
+        'lastname' => 'lastname',
+        'active' => 'active',
+        'name' => 'name',
+        'id' => 'id',
+        'updated_at' => 'updated_at',
+        'created_at' => 'created_at',
+        'deleted_at' => 'deleted_at',
+        '_external_station_id' => '_external_station_id'
     ];
 
 
@@ -109,11 +121,15 @@ class Campaign implements ArrayAccess
     protected static $setters = [
         'model_type_id' => 'setModelTypeId',
         'field_values' => 'setFieldValues',
-        'title' => 'setTitle',
-        'start' => 'setStart',
-        'stop' => 'setStop',
-        'recommended' => 'setRecommended',
-        'description' => 'setDescription'
+        'firstname' => 'setFirstname',
+        'lastname' => 'setLastname',
+        'active' => 'setActive',
+        'name' => 'setName',
+        'id' => 'setId',
+        'updated_at' => 'setUpdatedAt',
+        'created_at' => 'setCreatedAt',
+        'deleted_at' => 'setDeletedAt',
+        '_external_station_id' => 'setExternalStationId'
     ];
 
 
@@ -124,11 +140,15 @@ class Campaign implements ArrayAccess
     protected static $getters = [
         'model_type_id' => 'getModelTypeId',
         'field_values' => 'getFieldValues',
-        'title' => 'getTitle',
-        'start' => 'getStart',
-        'stop' => 'getStop',
-        'recommended' => 'getRecommended',
-        'description' => 'getDescription'
+        'firstname' => 'getFirstname',
+        'lastname' => 'getLastname',
+        'active' => 'getActive',
+        'name' => 'getName',
+        'id' => 'getId',
+        'updated_at' => 'getUpdatedAt',
+        'created_at' => 'getCreatedAt',
+        'deleted_at' => 'getDeletedAt',
+        '_external_station_id' => 'getExternalStationId'
     ];
 
     public static function attributeMap()
@@ -164,11 +184,15 @@ class Campaign implements ArrayAccess
     {
         $this->container['model_type_id'] = isset($data['model_type_id']) ? $data['model_type_id'] : null;
         $this->container['field_values'] = isset($data['field_values']) ? $data['field_values'] : null;
-        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
-        $this->container['start'] = isset($data['start']) ? $data['start'] : null;
-        $this->container['stop'] = isset($data['stop']) ? $data['stop'] : null;
-        $this->container['recommended'] = isset($data['recommended']) ? $data['recommended'] : null;
-        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
+        $this->container['firstname'] = isset($data['firstname']) ? $data['firstname'] : null;
+        $this->container['lastname'] = isset($data['lastname']) ? $data['lastname'] : null;
+        $this->container['active'] = isset($data['active']) ? $data['active'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
+        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
+        $this->container['deleted_at'] = isset($data['deleted_at']) ? $data['deleted_at'] : null;
+        $this->container['_external_station_id'] = isset($data['_external_station_id']) ? $data['_external_station_id'] : null;
     }
 
     /**
@@ -183,11 +207,17 @@ class Campaign implements ArrayAccess
         if ($this->container['model_type_id'] === null) {
             $invalid_properties[] = "'model_type_id' can't be null";
         }
-        if ($this->container['start'] === null) {
-            $invalid_properties[] = "'start' can't be null";
+        if ($this->container['id'] === null) {
+            $invalid_properties[] = "'id' can't be null";
         }
-        if ($this->container['stop'] === null) {
-            $invalid_properties[] = "'stop' can't be null";
+        if ($this->container['updated_at'] === null) {
+            $invalid_properties[] = "'updated_at' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalid_properties[] = "'created_at' can't be null";
+        }
+        if ($this->container['deleted_at'] === null) {
+            $invalid_properties[] = "'deleted_at' can't be null";
         }
         return $invalid_properties;
     }
@@ -204,10 +234,16 @@ class Campaign implements ArrayAccess
         if ($this->container['model_type_id'] === null) {
             return false;
         }
-        if ($this->container['start'] === null) {
+        if ($this->container['id'] === null) {
             return false;
         }
-        if ($this->container['stop'] === null) {
+        if ($this->container['updated_at'] === null) {
+            return false;
+        }
+        if ($this->container['created_at'] === null) {
+            return false;
+        }
+        if ($this->container['deleted_at'] === null) {
             return false;
         }
         return true;
@@ -257,106 +293,190 @@ class Campaign implements ArrayAccess
     }
 
     /**
-     * Gets title
+     * Gets firstname
      * @return string
      */
-    public function getTitle()
+    public function getFirstname()
     {
-        return $this->container['title'];
+        return $this->container['firstname'];
     }
 
     /**
-     * Sets title
-     * @param string $title
+     * Sets firstname
+     * @param string $firstname
      * @return $this
      */
-    public function setTitle($title)
+    public function setFirstname($firstname)
     {
-        $this->container['title'] = $title;
+        $this->container['firstname'] = $firstname;
 
         return $this;
     }
 
     /**
-     * Gets start
-     * @return \DateTime
+     * Gets lastname
+     * @return string
      */
-    public function getStart()
+    public function getLastname()
     {
-        return $this->container['start'];
+        return $this->container['lastname'];
     }
 
     /**
-     * Sets start
-     * @param \DateTime $start
+     * Sets lastname
+     * @param string $lastname
      * @return $this
      */
-    public function setStart($start)
+    public function setLastname($lastname)
     {
-        $this->container['start'] = $start;
+        $this->container['lastname'] = $lastname;
 
         return $this;
     }
 
     /**
-     * Gets stop
-     * @return \DateTime
-     */
-    public function getStop()
-    {
-        return $this->container['stop'];
-    }
-
-    /**
-     * Sets stop
-     * @param \DateTime $stop
-     * @return $this
-     */
-    public function setStop($stop)
-    {
-        $this->container['stop'] = $stop;
-
-        return $this;
-    }
-
-    /**
-     * Gets recommended
+     * Gets active
      * @return bool
      */
-    public function getRecommended()
+    public function getActive()
     {
-        return $this->container['recommended'];
+        return $this->container['active'];
     }
 
     /**
-     * Sets recommended
-     * @param bool $recommended
+     * Sets active
+     * @param bool $active
      * @return $this
      */
-    public function setRecommended($recommended)
+    public function setActive($active)
     {
-        $this->container['recommended'] = $recommended;
+        $this->container['active'] = $active;
 
         return $this;
     }
 
     /**
-     * Gets description
+     * Gets name
      * @return string
      */
-    public function getDescription()
+    public function getName()
     {
-        return $this->container['description'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets description
-     * @param string $description
+     * Sets name
+     * @param string $name
      * @return $this
      */
-    public function setDescription($description)
+    public function setName($name)
     {
-        $this->container['description'] = $description;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     * @param int $id
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     * @param \DateTime $updated_at
+     * @return $this
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     * @param \DateTime $created_at
+     * @return $this
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets deleted_at
+     * @return \DateTime
+     */
+    public function getDeletedAt()
+    {
+        return $this->container['deleted_at'];
+    }
+
+    /**
+     * Sets deleted_at
+     * @param \DateTime $deleted_at
+     * @return $this
+     */
+    public function setDeletedAt($deleted_at)
+    {
+        $this->container['deleted_at'] = $deleted_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets _external_station_id
+     * @return int
+     */
+    public function getExternalStationId()
+    {
+        return $this->container['_external_station_id'];
+    }
+
+    /**
+     * Sets _external_station_id
+     * @param int $_external_station_id
+     * @return $this
+     */
+    public function setExternalStationId($_external_station_id)
+    {
+        $this->container['_external_station_id'] = $_external_station_id;
 
         return $this;
     }

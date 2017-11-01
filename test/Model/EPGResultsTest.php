@@ -1,6 +1,6 @@
 <?php
 /**
- * ItemInputOnlyTest
+ * EPGResultsTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace RadioManager;
 
 /**
- * ItemInputOnlyTest Class Doc Comment
+ * EPGResultsTest Class Doc Comment
  *
  * @category    Class */
-// * @description ItemInputOnly
+// * @description EPGResults
 /**
  * @package     RadioManager
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class ItemInputOnlyTest extends \PHPUnit_Framework_TestCase
+class EPGResultsTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,30 +71,30 @@ class ItemInputOnlyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "ItemInputOnly"
+     * Test "EPGResults"
      */
-    public function testItemInputOnly()
+    public function testEPGResults()
     {
     }
 
     /**
-     * Test attribute "previous_id"
+     * Test attribute "days"
      */
-    public function testPropertyPreviousId()
+    public function testPropertyDays()
     {
     }
 
     /**
-     * Test attribute "contacts"
+     * Test attribute "next_page_url"
      */
-    public function testPropertyContacts()
+    public function testPropertyNextPageUrl()
     {
     }
 
     /**
-     * Test attribute "tags"
+     * Test attribute "prev_page_url"
      */
-    public function testPropertyTags()
+    public function testPropertyPrevPageUrl()
     {
     }
 }

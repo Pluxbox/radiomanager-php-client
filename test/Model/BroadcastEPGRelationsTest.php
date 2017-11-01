@@ -1,6 +1,6 @@
 <?php
 /**
- * ItemInputOnlyTest
+ * BroadcastEPGRelationsTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace RadioManager;
 
 /**
- * ItemInputOnlyTest Class Doc Comment
+ * BroadcastEPGRelationsTest Class Doc Comment
  *
  * @category    Class */
-// * @description ItemInputOnly
+// * @description BroadcastEPGRelations
 /**
  * @package     RadioManager
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class ItemInputOnlyTest extends \PHPUnit_Framework_TestCase
+class BroadcastEPGRelationsTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,23 +71,30 @@ class ItemInputOnlyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "ItemInputOnly"
+     * Test "BroadcastEPGRelations"
      */
-    public function testItemInputOnly()
+    public function testBroadcastEPGRelations()
     {
     }
 
     /**
-     * Test attribute "previous_id"
+     * Test attribute "items"
      */
-    public function testPropertyPreviousId()
+    public function testPropertyItems()
     {
     }
 
     /**
-     * Test attribute "contacts"
+     * Test attribute "blocks"
      */
-    public function testPropertyContacts()
+    public function testPropertyBlocks()
+    {
+    }
+
+    /**
+     * Test attribute "program"
+     */
+    public function testPropertyProgram()
     {
     }
 
@@ -95,6 +102,20 @@ class ItemInputOnlyTest extends \PHPUnit_Framework_TestCase
      * Test attribute "tags"
      */
     public function testPropertyTags()
+    {
+    }
+
+    /**
+     * Test attribute "presenters"
+     */
+    public function testPropertyPresenters()
+    {
+    }
+
+    /**
+     * Test attribute "model_type"
+     */
+    public function testPropertyModelType()
     {
     }
 }

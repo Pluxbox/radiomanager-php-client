@@ -63,7 +63,7 @@ class StationResultStation implements ArrayAccess
         'medium_name' => 'string',
         'website' => 'string',
         'email' => 'string',
-        'keywords' => 'string',
+        'keywords' => 'string[]',
         'description' => 'string',
         'sms' => 'string',
         'telephone' => 'string',
@@ -78,6 +78,7 @@ class StationResultStation implements ArrayAccess
         'pty_code' => 'int',
         'pty_type' => 'string',
         'station_key' => 'string',
+        'timezone' => 'string',
         'trial_date' => '\DateTime'
     ];
 
@@ -110,6 +111,7 @@ class StationResultStation implements ArrayAccess
         'pty_code' => null,
         'pty_type' => null,
         'station_key' => null,
+        'timezone' => null,
         'trial_date' => 'date-time'
     ];
 
@@ -152,6 +154,7 @@ class StationResultStation implements ArrayAccess
         'pty_code' => 'pty_code',
         'pty_type' => 'pty_type',
         'station_key' => 'station_key',
+        'timezone' => 'timezone',
         'trial_date' => 'trial_date'
     ];
 
@@ -185,6 +188,7 @@ class StationResultStation implements ArrayAccess
         'pty_code' => 'setPtyCode',
         'pty_type' => 'setPtyType',
         'station_key' => 'setStationKey',
+        'timezone' => 'setTimezone',
         'trial_date' => 'setTrialDate'
     ];
 
@@ -218,6 +222,7 @@ class StationResultStation implements ArrayAccess
         'pty_code' => 'getPtyCode',
         'pty_type' => 'getPtyType',
         'station_key' => 'getStationKey',
+        'timezone' => 'getTimezone',
         'trial_date' => 'getTrialDate'
     ];
 
@@ -276,6 +281,7 @@ class StationResultStation implements ArrayAccess
         $this->container['pty_code'] = isset($data['pty_code']) ? $data['pty_code'] : null;
         $this->container['pty_type'] = isset($data['pty_type']) ? $data['pty_type'] : null;
         $this->container['station_key'] = isset($data['station_key']) ? $data['station_key'] : null;
+        $this->container['timezone'] = isset($data['timezone']) ? $data['timezone'] : null;
         $this->container['trial_date'] = isset($data['trial_date']) ? $data['trial_date'] : null;
     }
 
@@ -495,7 +501,7 @@ class StationResultStation implements ArrayAccess
 
     /**
      * Gets keywords
-     * @return string
+     * @return string[]
      */
     public function getKeywords()
     {
@@ -504,7 +510,7 @@ class StationResultStation implements ArrayAccess
 
     /**
      * Sets keywords
-     * @param string $keywords
+     * @param string[] $keywords
      * @return $this
      */
     public function setKeywords($keywords)
@@ -804,6 +810,27 @@ class StationResultStation implements ArrayAccess
     public function setStationKey($station_key)
     {
         $this->container['station_key'] = $station_key;
+
+        return $this;
+    }
+
+    /**
+     * Gets timezone
+     * @return string
+     */
+    public function getTimezone()
+    {
+        return $this->container['timezone'];
+    }
+
+    /**
+     * Sets timezone
+     * @param string $timezone
+     * @return $this
+     */
+    public function setTimezone($timezone)
+    {
+        $this->container['timezone'] = $timezone;
 
         return $this;
     }

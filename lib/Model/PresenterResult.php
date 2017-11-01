@@ -60,7 +60,7 @@ class PresenterResult implements ArrayAccess
         'deleted_at' => '\DateTime',
         '_external_station_id' => 'int',
         'model_type_id' => 'int',
-        'field_values' => 'object[]',
+        'field_values' => 'object',
         'firstname' => 'string',
         'lastname' => 'string',
         'active' => 'bool',
@@ -396,7 +396,7 @@ class PresenterResult implements ArrayAccess
 
     /**
      * Gets field_values
-     * @return object[]
+     * @return object
      */
     public function getFieldValues()
     {
@@ -405,7 +405,7 @@ class PresenterResult implements ArrayAccess
 
     /**
      * Sets field_values
-     * @param object[] $field_values
+     * @param object $field_values
      * @return $this
      */
     public function setFieldValues($field_values)

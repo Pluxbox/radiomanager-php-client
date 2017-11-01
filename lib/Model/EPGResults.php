@@ -1,6 +1,6 @@
 <?php
 /**
- * Campaign
+ * EPGResults
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace RadioManager\Model;
 use \ArrayAccess;
 
 /**
- * Campaign Class Doc Comment
+ * EPGResults Class Doc Comment
  *
  * @category    Class
  * @package     RadioManager
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Campaign implements ArrayAccess
+class EPGResults implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,20 +47,16 @@ class Campaign implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'Campaign';
+    protected static $swaggerModelName = 'EPGResults';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'model_type_id' => 'int',
-        'field_values' => 'object',
-        'title' => 'string',
-        'start' => '\DateTime',
-        'stop' => '\DateTime',
-        'recommended' => 'bool',
-        'description' => 'string'
+        'days' => '\RadioManager\Model\BroadcastEPGDay[]',
+        'next_page_url' => 'string',
+        'prev_page_url' => 'string'
     ];
 
     /**
@@ -68,13 +64,9 @@ class Campaign implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'model_type_id' => 'int64',
-        'field_values' => null,
-        'title' => null,
-        'start' => 'date-time',
-        'stop' => 'date-time',
-        'recommended' => null,
-        'description' => null
+        'days' => null,
+        'next_page_url' => 'url',
+        'prev_page_url' => 'url'
     ];
 
     public static function swaggerTypes()
@@ -92,13 +84,9 @@ class Campaign implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'model_type_id' => 'model_type_id',
-        'field_values' => 'field_values',
-        'title' => 'title',
-        'start' => 'start',
-        'stop' => 'stop',
-        'recommended' => 'recommended',
-        'description' => 'description'
+        'days' => 'days',
+        'next_page_url' => 'next_page_url',
+        'prev_page_url' => 'prev_page_url'
     ];
 
 
@@ -107,13 +95,9 @@ class Campaign implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'model_type_id' => 'setModelTypeId',
-        'field_values' => 'setFieldValues',
-        'title' => 'setTitle',
-        'start' => 'setStart',
-        'stop' => 'setStop',
-        'recommended' => 'setRecommended',
-        'description' => 'setDescription'
+        'days' => 'setDays',
+        'next_page_url' => 'setNextPageUrl',
+        'prev_page_url' => 'setPrevPageUrl'
     ];
 
 
@@ -122,13 +106,9 @@ class Campaign implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'model_type_id' => 'getModelTypeId',
-        'field_values' => 'getFieldValues',
-        'title' => 'getTitle',
-        'start' => 'getStart',
-        'stop' => 'getStop',
-        'recommended' => 'getRecommended',
-        'description' => 'getDescription'
+        'days' => 'getDays',
+        'next_page_url' => 'getNextPageUrl',
+        'prev_page_url' => 'getPrevPageUrl'
     ];
 
     public static function attributeMap()
@@ -162,13 +142,9 @@ class Campaign implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['model_type_id'] = isset($data['model_type_id']) ? $data['model_type_id'] : null;
-        $this->container['field_values'] = isset($data['field_values']) ? $data['field_values'] : null;
-        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
-        $this->container['start'] = isset($data['start']) ? $data['start'] : null;
-        $this->container['stop'] = isset($data['stop']) ? $data['stop'] : null;
-        $this->container['recommended'] = isset($data['recommended']) ? $data['recommended'] : null;
-        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
+        $this->container['days'] = isset($data['days']) ? $data['days'] : null;
+        $this->container['next_page_url'] = isset($data['next_page_url']) ? $data['next_page_url'] : null;
+        $this->container['prev_page_url'] = isset($data['prev_page_url']) ? $data['prev_page_url'] : null;
     }
 
     /**
@@ -180,14 +156,14 @@ class Campaign implements ArrayAccess
     {
         $invalid_properties = [];
 
-        if ($this->container['model_type_id'] === null) {
-            $invalid_properties[] = "'model_type_id' can't be null";
+        if ($this->container['days'] === null) {
+            $invalid_properties[] = "'days' can't be null";
         }
-        if ($this->container['start'] === null) {
-            $invalid_properties[] = "'start' can't be null";
+        if ($this->container['next_page_url'] === null) {
+            $invalid_properties[] = "'next_page_url' can't be null";
         }
-        if ($this->container['stop'] === null) {
-            $invalid_properties[] = "'stop' can't be null";
+        if ($this->container['prev_page_url'] === null) {
+            $invalid_properties[] = "'prev_page_url' can't be null";
         }
         return $invalid_properties;
     }
@@ -201,13 +177,13 @@ class Campaign implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['model_type_id'] === null) {
+        if ($this->container['days'] === null) {
             return false;
         }
-        if ($this->container['start'] === null) {
+        if ($this->container['next_page_url'] === null) {
             return false;
         }
-        if ($this->container['stop'] === null) {
+        if ($this->container['prev_page_url'] === null) {
             return false;
         }
         return true;
@@ -215,148 +191,64 @@ class Campaign implements ArrayAccess
 
 
     /**
-     * Gets model_type_id
-     * @return int
+     * Gets days
+     * @return \RadioManager\Model\BroadcastEPGDay[]
      */
-    public function getModelTypeId()
+    public function getDays()
     {
-        return $this->container['model_type_id'];
+        return $this->container['days'];
     }
 
     /**
-     * Sets model_type_id
-     * @param int $model_type_id
+     * Sets days
+     * @param \RadioManager\Model\BroadcastEPGDay[] $days
      * @return $this
      */
-    public function setModelTypeId($model_type_id)
+    public function setDays($days)
     {
-        $this->container['model_type_id'] = $model_type_id;
+        $this->container['days'] = $days;
 
         return $this;
     }
 
     /**
-     * Gets field_values
-     * @return object
-     */
-    public function getFieldValues()
-    {
-        return $this->container['field_values'];
-    }
-
-    /**
-     * Sets field_values
-     * @param object $field_values
-     * @return $this
-     */
-    public function setFieldValues($field_values)
-    {
-        $this->container['field_values'] = $field_values;
-
-        return $this;
-    }
-
-    /**
-     * Gets title
+     * Gets next_page_url
      * @return string
      */
-    public function getTitle()
+    public function getNextPageUrl()
     {
-        return $this->container['title'];
+        return $this->container['next_page_url'];
     }
 
     /**
-     * Sets title
-     * @param string $title
+     * Sets next_page_url
+     * @param string $next_page_url
      * @return $this
      */
-    public function setTitle($title)
+    public function setNextPageUrl($next_page_url)
     {
-        $this->container['title'] = $title;
+        $this->container['next_page_url'] = $next_page_url;
 
         return $this;
     }
 
     /**
-     * Gets start
-     * @return \DateTime
-     */
-    public function getStart()
-    {
-        return $this->container['start'];
-    }
-
-    /**
-     * Sets start
-     * @param \DateTime $start
-     * @return $this
-     */
-    public function setStart($start)
-    {
-        $this->container['start'] = $start;
-
-        return $this;
-    }
-
-    /**
-     * Gets stop
-     * @return \DateTime
-     */
-    public function getStop()
-    {
-        return $this->container['stop'];
-    }
-
-    /**
-     * Sets stop
-     * @param \DateTime $stop
-     * @return $this
-     */
-    public function setStop($stop)
-    {
-        $this->container['stop'] = $stop;
-
-        return $this;
-    }
-
-    /**
-     * Gets recommended
-     * @return bool
-     */
-    public function getRecommended()
-    {
-        return $this->container['recommended'];
-    }
-
-    /**
-     * Sets recommended
-     * @param bool $recommended
-     * @return $this
-     */
-    public function setRecommended($recommended)
-    {
-        $this->container['recommended'] = $recommended;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
+     * Gets prev_page_url
      * @return string
      */
-    public function getDescription()
+    public function getPrevPageUrl()
     {
-        return $this->container['description'];
+        return $this->container['prev_page_url'];
     }
 
     /**
-     * Sets description
-     * @param string $description
+     * Sets prev_page_url
+     * @param string $prev_page_url
      * @return $this
      */
-    public function setDescription($description)
+    public function setPrevPageUrl($prev_page_url)
     {
-        $this->container['description'] = $description;
+        $this->container['prev_page_url'] = $prev_page_url;
 
         return $this;
     }

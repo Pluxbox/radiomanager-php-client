@@ -1,14 +1,11 @@
-# PresenterDataInput
+# EPGResults
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**model_type_id** | **int** |  | 
-**field_values** | **object** |  | [optional] 
-**firstname** | **string** |  | [optional] 
-**lastname** | **string** |  | [optional] 
-**active** | **bool** |  | [optional] 
-**name** | **string** |  | [optional] 
+**days** | [**\RadioManager\Model\BroadcastEPGDay[]**](BroadcastEPGDay.md) |  | 
+**next_page_url** | **string** |  | 
+**prev_page_url** | **string** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

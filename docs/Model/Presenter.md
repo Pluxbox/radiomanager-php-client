@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **model_type_id** | **int** |  | 
-**field_values** | **object[]** |  | [optional] 
+**field_values** | **object** |  | [optional] 
 **firstname** | **string** |  | [optional] 
 **lastname** | **string** |  | [optional] 
 **active** | **bool** |  | [optional] 

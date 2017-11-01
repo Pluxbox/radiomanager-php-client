@@ -1,6 +1,6 @@
 <?php
 /**
- * BroadcastResult
+ * BroadcastEPGResult
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace RadioManager\Model;
 use \ArrayAccess;
 
 /**
- * BroadcastResult Class Doc Comment
+ * BroadcastEPGResult Class Doc Comment
  *
  * @category    Class
  * @package     RadioManager
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class BroadcastResult implements ArrayAccess
+class BroadcastEPGResult implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class BroadcastResult implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'BroadcastResult';
+    protected static $swaggerModelName = 'BroadcastEPGResult';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -85,7 +85,7 @@ class BroadcastResult implements ArrayAccess
         'blocks' => '\RadioManager\Model\BroadcastRelationsBlocks',
         'program' => '\RadioManager\Model\BlockRelationsProgram',
         'tags' => '\RadioManager\Model\BroadcastRelationsTags',
-        'presenters' => '\RadioManager\Model\BroadcastRelationsPresenters',
+        'presenters' => '\RadioManager\Model\PresenterEPGResult[]',
         'model_type' => '\RadioManager\Model\BroadcastRelationsModelType'
     ];
 
@@ -986,7 +986,7 @@ class BroadcastResult implements ArrayAccess
     {
 
         if (!is_null($pty_code_id) && ($pty_code_id < 1)) {
-            throw new \InvalidArgumentException('invalid value for $pty_code_id when calling BroadcastResult., must be bigger than or equal to 1.');
+            throw new \InvalidArgumentException('invalid value for $pty_code_id when calling BroadcastEPGResult., must be bigger than or equal to 1.');
         }
 
         $this->container['pty_code_id'] = $pty_code_id;
@@ -1080,7 +1080,7 @@ class BroadcastResult implements ArrayAccess
 
     /**
      * Gets presenters
-     * @return \RadioManager\Model\BroadcastRelationsPresenters
+     * @return \RadioManager\Model\PresenterEPGResult[]
      */
     public function getPresenters()
     {
@@ -1089,7 +1089,7 @@ class BroadcastResult implements ArrayAccess
 
     /**
      * Sets presenters
-     * @param \RadioManager\Model\BroadcastRelationsPresenters $presenters
+     * @param \RadioManager\Model\PresenterEPGResult[] $presenters
      * @return $this
      */
     public function setPresenters($presenters)

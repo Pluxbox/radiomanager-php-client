@@ -55,7 +55,7 @@ class ContactDataInput implements ArrayAccess
       */
     protected static $swaggerTypes = [
         'model_type_id' => 'int',
-        'field_values' => '\RadioManager\Model\ContactFieldValues',
+        'field_values' => 'object',
         'email' => 'string',
         'firstname' => 'string',
         'lastname' => 'string',
@@ -231,7 +231,7 @@ class ContactDataInput implements ArrayAccess
 
     /**
      * Gets field_values
-     * @return \RadioManager\Model\ContactFieldValues
+     * @return object
      */
     public function getFieldValues()
     {
@@ -240,7 +240,7 @@ class ContactDataInput implements ArrayAccess
 
     /**
      * Sets field_values
-     * @param \RadioManager\Model\ContactFieldValues $field_values
+     * @param object $field_values
      * @return $this
      */
     public function setFieldValues($field_values)

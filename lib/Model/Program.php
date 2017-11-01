@@ -55,7 +55,7 @@ class Program implements ArrayAccess
       */
     protected static $swaggerTypes = [
         'model_type_id' => 'int',
-        'field_values' => '\RadioManager\Model\ProgramFieldValues',
+        'field_values' => 'object',
         'title' => 'string',
         'disabled' => 'bool',
         'genre_id' => 'int',
@@ -267,7 +267,7 @@ class Program implements ArrayAccess
 
     /**
      * Gets field_values
-     * @return \RadioManager\Model\ProgramFieldValues
+     * @return object
      */
     public function getFieldValues()
     {
@@ -276,7 +276,7 @@ class Program implements ArrayAccess
 
     /**
      * Sets field_values
-     * @param \RadioManager\Model\ProgramFieldValues $field_values
+     * @param object $field_values
      * @return $this
      */
     public function setFieldValues($field_values)

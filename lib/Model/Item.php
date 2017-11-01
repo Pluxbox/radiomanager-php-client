@@ -57,7 +57,7 @@ class Item implements ArrayAccess
         'model_type_id' => 'int',
         'block_id' => 'int',
         'external_id' => 'string',
-        'field_values' => '\RadioManager\Model\ImportItemFieldValues',
+        'field_values' => 'object',
         'title' => 'string',
         'duration' => 'int',
         'start' => '\DateTime',
@@ -349,7 +349,7 @@ class Item implements ArrayAccess
 
     /**
      * Gets field_values
-     * @return \RadioManager\Model\ImportItemFieldValues
+     * @return object
      */
     public function getFieldValues()
     {
@@ -358,7 +358,7 @@ class Item implements ArrayAccess
 
     /**
      * Sets field_values
-     * @param \RadioManager\Model\ImportItemFieldValues $field_values
+     * @param object $field_values
      * @return $this
      */
     public function setFieldValues($field_values)

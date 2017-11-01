@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **deleted_at** | [**\DateTime**](\DateTime.md) |  | 
 **_external_station_id** | **int** |  | [optional] 
 **model_type_id** | **int** |  | 
-**field_values** | [**\RadioManager\Model\ProgramFieldValues**](ProgramFieldValues.md) |  | [optional] 
+**field_values** | **object** |  | [optional] 
 **title** | **string** |  | 
 **disabled** | **bool** |  | [optional] 
 **genre_id** | **int** |  | [optional] 

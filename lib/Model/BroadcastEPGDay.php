@@ -1,6 +1,6 @@
 <?php
 /**
- * PresenterDataInput
+ * BroadcastEPGDay
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace RadioManager\Model;
 use \ArrayAccess;
 
 /**
- * PresenterDataInput Class Doc Comment
+ * BroadcastEPGDay Class Doc Comment
  *
  * @category    Class
  * @package     RadioManager
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class PresenterDataInput implements ArrayAccess
+class BroadcastEPGDay implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,19 +47,15 @@ class PresenterDataInput implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'PresenterDataInput';
+    protected static $swaggerModelName = 'BroadcastEPGDay';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'model_type_id' => 'int',
-        'field_values' => 'object',
-        'firstname' => 'string',
-        'lastname' => 'string',
-        'active' => 'bool',
-        'name' => 'string'
+        'day' => '\DateTime',
+        'results' => '\RadioManager\Model\BroadcastEPGResult[]'
     ];
 
     /**
@@ -67,12 +63,8 @@ class PresenterDataInput implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'model_type_id' => 'int64',
-        'field_values' => null,
-        'firstname' => null,
-        'lastname' => null,
-        'active' => null,
-        'name' => null
+        'day' => 'date',
+        'results' => null
     ];
 
     public static function swaggerTypes()
@@ -90,12 +82,8 @@ class PresenterDataInput implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'model_type_id' => 'model_type_id',
-        'field_values' => 'field_values',
-        'firstname' => 'firstname',
-        'lastname' => 'lastname',
-        'active' => 'active',
-        'name' => 'name'
+        'day' => 'day',
+        'results' => 'results'
     ];
 
 
@@ -104,12 +92,8 @@ class PresenterDataInput implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'model_type_id' => 'setModelTypeId',
-        'field_values' => 'setFieldValues',
-        'firstname' => 'setFirstname',
-        'lastname' => 'setLastname',
-        'active' => 'setActive',
-        'name' => 'setName'
+        'day' => 'setDay',
+        'results' => 'setResults'
     ];
 
 
@@ -118,12 +102,8 @@ class PresenterDataInput implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'model_type_id' => 'getModelTypeId',
-        'field_values' => 'getFieldValues',
-        'firstname' => 'getFirstname',
-        'lastname' => 'getLastname',
-        'active' => 'getActive',
-        'name' => 'getName'
+        'day' => 'getDay',
+        'results' => 'getResults'
     ];
 
     public static function attributeMap()
@@ -157,12 +137,8 @@ class PresenterDataInput implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['model_type_id'] = isset($data['model_type_id']) ? $data['model_type_id'] : null;
-        $this->container['field_values'] = isset($data['field_values']) ? $data['field_values'] : null;
-        $this->container['firstname'] = isset($data['firstname']) ? $data['firstname'] : null;
-        $this->container['lastname'] = isset($data['lastname']) ? $data['lastname'] : null;
-        $this->container['active'] = isset($data['active']) ? $data['active'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['day'] = isset($data['day']) ? $data['day'] : null;
+        $this->container['results'] = isset($data['results']) ? $data['results'] : null;
     }
 
     /**
@@ -174,8 +150,8 @@ class PresenterDataInput implements ArrayAccess
     {
         $invalid_properties = [];
 
-        if ($this->container['model_type_id'] === null) {
-            $invalid_properties[] = "'model_type_id' can't be null";
+        if ($this->container['results'] === null) {
+            $invalid_properties[] = "'results' can't be null";
         }
         return $invalid_properties;
     }
@@ -189,7 +165,7 @@ class PresenterDataInput implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['model_type_id'] === null) {
+        if ($this->container['results'] === null) {
             return false;
         }
         return true;
@@ -197,127 +173,43 @@ class PresenterDataInput implements ArrayAccess
 
 
     /**
-     * Gets model_type_id
-     * @return int
+     * Gets day
+     * @return \DateTime
      */
-    public function getModelTypeId()
+    public function getDay()
     {
-        return $this->container['model_type_id'];
+        return $this->container['day'];
     }
 
     /**
-     * Sets model_type_id
-     * @param int $model_type_id
+     * Sets day
+     * @param \DateTime $day
      * @return $this
      */
-    public function setModelTypeId($model_type_id)
+    public function setDay($day)
     {
-        $this->container['model_type_id'] = $model_type_id;
+        $this->container['day'] = $day;
 
         return $this;
     }
 
     /**
-     * Gets field_values
-     * @return object
+     * Gets results
+     * @return \RadioManager\Model\BroadcastEPGResult[]
      */
-    public function getFieldValues()
+    public function getResults()
     {
-        return $this->container['field_values'];
+        return $this->container['results'];
     }
 
     /**
-     * Sets field_values
-     * @param object $field_values
+     * Sets results
+     * @param \RadioManager\Model\BroadcastEPGResult[] $results
      * @return $this
      */
-    public function setFieldValues($field_values)
+    public function setResults($results)
     {
-        $this->container['field_values'] = $field_values;
-
-        return $this;
-    }
-
-    /**
-     * Gets firstname
-     * @return string
-     */
-    public function getFirstname()
-    {
-        return $this->container['firstname'];
-    }
-
-    /**
-     * Sets firstname
-     * @param string $firstname
-     * @return $this
-     */
-    public function setFirstname($firstname)
-    {
-        $this->container['firstname'] = $firstname;
-
-        return $this;
-    }
-
-    /**
-     * Gets lastname
-     * @return string
-     */
-    public function getLastname()
-    {
-        return $this->container['lastname'];
-    }
-
-    /**
-     * Sets lastname
-     * @param string $lastname
-     * @return $this
-     */
-    public function setLastname($lastname)
-    {
-        $this->container['lastname'] = $lastname;
-
-        return $this;
-    }
-
-    /**
-     * Gets active
-     * @return bool
-     */
-    public function getActive()
-    {
-        return $this->container['active'];
-    }
-
-    /**
-     * Sets active
-     * @param bool $active
-     * @return $this
-     */
-    public function setActive($active)
-    {
-        $this->container['active'] = $active;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     * @param string $name
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
+        $this->container['results'] = $results;
 
         return $this;
     }
