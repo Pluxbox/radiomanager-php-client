@@ -78,8 +78,7 @@ class StationResultStation implements ArrayAccess
         'pty_code' => 'int',
         'pty_type' => 'string',
         'station_key' => 'string',
-        'timezone' => 'string',
-        'trial_date' => '\DateTime'
+        'timezone' => 'string'
     ];
 
     /**
@@ -111,8 +110,7 @@ class StationResultStation implements ArrayAccess
         'pty_code' => null,
         'pty_type' => null,
         'station_key' => null,
-        'timezone' => null,
-        'trial_date' => 'date-time'
+        'timezone' => null
     ];
 
     public static function swaggerTypes()
@@ -154,8 +152,7 @@ class StationResultStation implements ArrayAccess
         'pty_code' => 'pty_code',
         'pty_type' => 'pty_type',
         'station_key' => 'station_key',
-        'timezone' => 'timezone',
-        'trial_date' => 'trial_date'
+        'timezone' => 'timezone'
     ];
 
 
@@ -188,8 +185,7 @@ class StationResultStation implements ArrayAccess
         'pty_code' => 'setPtyCode',
         'pty_type' => 'setPtyType',
         'station_key' => 'setStationKey',
-        'timezone' => 'setTimezone',
-        'trial_date' => 'setTrialDate'
+        'timezone' => 'setTimezone'
     ];
 
 
@@ -222,8 +218,7 @@ class StationResultStation implements ArrayAccess
         'pty_code' => 'getPtyCode',
         'pty_type' => 'getPtyType',
         'station_key' => 'getStationKey',
-        'timezone' => 'getTimezone',
-        'trial_date' => 'getTrialDate'
+        'timezone' => 'getTimezone'
     ];
 
     public static function attributeMap()
@@ -282,7 +277,6 @@ class StationResultStation implements ArrayAccess
         $this->container['pty_type'] = isset($data['pty_type']) ? $data['pty_type'] : null;
         $this->container['station_key'] = isset($data['station_key']) ? $data['station_key'] : null;
         $this->container['timezone'] = isset($data['timezone']) ? $data['timezone'] : null;
-        $this->container['trial_date'] = isset($data['trial_date']) ? $data['trial_date'] : null;
     }
 
     /**
@@ -831,27 +825,6 @@ class StationResultStation implements ArrayAccess
     public function setTimezone($timezone)
     {
         $this->container['timezone'] = $timezone;
-
-        return $this;
-    }
-
-    /**
-     * Gets trial_date
-     * @return \DateTime
-     */
-    public function getTrialDate()
-    {
-        return $this->container['trial_date'];
-    }
-
-    /**
-     * Sets trial_date
-     * @param \DateTime $trial_date
-     * @return $this
-     */
-    public function setTrialDate($trial_date)
-    {
-        $this->container['trial_date'] = $trial_date;
 
         return $this;
     }
