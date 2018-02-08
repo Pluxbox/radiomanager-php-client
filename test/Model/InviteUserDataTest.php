@@ -85,9 +85,9 @@ class InviteUserDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "role_id"
+     * Test attribute "role_ids"
      */
-    public function testPropertyRoleId()
+    public function testPropertyRoleIds()
     {
     }
 }

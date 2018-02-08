@@ -155,9 +155,9 @@ class UserResultTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "role_id"
+     * Test attribute "roles"
      */
-    public function testPropertyRoleId()
+    public function testPropertyRoles()
     {
     }
 }

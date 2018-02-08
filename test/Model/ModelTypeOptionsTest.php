@@ -83,4 +83,11 @@ class ModelTypeOptionsTest extends \PHPUnit_Framework_TestCase
     public function testPropertyColor()
     {
     }
+
+    /**
+     * Test attribute "sub_broadcast"
+     */
+    public function testPropertySubBroadcast()
+    {
+    }
 }

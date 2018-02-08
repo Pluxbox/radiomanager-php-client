@@ -246,9 +246,9 @@ class StationResultStationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "trial_date"
+     * Test attribute "timezone"
      */
-    public function testPropertyTrialDate()
+    public function testPropertyTimezone()
     {
     }
 }

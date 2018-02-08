@@ -95,7 +95,7 @@ class BlockApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for getNextBlock
      *
-     * Get next Block.
+     * Get upcoming Block.
      *
      */
     public function testGetNextBlock()
