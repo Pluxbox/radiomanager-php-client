@@ -284,7 +284,7 @@ class BlockApi
     /**
      * Operation getNextBlock
      *
-     * Get next Block
+     * Get upcoming Block
      *
      * @throws \RadioManager\ApiException on non-2xx response
      * @return \RadioManager\Model\BlockResult
@@ -298,7 +298,7 @@ class BlockApi
     /**
      * Operation getNextBlockWithHttpInfo
      *
-     * Get next Block
+     * Get upcoming Block
      *
      * @throws \RadioManager\ApiException on non-2xx response
      * @return array of \RadioManager\Model\BlockResult, HTTP status code, HTTP response headers (array of strings)

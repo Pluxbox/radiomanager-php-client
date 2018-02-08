@@ -55,7 +55,7 @@ class InviteUserData implements ArrayAccess
       */
     protected static $swaggerTypes = [
         'email' => 'string',
-        'role_id' => 'int'
+        'role_ids' => 'int[]'
     ];
 
     /**
@@ -64,7 +64,7 @@ class InviteUserData implements ArrayAccess
       */
     protected static $swaggerFormats = [
         'email' => 'email',
-        'role_id' => 'int64'
+        'role_ids' => null
     ];
 
     public static function swaggerTypes()
@@ -83,7 +83,7 @@ class InviteUserData implements ArrayAccess
      */
     protected static $attributeMap = [
         'email' => 'email',
-        'role_id' => 'role_id'
+        'role_ids' => 'role_ids'
     ];
 
 
@@ -93,7 +93,7 @@ class InviteUserData implements ArrayAccess
      */
     protected static $setters = [
         'email' => 'setEmail',
-        'role_id' => 'setRoleId'
+        'role_ids' => 'setRoleIds'
     ];
 
 
@@ -103,7 +103,7 @@ class InviteUserData implements ArrayAccess
      */
     protected static $getters = [
         'email' => 'getEmail',
-        'role_id' => 'getRoleId'
+        'role_ids' => 'getRoleIds'
     ];
 
     public static function attributeMap()
@@ -138,7 +138,7 @@ class InviteUserData implements ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['email'] = isset($data['email']) ? $data['email'] : null;
-        $this->container['role_id'] = isset($data['role_id']) ? $data['role_id'] : null;
+        $this->container['role_ids'] = isset($data['role_ids']) ? $data['role_ids'] : null;
     }
 
     /**
@@ -153,8 +153,8 @@ class InviteUserData implements ArrayAccess
         if ($this->container['email'] === null) {
             $invalid_properties[] = "'email' can't be null";
         }
-        if ($this->container['role_id'] === null) {
-            $invalid_properties[] = "'role_id' can't be null";
+        if ($this->container['role_ids'] === null) {
+            $invalid_properties[] = "'role_ids' can't be null";
         }
         return $invalid_properties;
     }
@@ -171,7 +171,7 @@ class InviteUserData implements ArrayAccess
         if ($this->container['email'] === null) {
             return false;
         }
-        if ($this->container['role_id'] === null) {
+        if ($this->container['role_ids'] === null) {
             return false;
         }
         return true;
@@ -200,22 +200,22 @@ class InviteUserData implements ArrayAccess
     }
 
     /**
-     * Gets role_id
-     * @return int
+     * Gets role_ids
+     * @return int[]
      */
-    public function getRoleId()
+    public function getRoleIds()
     {
-        return $this->container['role_id'];
+        return $this->container['role_ids'];
     }
 
     /**
-     * Sets role_id
-     * @param int $role_id
+     * Sets role_ids
+     * @param int[] $role_ids
      * @return $this
      */
-    public function setRoleId($role_id)
+    public function setRoleIds($role_ids)
     {
-        $this->container['role_id'] = $role_id;
+        $this->container['role_ids'] = $role_ids;
 
         return $this;
     }

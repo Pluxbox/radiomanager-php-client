@@ -65,7 +65,7 @@ class UserResult implements ArrayAccess
         'settings' => '\RadioManager\Model\UserResultSettings',
         'language' => 'bool',
         'active_external_station_id' => 'int',
-        'role_id' => 'int'
+        'roles' => '\RadioManager\Model\UserResultRoles[]'
     ];
 
     /**
@@ -84,7 +84,7 @@ class UserResult implements ArrayAccess
         'settings' => null,
         'language' => null,
         'active_external_station_id' => 'int64',
-        'role_id' => 'int64'
+        'roles' => null
     ];
 
     public static function swaggerTypes()
@@ -113,7 +113,7 @@ class UserResult implements ArrayAccess
         'settings' => 'settings',
         'language' => 'language',
         'active_external_station_id' => 'active_external_station_id',
-        'role_id' => 'role_id'
+        'roles' => 'roles'
     ];
 
 
@@ -133,7 +133,7 @@ class UserResult implements ArrayAccess
         'settings' => 'setSettings',
         'language' => 'setLanguage',
         'active_external_station_id' => 'setActiveExternalStationId',
-        'role_id' => 'setRoleId'
+        'roles' => 'setRoles'
     ];
 
 
@@ -153,7 +153,7 @@ class UserResult implements ArrayAccess
         'settings' => 'getSettings',
         'language' => 'getLanguage',
         'active_external_station_id' => 'getActiveExternalStationId',
-        'role_id' => 'getRoleId'
+        'roles' => 'getRoles'
     ];
 
     public static function attributeMap()
@@ -198,7 +198,7 @@ class UserResult implements ArrayAccess
         $this->container['settings'] = isset($data['settings']) ? $data['settings'] : null;
         $this->container['language'] = isset($data['language']) ? $data['language'] : null;
         $this->container['active_external_station_id'] = isset($data['active_external_station_id']) ? $data['active_external_station_id'] : null;
-        $this->container['role_id'] = isset($data['role_id']) ? $data['role_id'] : null;
+        $this->container['roles'] = isset($data['roles']) ? $data['roles'] : null;
     }
 
     /**
@@ -482,22 +482,22 @@ class UserResult implements ArrayAccess
     }
 
     /**
-     * Gets role_id
-     * @return int
+     * Gets roles
+     * @return \RadioManager\Model\UserResultRoles[]
      */
-    public function getRoleId()
+    public function getRoles()
     {
-        return $this->container['role_id'];
+        return $this->container['roles'];
     }
 
     /**
-     * Sets role_id
-     * @param int $role_id
+     * Sets roles
+     * @param \RadioManager\Model\UserResultRoles[] $roles
      * @return $this
      */
-    public function setRoleId($role_id)
+    public function setRoles($roles)
     {
-        $this->container['role_id'] = $role_id;
+        $this->container['roles'] = $roles;
 
         return $this;
     }

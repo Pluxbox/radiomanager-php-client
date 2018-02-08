@@ -54,7 +54,8 @@ class ModelTypeOptions implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'color' => 'string'
+        'color' => 'string',
+        'sub_broadcast' => 'bool'
     ];
 
     /**
@@ -62,7 +63,8 @@ class ModelTypeOptions implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'color' => null
+        'color' => null,
+        'sub_broadcast' => null
     ];
 
     public static function swaggerTypes()
@@ -80,7 +82,8 @@ class ModelTypeOptions implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'color' => 'color'
+        'color' => 'color',
+        'sub_broadcast' => 'subBroadcast'
     ];
 
 
@@ -89,7 +92,8 @@ class ModelTypeOptions implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'color' => 'setColor'
+        'color' => 'setColor',
+        'sub_broadcast' => 'setSubBroadcast'
     ];
 
 
@@ -98,7 +102,8 @@ class ModelTypeOptions implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'color' => 'getColor'
+        'color' => 'getColor',
+        'sub_broadcast' => 'getSubBroadcast'
     ];
 
     public static function attributeMap()
@@ -133,6 +138,7 @@ class ModelTypeOptions implements ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['color'] = isset($data['color']) ? $data['color'] : null;
+        $this->container['sub_broadcast'] = isset($data['sub_broadcast']) ? $data['sub_broadcast'] : null;
     }
 
     /**
@@ -177,6 +183,27 @@ class ModelTypeOptions implements ArrayAccess
     public function setColor($color)
     {
         $this->container['color'] = $color;
+
+        return $this;
+    }
+
+    /**
+     * Gets sub_broadcast
+     * @return bool
+     */
+    public function getSubBroadcast()
+    {
+        return $this->container['sub_broadcast'];
+    }
+
+    /**
+     * Sets sub_broadcast
+     * @param bool $sub_broadcast
+     * @return $this
+     */
+    public function setSubBroadcast($sub_broadcast)
+    {
+        $this->container['sub_broadcast'] = $sub_broadcast;
 
         return $this;
     }

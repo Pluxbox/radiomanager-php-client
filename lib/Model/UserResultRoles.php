@@ -1,6 +1,6 @@
 <?php
 /**
- * ItemInputOnly
+ * UserResultRoles
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace RadioManager\Model;
 use \ArrayAccess;
 
 /**
- * ItemInputOnly Class Doc Comment
+ * UserResultRoles Class Doc Comment
  *
  * @category    Class
  * @package     RadioManager
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class ItemInputOnly implements ArrayAccess
+class UserResultRoles implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,17 +47,17 @@ class ItemInputOnly implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'ItemInputOnly';
+    protected static $swaggerModelName = 'UserResult_roles';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        '_previous_id' => 'int',
-        '_before_id' => 'int',
-        'contacts' => 'int[]',
-        'tags' => 'int[]'
+        'href' => 'string',
+        'model' => 'string',
+        'operation' => 'string',
+        'params' => 'int'
     ];
 
     /**
@@ -65,10 +65,10 @@ class ItemInputOnly implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        '_previous_id' => 'int64',
-        '_before_id' => 'int64',
-        'contacts' => null,
-        'tags' => null
+        'href' => 'url',
+        'model' => null,
+        'operation' => null,
+        'params' => 'int64'
     ];
 
     public static function swaggerTypes()
@@ -86,10 +86,10 @@ class ItemInputOnly implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        '_previous_id' => '_previous_id',
-        '_before_id' => '_before_id',
-        'contacts' => 'contacts',
-        'tags' => 'tags'
+        'href' => 'href',
+        'model' => 'model',
+        'operation' => 'operation',
+        'params' => 'params'
     ];
 
 
@@ -98,10 +98,10 @@ class ItemInputOnly implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        '_previous_id' => 'setPreviousId',
-        '_before_id' => 'setBeforeId',
-        'contacts' => 'setContacts',
-        'tags' => 'setTags'
+        'href' => 'setHref',
+        'model' => 'setModel',
+        'operation' => 'setOperation',
+        'params' => 'setParams'
     ];
 
 
@@ -110,10 +110,10 @@ class ItemInputOnly implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        '_previous_id' => 'getPreviousId',
-        '_before_id' => 'getBeforeId',
-        'contacts' => 'getContacts',
-        'tags' => 'getTags'
+        'href' => 'getHref',
+        'model' => 'getModel',
+        'operation' => 'getOperation',
+        'params' => 'getParams'
     ];
 
     public static function attributeMap()
@@ -147,10 +147,10 @@ class ItemInputOnly implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['_previous_id'] = isset($data['_previous_id']) ? $data['_previous_id'] : null;
-        $this->container['_before_id'] = isset($data['_before_id']) ? $data['_before_id'] : null;
-        $this->container['contacts'] = isset($data['contacts']) ? $data['contacts'] : null;
-        $this->container['tags'] = isset($data['tags']) ? $data['tags'] : null;
+        $this->container['href'] = isset($data['href']) ? $data['href'] : null;
+        $this->container['model'] = isset($data['model']) ? $data['model'] : null;
+        $this->container['operation'] = isset($data['operation']) ? $data['operation'] : null;
+        $this->container['params'] = isset($data['params']) ? $data['params'] : null;
     }
 
     /**
@@ -179,85 +179,85 @@ class ItemInputOnly implements ArrayAccess
 
 
     /**
-     * Gets _previous_id
+     * Gets href
+     * @return string
+     */
+    public function getHref()
+    {
+        return $this->container['href'];
+    }
+
+    /**
+     * Sets href
+     * @param string $href
+     * @return $this
+     */
+    public function setHref($href)
+    {
+        $this->container['href'] = $href;
+
+        return $this;
+    }
+
+    /**
+     * Gets model
+     * @return string
+     */
+    public function getModel()
+    {
+        return $this->container['model'];
+    }
+
+    /**
+     * Sets model
+     * @param string $model
+     * @return $this
+     */
+    public function setModel($model)
+    {
+        $this->container['model'] = $model;
+
+        return $this;
+    }
+
+    /**
+     * Gets operation
+     * @return string
+     */
+    public function getOperation()
+    {
+        return $this->container['operation'];
+    }
+
+    /**
+     * Sets operation
+     * @param string $operation
+     * @return $this
+     */
+    public function setOperation($operation)
+    {
+        $this->container['operation'] = $operation;
+
+        return $this;
+    }
+
+    /**
+     * Gets params
      * @return int
      */
-    public function getPreviousId()
+    public function getParams()
     {
-        return $this->container['_previous_id'];
+        return $this->container['params'];
     }
 
     /**
-     * Sets _previous_id
-     * @param int $_previous_id
+     * Sets params
+     * @param int $params
      * @return $this
      */
-    public function setPreviousId($_previous_id)
+    public function setParams($params)
     {
-        $this->container['_previous_id'] = $_previous_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets _before_id
-     * @return int
-     */
-    public function getBeforeId()
-    {
-        return $this->container['_before_id'];
-    }
-
-    /**
-     * Sets _before_id
-     * @param int $_before_id
-     * @return $this
-     */
-    public function setBeforeId($_before_id)
-    {
-        $this->container['_before_id'] = $_before_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets contacts
-     * @return int[]
-     */
-    public function getContacts()
-    {
-        return $this->container['contacts'];
-    }
-
-    /**
-     * Sets contacts
-     * @param int[] $contacts
-     * @return $this
-     */
-    public function setContacts($contacts)
-    {
-        $this->container['contacts'] = $contacts;
-
-        return $this;
-    }
-
-    /**
-     * Gets tags
-     * @return int[]
-     */
-    public function getTags()
-    {
-        return $this->container['tags'];
-    }
-
-    /**
-     * Sets tags
-     * @param int[] $tags
-     * @return $this
-     */
-    public function setTags($tags)
-    {
-        $this->container['tags'] = $tags;
+        $this->container['params'] = $params;
 
         return $this;
     }

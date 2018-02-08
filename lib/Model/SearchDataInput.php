@@ -1,6 +1,6 @@
 <?php
 /**
- * ItemInputOnly
+ * SearchDataInput
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace RadioManager\Model;
 use \ArrayAccess;
 
 /**
- * ItemInputOnly Class Doc Comment
+ * SearchDataInput Class Doc Comment
  *
  * @category    Class
  * @package     RadioManager
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class ItemInputOnly implements ArrayAccess
+class SearchDataInput implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,17 +47,14 @@ class ItemInputOnly implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'ItemInputOnly';
+    protected static $swaggerModelName = 'SearchDataInput';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        '_previous_id' => 'int',
-        '_before_id' => 'int',
-        'contacts' => 'int[]',
-        'tags' => 'int[]'
+        
     ];
 
     /**
@@ -65,10 +62,7 @@ class ItemInputOnly implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        '_previous_id' => 'int64',
-        '_before_id' => 'int64',
-        'contacts' => null,
-        'tags' => null
+        
     ];
 
     public static function swaggerTypes()
@@ -86,10 +80,7 @@ class ItemInputOnly implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        '_previous_id' => '_previous_id',
-        '_before_id' => '_before_id',
-        'contacts' => 'contacts',
-        'tags' => 'tags'
+        
     ];
 
 
@@ -98,10 +89,7 @@ class ItemInputOnly implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        '_previous_id' => 'setPreviousId',
-        '_before_id' => 'setBeforeId',
-        'contacts' => 'setContacts',
-        'tags' => 'setTags'
+        
     ];
 
 
@@ -110,10 +98,7 @@ class ItemInputOnly implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        '_previous_id' => 'getPreviousId',
-        '_before_id' => 'getBeforeId',
-        'contacts' => 'getContacts',
-        'tags' => 'getTags'
+        
     ];
 
     public static function attributeMap()
@@ -147,10 +132,6 @@ class ItemInputOnly implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['_previous_id'] = isset($data['_previous_id']) ? $data['_previous_id'] : null;
-        $this->container['_before_id'] = isset($data['_before_id']) ? $data['_before_id'] : null;
-        $this->container['contacts'] = isset($data['contacts']) ? $data['contacts'] : null;
-        $this->container['tags'] = isset($data['tags']) ? $data['tags'] : null;
     }
 
     /**
@@ -177,90 +158,6 @@ class ItemInputOnly implements ArrayAccess
         return true;
     }
 
-
-    /**
-     * Gets _previous_id
-     * @return int
-     */
-    public function getPreviousId()
-    {
-        return $this->container['_previous_id'];
-    }
-
-    /**
-     * Sets _previous_id
-     * @param int $_previous_id
-     * @return $this
-     */
-    public function setPreviousId($_previous_id)
-    {
-        $this->container['_previous_id'] = $_previous_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets _before_id
-     * @return int
-     */
-    public function getBeforeId()
-    {
-        return $this->container['_before_id'];
-    }
-
-    /**
-     * Sets _before_id
-     * @param int $_before_id
-     * @return $this
-     */
-    public function setBeforeId($_before_id)
-    {
-        $this->container['_before_id'] = $_before_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets contacts
-     * @return int[]
-     */
-    public function getContacts()
-    {
-        return $this->container['contacts'];
-    }
-
-    /**
-     * Sets contacts
-     * @param int[] $contacts
-     * @return $this
-     */
-    public function setContacts($contacts)
-    {
-        $this->container['contacts'] = $contacts;
-
-        return $this;
-    }
-
-    /**
-     * Gets tags
-     * @return int[]
-     */
-    public function getTags()
-    {
-        return $this->container['tags'];
-    }
-
-    /**
-     * Sets tags
-     * @param int[] $tags
-     * @return $this
-     */
-    public function setTags($tags)
-    {
-        $this->container['tags'] = $tags;
-
-        return $this;
-    }
     /**
      * Returns true if offset exists. False otherwise.
      * @param  integer $offset Offset

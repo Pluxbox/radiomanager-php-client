@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getBlockById**](BlockApi.md#getBlockById) | **GET** /blocks/{id} | Get block by id
 [**getCurrentBlock**](BlockApi.md#getCurrentBlock) | **GET** /blocks/current | Get current Block
-[**getNextBlock**](BlockApi.md#getNextBlock) | **GET** /blocks/next | Get next Block
+[**getNextBlock**](BlockApi.md#getNextBlock) | **GET** /blocks/next | Get upcoming Block
 [**listBlocks**](BlockApi.md#listBlocks) | **GET** /blocks | Get a list of all blocks currently in your station.
 
 
@@ -111,9 +111,9 @@ This endpoint does not need any parameter.
 # **getNextBlock**
 > \RadioManager\Model\BlockResult getNextBlock()
 
-Get next Block
+Get upcoming Block
 
-Get next Block
+Get upcoming Block
 
 ### Example
 ```php

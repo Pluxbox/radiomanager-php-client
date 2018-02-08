@@ -474,7 +474,7 @@ RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOU
 
 $api_instance = new RadioManager\Api\ItemApi();
 $id = 789; // int | ID of Item **(Required)**
-$data = new \RadioManager\Model\Item(); // \RadioManager\Model\Item | Data *(Optional)*
+$data = new \RadioManager\Model\ItemDataInput(); // \RadioManager\Model\ItemDataInput | Data *(Optional)*
 
 try {
     $result = $api_instance->updateItemById($id, $data);
@@ -490,7 +490,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| ID of Item **(Required)** |
- **data** | [**\RadioManager\Model\Item**](../Model/Item.md)| Data *(Optional)* | [optional]
+ **data** | [**\RadioManager\Model\ItemDataInput**](../Model/ItemDataInput.md)| Data *(Optional)* | [optional]
 
 ### Return type
 

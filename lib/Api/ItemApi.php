@@ -969,7 +969,7 @@ class ItemApi
      * Update extended item details by ID.
      *
      * @param int $id ID of Item **(Required)** (required)
-     * @param \RadioManager\Model\Item $data Data *(Optional)* (optional)
+     * @param \RadioManager\Model\ItemDataInput $data Data *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return \RadioManager\Model\Success
      */
@@ -985,7 +985,7 @@ class ItemApi
      * Update extended item details by ID.
      *
      * @param int $id ID of Item **(Required)** (required)
-     * @param \RadioManager\Model\Item $data Data *(Optional)* (optional)
+     * @param \RadioManager\Model\ItemDataInput $data Data *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return array of \RadioManager\Model\Success, HTTP status code, HTTP response headers (array of strings)
      */
