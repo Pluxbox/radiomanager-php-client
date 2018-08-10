@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **repetition_start** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **repetition_days** | **string** |  | [optional] 
 **pty_code_id** | **int** |  | [optional] 
+**genre** | [**\RadioManager\Model\BroadcastRelationsGenre**](BroadcastRelationsGenre.md) |  | [optional] 
 **items** | [**\RadioManager\Model\BroadcastRelationsItems**](BroadcastRelationsItems.md) |  | [optional] 
 **blocks** | [**\RadioManager\Model\BroadcastRelationsBlocks**](BroadcastRelationsBlocks.md) |  | [optional] 
 **program** | [**\RadioManager\Model\BlockRelationsProgram**](BlockRelationsProgram.md) |  | [optional] 

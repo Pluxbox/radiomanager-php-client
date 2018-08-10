@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**getNextBroadcast**](BroadcastApi.md#getNextBroadcast) | **GET** /broadcasts/next | Get next Broadcast
 [**getWeeklyEPG**](BroadcastApi.md#getWeeklyEPG) | **GET** /broadcasts/epg/weekly | Get weekly EPG
 [**listBroadcasts**](BroadcastApi.md#listBroadcasts) | **GET** /broadcasts | Get all broadcasts.
-[**printBroadcastById**](BroadcastApi.md#printBroadcastById) | **GET** /broadcasts/print/{id} | Print Broadcast by id
+[**printBroadcastById**](BroadcastApi.md#printBroadcastById) | **GET** /broadcasts/print/{id} | Print broadcast by id with template
 [**updateBroadcastByID**](BroadcastApi.md#updateBroadcastByID) | **PATCH** /broadcasts/{id} | Update broadcast by id
 
 
@@ -502,11 +502,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **printBroadcastById**
-> \RadioManager\Model\EPGResults printBroadcastById($id, $program_id, $presenter_id, $tag_id)
+> \RadioManager\Model\EPGResults printBroadcastById($id, $template_id)
 
-Print Broadcast by id
+Print broadcast by id with template
 
-Print Broadcast by id
+Print broadcast by id with template
 
 ### Example
 ```php
@@ -520,12 +520,10 @@ RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOU
 
 $api_instance = new RadioManager\Api\BroadcastApi();
 $id = 789; // int | ID of Broadcast **(Required)**
-$program_id = 789; // int | Search on Program ID *(Optional)* `(Relation)`
-$presenter_id = 789; // int | Search on Presenter ID *(Optional)* `(Relation)`
-$tag_id = 789; // int | Search on Tag ID *(Optional)* `(Relation)`
+$template_id = 789; // int | Search on template ID *(Optional)*
 
 try {
-    $result = $api_instance->printBroadcastById($id, $program_id, $presenter_id, $tag_id);
+    $result = $api_instance->printBroadcastById($id, $template_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BroadcastApi->printBroadcastById: ', $e->getMessage(), PHP_EOL;
@@ -538,9 +536,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| ID of Broadcast **(Required)** |
- **program_id** | **int**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | [optional]
- **presenter_id** | **int**| Search on Presenter ID *(Optional)* &#x60;(Relation)&#x60; | [optional]
- **tag_id** | **int**| Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; | [optional]
+ **template_id** | **int**| Search on template ID *(Optional)* | [optional]
 
 ### Return type
 

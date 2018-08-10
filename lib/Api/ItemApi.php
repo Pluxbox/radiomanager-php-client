@@ -459,6 +459,97 @@ class ItemApi
     }
 
     /**
+     * Operation getCurrentItem
+     *
+     * Get current Item
+     *
+     * @param bool $lastplayed Show last played item if there is no current item*(Optional)* (optional)
+     * @throws \RadioManager\ApiException on non-2xx response
+     * @return \RadioManager\Model\ItemResult
+     */
+    public function getCurrentItem($lastplayed = null)
+    {
+        list($response) = $this->getCurrentItemWithHttpInfo($lastplayed);
+        return $response;
+    }
+
+    /**
+     * Operation getCurrentItemWithHttpInfo
+     *
+     * Get current Item
+     *
+     * @param bool $lastplayed Show last played item if there is no current item*(Optional)* (optional)
+     * @throws \RadioManager\ApiException on non-2xx response
+     * @return array of \RadioManager\Model\ItemResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getCurrentItemWithHttpInfo($lastplayed = null)
+    {
+        // parse inputs
+        $resourcePath = "/items/current";
+        $httpBody = '';
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
+
+        // query params
+        if ($lastplayed !== null) {
+            $queryParams['lastplayed'] = $this->apiClient->getSerializer()->toQueryValue($lastplayed);
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->apiClient->getApiKeyWithPrefix('api-key');
+        if (strlen($apiKey) !== 0) {
+            $headerParams['api-key'] = $apiKey;
+        }
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath,
+                'GET',
+                $queryParams,
+                $httpBody,
+                $headerParams,
+                '\RadioManager\Model\ItemResult',
+                '/items/current'
+            );
+
+            return [$this->apiClient->getSerializer()->deserialize($response, '\RadioManager\Model\ItemResult', $httpHeader), $statusCode, $httpHeader];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RadioManager\Model\ItemResult', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                    break;
+                case 202:
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RadioManager\Model\Success', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RadioManager\Model\Forbidden', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\RadioManager\Model\NotFound', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                    break;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
      * Operation getItemById
      *
      * Get extended item details by ID.
@@ -583,6 +674,7 @@ class ItemApi
      * @param int $user_draft_id Search on User Draft ID *(Optional)* (optional)
      * @param int $station_draft_id Search on Station Draft ID *(Optional)* (optional)
      * @param int $program_id Search on Program ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param string $external_id Search on External ID *(Optional)* (optional)
      * @param \DateTime $start_min Minimum start date *(Optional)* (optional)
      * @param \DateTime $start_max Maximum start date *(Optional)* (optional)
      * @param int $duration_min Minimum duration (seconds) *(Optional)* (optional)
@@ -595,9 +687,9 @@ class ItemApi
      * @throws \RadioManager\ApiException on non-2xx response
      * @return \RadioManager\Model\ItemResults
      */
-    public function listItems($page = null, $block_id = null, $broadcast_id = null, $model_type_id = null, $tag_id = null, $campaign_id = null, $contact_id = null, $program_draft_id = null, $user_draft_id = null, $station_draft_id = null, $program_id = null, $start_min = null, $start_max = null, $duration_min = null, $duration_max = null, $status = null, $limit = null, $order_by = null, $order_direction = null, $_external_station_id = null)
+    public function listItems($page = null, $block_id = null, $broadcast_id = null, $model_type_id = null, $tag_id = null, $campaign_id = null, $contact_id = null, $program_draft_id = null, $user_draft_id = null, $station_draft_id = null, $program_id = null, $external_id = null, $start_min = null, $start_max = null, $duration_min = null, $duration_max = null, $status = null, $limit = null, $order_by = null, $order_direction = null, $_external_station_id = null)
     {
-        list($response) = $this->listItemsWithHttpInfo($page, $block_id, $broadcast_id, $model_type_id, $tag_id, $campaign_id, $contact_id, $program_draft_id, $user_draft_id, $station_draft_id, $program_id, $start_min, $start_max, $duration_min, $duration_max, $status, $limit, $order_by, $order_direction, $_external_station_id);
+        list($response) = $this->listItemsWithHttpInfo($page, $block_id, $broadcast_id, $model_type_id, $tag_id, $campaign_id, $contact_id, $program_draft_id, $user_draft_id, $station_draft_id, $program_id, $external_id, $start_min, $start_max, $duration_min, $duration_max, $status, $limit, $order_by, $order_direction, $_external_station_id);
         return $response;
     }
 
@@ -617,6 +709,7 @@ class ItemApi
      * @param int $user_draft_id Search on User Draft ID *(Optional)* (optional)
      * @param int $station_draft_id Search on Station Draft ID *(Optional)* (optional)
      * @param int $program_id Search on Program ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param string $external_id Search on External ID *(Optional)* (optional)
      * @param \DateTime $start_min Minimum start date *(Optional)* (optional)
      * @param \DateTime $start_max Maximum start date *(Optional)* (optional)
      * @param int $duration_min Minimum duration (seconds) *(Optional)* (optional)
@@ -629,7 +722,7 @@ class ItemApi
      * @throws \RadioManager\ApiException on non-2xx response
      * @return array of \RadioManager\Model\ItemResults, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listItemsWithHttpInfo($page = null, $block_id = null, $broadcast_id = null, $model_type_id = null, $tag_id = null, $campaign_id = null, $contact_id = null, $program_draft_id = null, $user_draft_id = null, $station_draft_id = null, $program_id = null, $start_min = null, $start_max = null, $duration_min = null, $duration_max = null, $status = null, $limit = null, $order_by = null, $order_direction = null, $_external_station_id = null)
+    public function listItemsWithHttpInfo($page = null, $block_id = null, $broadcast_id = null, $model_type_id = null, $tag_id = null, $campaign_id = null, $contact_id = null, $program_draft_id = null, $user_draft_id = null, $station_draft_id = null, $program_id = null, $external_id = null, $start_min = null, $start_max = null, $duration_min = null, $duration_max = null, $status = null, $limit = null, $order_by = null, $order_direction = null, $_external_station_id = null)
     {
         if (!is_null($page) && ($page < 1)) {
             throw new \InvalidArgumentException('invalid value for "$page" when calling ItemApi.listItems, must be bigger than or equal to 1.');
@@ -697,6 +790,10 @@ class ItemApi
         // query params
         if ($program_id !== null) {
             $queryParams['program_id'] = $this->apiClient->getSerializer()->toQueryValue($program_id);
+        }
+        // query params
+        if ($external_id !== null) {
+            $queryParams['external_id'] = $this->apiClient->getSerializer()->toQueryValue($external_id);
         }
         // query params
         if ($start_min !== null) {

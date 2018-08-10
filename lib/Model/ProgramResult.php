@@ -72,6 +72,7 @@ class ProgramResult implements ArrayAccess
         'recommended' => 'bool',
         'language' => 'string',
         'pty_code_id' => 'int',
+        'genre' => '\RadioManager\Model\BroadcastRelationsGenre',
         'items' => '\RadioManager\Model\ProgramRelationsItems',
         'blocks' => '\RadioManager\Model\ProgramRelationsBlocks',
         'broadcasts' => '\RadioManager\Model\ProgramRelationsBroadcasts',
@@ -103,6 +104,7 @@ class ProgramResult implements ArrayAccess
         'recommended' => null,
         'language' => null,
         'pty_code_id' => 'int64',
+        'genre' => null,
         'items' => null,
         'blocks' => null,
         'broadcasts' => null,
@@ -144,6 +146,7 @@ class ProgramResult implements ArrayAccess
         'recommended' => 'recommended',
         'language' => 'language',
         'pty_code_id' => 'pty_code_id',
+        'genre' => 'genre',
         'items' => 'items',
         'blocks' => 'blocks',
         'broadcasts' => 'broadcasts',
@@ -176,6 +179,7 @@ class ProgramResult implements ArrayAccess
         'recommended' => 'setRecommended',
         'language' => 'setLanguage',
         'pty_code_id' => 'setPtyCodeId',
+        'genre' => 'setGenre',
         'items' => 'setItems',
         'blocks' => 'setBlocks',
         'broadcasts' => 'setBroadcasts',
@@ -208,6 +212,7 @@ class ProgramResult implements ArrayAccess
         'recommended' => 'getRecommended',
         'language' => 'getLanguage',
         'pty_code_id' => 'getPtyCodeId',
+        'genre' => 'getGenre',
         'items' => 'getItems',
         'blocks' => 'getBlocks',
         'broadcasts' => 'getBroadcasts',
@@ -265,6 +270,7 @@ class ProgramResult implements ArrayAccess
         $this->container['recommended'] = isset($data['recommended']) ? $data['recommended'] : null;
         $this->container['language'] = isset($data['language']) ? $data['language'] : null;
         $this->container['pty_code_id'] = isset($data['pty_code_id']) ? $data['pty_code_id'] : null;
+        $this->container['genre'] = isset($data['genre']) ? $data['genre'] : null;
         $this->container['items'] = isset($data['items']) ? $data['items'] : null;
         $this->container['blocks'] = isset($data['blocks']) ? $data['blocks'] : null;
         $this->container['broadcasts'] = isset($data['broadcasts']) ? $data['broadcasts'] : null;
@@ -708,6 +714,27 @@ class ProgramResult implements ArrayAccess
     public function setPtyCodeId($pty_code_id)
     {
         $this->container['pty_code_id'] = $pty_code_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets genre
+     * @return \RadioManager\Model\BroadcastRelationsGenre
+     */
+    public function getGenre()
+    {
+        return $this->container['genre'];
+    }
+
+    /**
+     * Sets genre
+     * @param \RadioManager\Model\BroadcastRelationsGenre $genre
+     * @return $this
+     */
+    public function setGenre($genre)
+    {
+        $this->container['genre'] = $genre;
 
         return $this;
     }

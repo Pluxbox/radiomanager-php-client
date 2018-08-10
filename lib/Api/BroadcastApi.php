@@ -1051,34 +1051,30 @@ class BroadcastApi
     /**
      * Operation printBroadcastById
      *
-     * Print Broadcast by id
+     * Print broadcast by id with template
      *
      * @param int $id ID of Broadcast **(Required)** (required)
-     * @param int $program_id Search on Program ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $presenter_id Search on Presenter ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $tag_id Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $template_id Search on template ID *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return \RadioManager\Model\EPGResults
      */
-    public function printBroadcastById($id, $program_id = null, $presenter_id = null, $tag_id = null)
+    public function printBroadcastById($id, $template_id = null)
     {
-        list($response) = $this->printBroadcastByIdWithHttpInfo($id, $program_id, $presenter_id, $tag_id);
+        list($response) = $this->printBroadcastByIdWithHttpInfo($id, $template_id);
         return $response;
     }
 
     /**
      * Operation printBroadcastByIdWithHttpInfo
      *
-     * Print Broadcast by id
+     * Print broadcast by id with template
      *
      * @param int $id ID of Broadcast **(Required)** (required)
-     * @param int $program_id Search on Program ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $presenter_id Search on Presenter ID *(Optional)* &#x60;(Relation)&#x60; (optional)
-     * @param int $tag_id Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; (optional)
+     * @param int $template_id Search on template ID *(Optional)* (optional)
      * @throws \RadioManager\ApiException on non-2xx response
      * @return array of \RadioManager\Model\EPGResults, HTTP status code, HTTP response headers (array of strings)
      */
-    public function printBroadcastByIdWithHttpInfo($id, $program_id = null, $presenter_id = null, $tag_id = null)
+    public function printBroadcastByIdWithHttpInfo($id, $template_id = null)
     {
         // verify the required parameter 'id' is set
         if ($id === null) {
@@ -1101,16 +1097,8 @@ class BroadcastApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // query params
-        if ($program_id !== null) {
-            $queryParams['program_id'] = $this->apiClient->getSerializer()->toQueryValue($program_id);
-        }
-        // query params
-        if ($presenter_id !== null) {
-            $queryParams['presenter_id'] = $this->apiClient->getSerializer()->toQueryValue($presenter_id);
-        }
-        // query params
-        if ($tag_id !== null) {
-            $queryParams['tag_id'] = $this->apiClient->getSerializer()->toQueryValue($tag_id);
+        if ($template_id !== null) {
+            $queryParams['template_id'] = $this->apiClient->getSerializer()->toQueryValue($template_id);
         }
         // path params
         if ($id !== null) {

@@ -54,6 +54,7 @@ class ProgramRelations implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
+        'genre' => '\RadioManager\Model\BroadcastRelationsGenre',
         'items' => '\RadioManager\Model\ProgramRelationsItems',
         'blocks' => '\RadioManager\Model\ProgramRelationsBlocks',
         'broadcasts' => '\RadioManager\Model\ProgramRelationsBroadcasts',
@@ -67,6 +68,7 @@ class ProgramRelations implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
+        'genre' => null,
         'items' => null,
         'blocks' => null,
         'broadcasts' => null,
@@ -90,6 +92,7 @@ class ProgramRelations implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'genre' => 'genre',
         'items' => 'items',
         'blocks' => 'blocks',
         'broadcasts' => 'broadcasts',
@@ -104,6 +107,7 @@ class ProgramRelations implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'genre' => 'setGenre',
         'items' => 'setItems',
         'blocks' => 'setBlocks',
         'broadcasts' => 'setBroadcasts',
@@ -118,6 +122,7 @@ class ProgramRelations implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'genre' => 'getGenre',
         'items' => 'getItems',
         'blocks' => 'getBlocks',
         'broadcasts' => 'getBroadcasts',
@@ -157,6 +162,7 @@ class ProgramRelations implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['genre'] = isset($data['genre']) ? $data['genre'] : null;
         $this->container['items'] = isset($data['items']) ? $data['items'] : null;
         $this->container['blocks'] = isset($data['blocks']) ? $data['blocks'] : null;
         $this->container['broadcasts'] = isset($data['broadcasts']) ? $data['broadcasts'] : null;
@@ -189,6 +195,27 @@ class ProgramRelations implements ArrayAccess
         return true;
     }
 
+
+    /**
+     * Gets genre
+     * @return \RadioManager\Model\BroadcastRelationsGenre
+     */
+    public function getGenre()
+    {
+        return $this->container['genre'];
+    }
+
+    /**
+     * Sets genre
+     * @param \RadioManager\Model\BroadcastRelationsGenre $genre
+     * @return $this
+     */
+    public function setGenre($genre)
+    {
+        $this->container['genre'] = $genre;
+
+        return $this;
+    }
 
     /**
      * Gets items

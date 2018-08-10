@@ -1,6 +1,6 @@
 <?php
 /**
- * BroadcastRelations
+ * StationResultStationStartDays
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace RadioManager\Model;
 use \ArrayAccess;
 
 /**
- * BroadcastRelations Class Doc Comment
+ * StationResultStationStartDays Class Doc Comment
  *
  * @category    Class
  * @package     RadioManager
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class BroadcastRelations implements ArrayAccess
+class StationResultStationStartDays implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,20 +47,20 @@ class BroadcastRelations implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'BroadcastRelations';
+    protected static $swaggerModelName = 'StationResult_station_start_days';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'genre' => '\RadioManager\Model\BroadcastRelationsGenre',
-        'items' => '\RadioManager\Model\BroadcastRelationsItems',
-        'blocks' => '\RadioManager\Model\BroadcastRelationsBlocks',
-        'program' => '\RadioManager\Model\BlockRelationsProgram',
-        'tags' => '\RadioManager\Model\BroadcastRelationsTags',
-        'presenters' => '\RadioManager\Model\BroadcastRelationsPresenters',
-        'model_type' => '\RadioManager\Model\BroadcastRelationsModelType'
+        'monday' => 'string',
+        'tuesday' => 'string',
+        'wednesday' => 'string',
+        'thursday' => 'string',
+        'friday' => 'string',
+        'saturday' => 'string',
+        'sunday' => 'string'
     ];
 
     /**
@@ -68,13 +68,13 @@ class BroadcastRelations implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'genre' => null,
-        'items' => null,
-        'blocks' => null,
-        'program' => null,
-        'tags' => null,
-        'presenters' => null,
-        'model_type' => null
+        'monday' => null,
+        'tuesday' => null,
+        'wednesday' => null,
+        'thursday' => null,
+        'friday' => null,
+        'saturday' => null,
+        'sunday' => null
     ];
 
     public static function swaggerTypes()
@@ -92,13 +92,13 @@ class BroadcastRelations implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'genre' => 'genre',
-        'items' => 'items',
-        'blocks' => 'blocks',
-        'program' => 'program',
-        'tags' => 'tags',
-        'presenters' => 'presenters',
-        'model_type' => 'model_type'
+        'monday' => 'monday',
+        'tuesday' => 'tuesday',
+        'wednesday' => 'wednesday',
+        'thursday' => 'thursday',
+        'friday' => 'friday',
+        'saturday' => 'saturday',
+        'sunday' => 'sunday'
     ];
 
 
@@ -107,13 +107,13 @@ class BroadcastRelations implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'genre' => 'setGenre',
-        'items' => 'setItems',
-        'blocks' => 'setBlocks',
-        'program' => 'setProgram',
-        'tags' => 'setTags',
-        'presenters' => 'setPresenters',
-        'model_type' => 'setModelType'
+        'monday' => 'setMonday',
+        'tuesday' => 'setTuesday',
+        'wednesday' => 'setWednesday',
+        'thursday' => 'setThursday',
+        'friday' => 'setFriday',
+        'saturday' => 'setSaturday',
+        'sunday' => 'setSunday'
     ];
 
 
@@ -122,13 +122,13 @@ class BroadcastRelations implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'genre' => 'getGenre',
-        'items' => 'getItems',
-        'blocks' => 'getBlocks',
-        'program' => 'getProgram',
-        'tags' => 'getTags',
-        'presenters' => 'getPresenters',
-        'model_type' => 'getModelType'
+        'monday' => 'getMonday',
+        'tuesday' => 'getTuesday',
+        'wednesday' => 'getWednesday',
+        'thursday' => 'getThursday',
+        'friday' => 'getFriday',
+        'saturday' => 'getSaturday',
+        'sunday' => 'getSunday'
     ];
 
     public static function attributeMap()
@@ -162,13 +162,13 @@ class BroadcastRelations implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['genre'] = isset($data['genre']) ? $data['genre'] : null;
-        $this->container['items'] = isset($data['items']) ? $data['items'] : null;
-        $this->container['blocks'] = isset($data['blocks']) ? $data['blocks'] : null;
-        $this->container['program'] = isset($data['program']) ? $data['program'] : null;
-        $this->container['tags'] = isset($data['tags']) ? $data['tags'] : null;
-        $this->container['presenters'] = isset($data['presenters']) ? $data['presenters'] : null;
-        $this->container['model_type'] = isset($data['model_type']) ? $data['model_type'] : null;
+        $this->container['monday'] = isset($data['monday']) ? $data['monday'] : null;
+        $this->container['tuesday'] = isset($data['tuesday']) ? $data['tuesday'] : null;
+        $this->container['wednesday'] = isset($data['wednesday']) ? $data['wednesday'] : null;
+        $this->container['thursday'] = isset($data['thursday']) ? $data['thursday'] : null;
+        $this->container['friday'] = isset($data['friday']) ? $data['friday'] : null;
+        $this->container['saturday'] = isset($data['saturday']) ? $data['saturday'] : null;
+        $this->container['sunday'] = isset($data['sunday']) ? $data['sunday'] : null;
     }
 
     /**
@@ -197,148 +197,148 @@ class BroadcastRelations implements ArrayAccess
 
 
     /**
-     * Gets genre
-     * @return \RadioManager\Model\BroadcastRelationsGenre
+     * Gets monday
+     * @return string
      */
-    public function getGenre()
+    public function getMonday()
     {
-        return $this->container['genre'];
+        return $this->container['monday'];
     }
 
     /**
-     * Sets genre
-     * @param \RadioManager\Model\BroadcastRelationsGenre $genre
+     * Sets monday
+     * @param string $monday
      * @return $this
      */
-    public function setGenre($genre)
+    public function setMonday($monday)
     {
-        $this->container['genre'] = $genre;
+        $this->container['monday'] = $monday;
 
         return $this;
     }
 
     /**
-     * Gets items
-     * @return \RadioManager\Model\BroadcastRelationsItems
+     * Gets tuesday
+     * @return string
      */
-    public function getItems()
+    public function getTuesday()
     {
-        return $this->container['items'];
+        return $this->container['tuesday'];
     }
 
     /**
-     * Sets items
-     * @param \RadioManager\Model\BroadcastRelationsItems $items
+     * Sets tuesday
+     * @param string $tuesday
      * @return $this
      */
-    public function setItems($items)
+    public function setTuesday($tuesday)
     {
-        $this->container['items'] = $items;
+        $this->container['tuesday'] = $tuesday;
 
         return $this;
     }
 
     /**
-     * Gets blocks
-     * @return \RadioManager\Model\BroadcastRelationsBlocks
+     * Gets wednesday
+     * @return string
      */
-    public function getBlocks()
+    public function getWednesday()
     {
-        return $this->container['blocks'];
+        return $this->container['wednesday'];
     }
 
     /**
-     * Sets blocks
-     * @param \RadioManager\Model\BroadcastRelationsBlocks $blocks
+     * Sets wednesday
+     * @param string $wednesday
      * @return $this
      */
-    public function setBlocks($blocks)
+    public function setWednesday($wednesday)
     {
-        $this->container['blocks'] = $blocks;
+        $this->container['wednesday'] = $wednesday;
 
         return $this;
     }
 
     /**
-     * Gets program
-     * @return \RadioManager\Model\BlockRelationsProgram
+     * Gets thursday
+     * @return string
      */
-    public function getProgram()
+    public function getThursday()
     {
-        return $this->container['program'];
+        return $this->container['thursday'];
     }
 
     /**
-     * Sets program
-     * @param \RadioManager\Model\BlockRelationsProgram $program
+     * Sets thursday
+     * @param string $thursday
      * @return $this
      */
-    public function setProgram($program)
+    public function setThursday($thursday)
     {
-        $this->container['program'] = $program;
+        $this->container['thursday'] = $thursday;
 
         return $this;
     }
 
     /**
-     * Gets tags
-     * @return \RadioManager\Model\BroadcastRelationsTags
+     * Gets friday
+     * @return string
      */
-    public function getTags()
+    public function getFriday()
     {
-        return $this->container['tags'];
+        return $this->container['friday'];
     }
 
     /**
-     * Sets tags
-     * @param \RadioManager\Model\BroadcastRelationsTags $tags
+     * Sets friday
+     * @param string $friday
      * @return $this
      */
-    public function setTags($tags)
+    public function setFriday($friday)
     {
-        $this->container['tags'] = $tags;
+        $this->container['friday'] = $friday;
 
         return $this;
     }
 
     /**
-     * Gets presenters
-     * @return \RadioManager\Model\BroadcastRelationsPresenters
+     * Gets saturday
+     * @return string
      */
-    public function getPresenters()
+    public function getSaturday()
     {
-        return $this->container['presenters'];
+        return $this->container['saturday'];
     }
 
     /**
-     * Sets presenters
-     * @param \RadioManager\Model\BroadcastRelationsPresenters $presenters
+     * Sets saturday
+     * @param string $saturday
      * @return $this
      */
-    public function setPresenters($presenters)
+    public function setSaturday($saturday)
     {
-        $this->container['presenters'] = $presenters;
+        $this->container['saturday'] = $saturday;
 
         return $this;
     }
 
     /**
-     * Gets model_type
-     * @return \RadioManager\Model\BroadcastRelationsModelType
+     * Gets sunday
+     * @return string
      */
-    public function getModelType()
+    public function getSunday()
     {
-        return $this->container['model_type'];
+        return $this->container['sunday'];
     }
 
     /**
-     * Sets model_type
-     * @param \RadioManager\Model\BroadcastRelationsModelType $model_type
+     * Sets sunday
+     * @param string $sunday
      * @return $this
      */
-    public function setModelType($model_type)
+    public function setSunday($sunday)
     {
-        $this->container['model_type'] = $model_type;
+        $this->container['sunday'] = $sunday;
 
         return $this;
     }

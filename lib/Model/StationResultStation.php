@@ -78,7 +78,8 @@ class StationResultStation implements ArrayAccess
         'pty_code' => 'int',
         'pty_type' => 'string',
         'station_key' => 'string',
-        'timezone' => 'string'
+        'timezone' => 'string',
+        'start_days' => '\RadioManager\Model\StationResultStationStartDays'
     ];
 
     /**
@@ -110,7 +111,8 @@ class StationResultStation implements ArrayAccess
         'pty_code' => null,
         'pty_type' => null,
         'station_key' => null,
-        'timezone' => null
+        'timezone' => null,
+        'start_days' => null
     ];
 
     public static function swaggerTypes()
@@ -152,7 +154,8 @@ class StationResultStation implements ArrayAccess
         'pty_code' => 'pty_code',
         'pty_type' => 'pty_type',
         'station_key' => 'station_key',
-        'timezone' => 'timezone'
+        'timezone' => 'timezone',
+        'start_days' => 'start_days'
     ];
 
 
@@ -185,7 +188,8 @@ class StationResultStation implements ArrayAccess
         'pty_code' => 'setPtyCode',
         'pty_type' => 'setPtyType',
         'station_key' => 'setStationKey',
-        'timezone' => 'setTimezone'
+        'timezone' => 'setTimezone',
+        'start_days' => 'setStartDays'
     ];
 
 
@@ -218,7 +222,8 @@ class StationResultStation implements ArrayAccess
         'pty_code' => 'getPtyCode',
         'pty_type' => 'getPtyType',
         'station_key' => 'getStationKey',
-        'timezone' => 'getTimezone'
+        'timezone' => 'getTimezone',
+        'start_days' => 'getStartDays'
     ];
 
     public static function attributeMap()
@@ -277,6 +282,7 @@ class StationResultStation implements ArrayAccess
         $this->container['pty_type'] = isset($data['pty_type']) ? $data['pty_type'] : null;
         $this->container['station_key'] = isset($data['station_key']) ? $data['station_key'] : null;
         $this->container['timezone'] = isset($data['timezone']) ? $data['timezone'] : null;
+        $this->container['start_days'] = isset($data['start_days']) ? $data['start_days'] : null;
     }
 
     /**
@@ -825,6 +831,27 @@ class StationResultStation implements ArrayAccess
     public function setTimezone($timezone)
     {
         $this->container['timezone'] = $timezone;
+
+        return $this;
+    }
+
+    /**
+     * Gets start_days
+     * @return \RadioManager\Model\StationResultStationStartDays
+     */
+    public function getStartDays()
+    {
+        return $this->container['start_days'];
+    }
+
+    /**
+     * Sets start_days
+     * @param \RadioManager\Model\StationResultStationStartDays $start_days
+     * @return $this
+     */
+    public function setStartDays($start_days)
+    {
+        $this->container['start_days'] = $start_days;
 
         return $this;
     }

@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **recommended** | **bool** |  | [optional] 
 **language** | **string** |  | [optional] 
 **pty_code_id** | **int** |  | [optional] 
+**genre** | [**\RadioManager\Model\BroadcastRelationsGenre**](BroadcastRelationsGenre.md) |  | [optional] 
 **items** | [**\RadioManager\Model\ProgramRelationsItems**](ProgramRelationsItems.md) |  | [optional] 
 **blocks** | [**\RadioManager\Model\ProgramRelationsBlocks**](ProgramRelationsBlocks.md) |  | [optional] 
 **broadcasts** | [**\RadioManager\Model\ProgramRelationsBroadcasts**](ProgramRelationsBroadcasts.md) |  | [optional] 

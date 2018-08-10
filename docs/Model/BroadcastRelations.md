@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**genre** | [**\RadioManager\Model\BroadcastRelationsGenre**](BroadcastRelationsGenre.md) |  | [optional] 
 **items** | [**\RadioManager\Model\BroadcastRelationsItems**](BroadcastRelationsItems.md) |  | [optional] 
 **blocks** | [**\RadioManager\Model\BroadcastRelationsBlocks**](BroadcastRelationsBlocks.md) |  | [optional] 
 **program** | [**\RadioManager\Model\BlockRelationsProgram**](BlockRelationsProgram.md) |  | [optional] 

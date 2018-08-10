@@ -81,6 +81,7 @@ class BroadcastResult implements ArrayAccess
         'repetition_start' => '\DateTime',
         'repetition_days' => 'string',
         'pty_code_id' => 'int',
+        'genre' => '\RadioManager\Model\BroadcastRelationsGenre',
         'items' => '\RadioManager\Model\BroadcastRelationsItems',
         'blocks' => '\RadioManager\Model\BroadcastRelationsBlocks',
         'program' => '\RadioManager\Model\BlockRelationsProgram',
@@ -121,6 +122,7 @@ class BroadcastResult implements ArrayAccess
         'repetition_start' => 'date-time',
         'repetition_days' => null,
         'pty_code_id' => 'int64',
+        'genre' => null,
         'items' => null,
         'blocks' => null,
         'program' => null,
@@ -171,6 +173,7 @@ class BroadcastResult implements ArrayAccess
         'repetition_start' => 'repetition_start',
         'repetition_days' => 'repetition_days',
         'pty_code_id' => 'pty_code_id',
+        'genre' => 'genre',
         'items' => 'items',
         'blocks' => 'blocks',
         'program' => 'program',
@@ -212,6 +215,7 @@ class BroadcastResult implements ArrayAccess
         'repetition_start' => 'setRepetitionStart',
         'repetition_days' => 'setRepetitionDays',
         'pty_code_id' => 'setPtyCodeId',
+        'genre' => 'setGenre',
         'items' => 'setItems',
         'blocks' => 'setBlocks',
         'program' => 'setProgram',
@@ -253,6 +257,7 @@ class BroadcastResult implements ArrayAccess
         'repetition_start' => 'getRepetitionStart',
         'repetition_days' => 'getRepetitionDays',
         'pty_code_id' => 'getPtyCodeId',
+        'genre' => 'getGenre',
         'items' => 'getItems',
         'blocks' => 'getBlocks',
         'program' => 'getProgram',
@@ -337,6 +342,7 @@ class BroadcastResult implements ArrayAccess
         $this->container['repetition_start'] = isset($data['repetition_start']) ? $data['repetition_start'] : null;
         $this->container['repetition_days'] = isset($data['repetition_days']) ? $data['repetition_days'] : null;
         $this->container['pty_code_id'] = isset($data['pty_code_id']) ? $data['pty_code_id'] : null;
+        $this->container['genre'] = isset($data['genre']) ? $data['genre'] : null;
         $this->container['items'] = isset($data['items']) ? $data['items'] : null;
         $this->container['blocks'] = isset($data['blocks']) ? $data['blocks'] : null;
         $this->container['program'] = isset($data['program']) ? $data['program'] : null;
@@ -374,10 +380,6 @@ class BroadcastResult implements ArrayAccess
             );
         }
 
-        if (!is_null($this->container['pty_code_id']) && ($this->container['pty_code_id'] < 1)) {
-            $invalid_properties[] = "invalid value for 'pty_code_id', must be bigger than or equal to 1.";
-        }
-
         return $invalid_properties;
     }
 
@@ -404,9 +406,6 @@ class BroadcastResult implements ArrayAccess
         }
         $allowed_values = $this->getRepetitionTypeAllowableValues();
         if (!in_array($this->container['repetition_type'], $allowed_values)) {
-            return false;
-        }
-        if ($this->container['pty_code_id'] < 1) {
             return false;
         }
         return true;
@@ -984,12 +983,28 @@ class BroadcastResult implements ArrayAccess
      */
     public function setPtyCodeId($pty_code_id)
     {
-
-        if (!is_null($pty_code_id) && ($pty_code_id < 1)) {
-            throw new \InvalidArgumentException('invalid value for $pty_code_id when calling BroadcastResult., must be bigger than or equal to 1.');
-        }
-
         $this->container['pty_code_id'] = $pty_code_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets genre
+     * @return \RadioManager\Model\BroadcastRelationsGenre
+     */
+    public function getGenre()
+    {
+        return $this->container['genre'];
+    }
+
+    /**
+     * Sets genre
+     * @param \RadioManager\Model\BroadcastRelationsGenre $genre
+     * @return $this
+     */
+    public function setGenre($genre)
+    {
+        $this->container['genre'] = $genre;
 
         return $this;
     }

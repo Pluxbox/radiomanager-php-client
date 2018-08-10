@@ -308,10 +308,6 @@ class BroadcastDataInput implements ArrayAccess
             );
         }
 
-        if (!is_null($this->container['pty_code_id']) && ($this->container['pty_code_id'] < 1)) {
-            $invalid_properties[] = "invalid value for 'pty_code_id', must be bigger than or equal to 1.";
-        }
-
         return $invalid_properties;
     }
 
@@ -326,9 +322,6 @@ class BroadcastDataInput implements ArrayAccess
 
         $allowed_values = $this->getRepetitionTypeAllowableValues();
         if (!in_array($this->container['repetition_type'], $allowed_values)) {
-            return false;
-        }
-        if ($this->container['pty_code_id'] < 1) {
             return false;
         }
         return true;
@@ -801,11 +794,6 @@ class BroadcastDataInput implements ArrayAccess
      */
     public function setPtyCodeId($pty_code_id)
     {
-
-        if (!is_null($pty_code_id) && ($pty_code_id < 1)) {
-            throw new \InvalidArgumentException('invalid value for $pty_code_id when calling BroadcastDataInput., must be bigger than or equal to 1.');
-        }
-
         $this->container['pty_code_id'] = $pty_code_id;
 
         return $this;
