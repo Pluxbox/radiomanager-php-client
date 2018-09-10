@@ -24,15 +24,20 @@ Create story.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: API Key
-RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
-$api_instance = new RadioManager\Api\StoryApi();
+$apiInstance = new RadioManager\Api\StoryApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $data = new \RadioManager\Model\StoryDataInput(); // \RadioManager\Model\StoryDataInput | Data **(Required)**
 
 try {
-    $result = $api_instance->createStory($data);
+    $result = $apiInstance->createStory($data);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling StoryApi->createStory: ', $e->getMessage(), PHP_EOL;
@@ -74,15 +79,20 @@ Delete story by id
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: API Key
-RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
-$api_instance = new RadioManager\Api\StoryApi();
+$apiInstance = new RadioManager\Api\StoryApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = 789; // int | ID of Story **(Required)**
 
 try {
-    $result = $api_instance->deleteStoryById($id);
+    $result = $apiInstance->deleteStoryById($id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling StoryApi->deleteStoryById: ', $e->getMessage(), PHP_EOL;
@@ -124,16 +134,21 @@ Get story by id
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: API Key
-RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
-$api_instance = new RadioManager\Api\StoryApi();
+$apiInstance = new RadioManager\Api\StoryApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = 789; // int | ID of Story **(Required)**
 $_external_station_id = 789; // int | Query on a different (content providing) station *(Optional)*
 
 try {
-    $result = $api_instance->getStoryById($id, $_external_station_id);
+    $result = $apiInstance->getStoryById($id, $_external_station_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling StoryApi->getStoryById: ', $e->getMessage(), PHP_EOL;
@@ -176,11 +191,16 @@ List all stories.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: API Key
-RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
-$api_instance = new RadioManager\Api\StoryApi();
+$apiInstance = new RadioManager\Api\StoryApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $page = 1; // int | Current page *(Optional)*
 $item_id = 789; // int | Search on Item ID *(Optional)* `(Relation)`
 $model_type_id = 789; // int | Search on ModelType ID *(Optional)* `(Relation)`
@@ -191,7 +211,7 @@ $order_direction = "order_direction_example"; // string | Direction of ordering 
 $_external_station_id = 789; // int | Query on a different (content providing) station *(Optional)*
 
 try {
-    $result = $api_instance->listStories($page, $item_id, $model_type_id, $tag_id, $limit, $order_by, $order_direction, $_external_station_id);
+    $result = $apiInstance->listStories($page, $item_id, $model_type_id, $tag_id, $limit, $order_by, $order_direction, $_external_station_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling StoryApi->listStories: ', $e->getMessage(), PHP_EOL;
@@ -240,16 +260,21 @@ Update story by id
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: API Key
-RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
-$api_instance = new RadioManager\Api\StoryApi();
+$apiInstance = new RadioManager\Api\StoryApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = 789; // int | ID of Story **(Required)**
 $data = new \RadioManager\Model\StoryDataInput(); // \RadioManager\Model\StoryDataInput | Data *(Optional)*
 
 try {
-    $result = $api_instance->updateStoryByID($id, $data);
+    $result = $apiInstance->updateStoryByID($id, $data);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling StoryApi->updateStoryByID: ', $e->getMessage(), PHP_EOL;

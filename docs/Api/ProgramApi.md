@@ -24,15 +24,20 @@ Create program.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: API Key
-RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
-$api_instance = new RadioManager\Api\ProgramApi();
+$apiInstance = new RadioManager\Api\ProgramApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $data = new \RadioManager\Model\ProgramDataInput(); // \RadioManager\Model\ProgramDataInput | Data **(Required)**
 
 try {
-    $result = $api_instance->createProgram($data);
+    $result = $apiInstance->createProgram($data);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProgramApi->createProgram: ', $e->getMessage(), PHP_EOL;
@@ -74,15 +79,20 @@ Delete program by id
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: API Key
-RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
-$api_instance = new RadioManager\Api\ProgramApi();
+$apiInstance = new RadioManager\Api\ProgramApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = 789; // int | ID of program **(Required)**
 
 try {
-    $result = $api_instance->deleteProgramById($id);
+    $result = $apiInstance->deleteProgramById($id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProgramApi->deleteProgramById: ', $e->getMessage(), PHP_EOL;
@@ -124,16 +134,21 @@ Get program by id
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: API Key
-RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
-$api_instance = new RadioManager\Api\ProgramApi();
+$apiInstance = new RadioManager\Api\ProgramApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = 789; // int | ID of Program **(Required)**
 $_external_station_id = 789; // int | Query on a different (content providing) station *(Optional)*
 
 try {
-    $result = $api_instance->getProgramById($id, $_external_station_id);
+    $result = $apiInstance->getProgramById($id, $_external_station_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProgramApi->getProgramById: ', $e->getMessage(), PHP_EOL;
@@ -176,11 +191,16 @@ List all programs.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: API Key
-RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
-$api_instance = new RadioManager\Api\ProgramApi();
+$apiInstance = new RadioManager\Api\ProgramApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $page = 789; // int | Current page *(Optional)*
 $broadcast_id = 789; // int | Search on Broadcast ID *(Optional)* `(Relation)`
 $model_type_id = 789; // int | Search on ModelType ID *(Optional)* `(Relation)`
@@ -195,7 +215,7 @@ $order_direction = "order_direction_example"; // string | Direction of ordering 
 $_external_station_id = 789; // int | Query on a different (content providing) station *(Optional)*
 
 try {
-    $result = $api_instance->listPrograms($page, $broadcast_id, $model_type_id, $tag_id, $presenter_id, $genre_id, $block_id, $item_id, $limit, $order_by, $order_direction, $_external_station_id);
+    $result = $apiInstance->listPrograms($page, $broadcast_id, $model_type_id, $tag_id, $presenter_id, $genre_id, $block_id, $item_id, $limit, $order_by, $order_direction, $_external_station_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProgramApi->listPrograms: ', $e->getMessage(), PHP_EOL;
@@ -248,16 +268,21 @@ Update program by id
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: API Key
-RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
-$api_instance = new RadioManager\Api\ProgramApi();
+$apiInstance = new RadioManager\Api\ProgramApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = 789; // int | ID of Program **(Required)**
 $data = new \RadioManager\Model\ProgramDataInput(); // \RadioManager\Model\ProgramDataInput | Data *(Optional)*
 
 try {
-    $result = $api_instance->updateProgramByID($id, $data);
+    $result = $apiInstance->updateProgramByID($id, $data);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProgramApi->updateProgramByID: ', $e->getMessage(), PHP_EOL;

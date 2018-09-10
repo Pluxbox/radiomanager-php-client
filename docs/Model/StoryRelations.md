@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tags** | [**\RadioManager\Model\StoryRelationsTags**](StoryRelationsTags.md) |  | [optional] 
+**tags** | [**\RadioManager\Model\StoryRelationsTags**](StoryRelationsTags.md) |  | 
 **items** | [**\RadioManager\Model\StoryRelationsItems**](StoryRelationsItems.md) |  | [optional] 
 **model_type** | [**\RadioManager\Model\BroadcastRelationsModelType**](BroadcastRelationsModelType.md) |  | [optional] 
 

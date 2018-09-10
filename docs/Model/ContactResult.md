@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **firstname** | **string** |  | 
 **lastname** | **string** |  | 
 **phone** | **string** |  | [optional] 
-**tags** | [**\RadioManager\Model\ContactRelationsTags**](ContactRelationsTags.md) |  | [optional] 
+**tags** | [**\RadioManager\Model\ContactRelationsTags**](ContactRelationsTags.md) |  | 
 **items** | [**\RadioManager\Model\ContactRelationsItems**](ContactRelationsItems.md) |  | [optional] 
 **model_type** | [**\RadioManager\Model\BroadcastRelationsModelType**](BroadcastRelationsModelType.md) |  | [optional] 
 

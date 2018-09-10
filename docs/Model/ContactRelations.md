@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tags** | [**\RadioManager\Model\ContactRelationsTags**](ContactRelationsTags.md) |  | [optional] 
+**tags** | [**\RadioManager\Model\ContactRelationsTags**](ContactRelationsTags.md) |  | 
 **items** | [**\RadioManager\Model\ContactRelationsItems**](ContactRelationsItems.md) |  | [optional] 
 **model_type** | [**\RadioManager\Model\BroadcastRelationsModelType**](BroadcastRelationsModelType.md) |  | [optional] 
 

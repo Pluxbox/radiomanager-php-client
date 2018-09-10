@@ -23,15 +23,20 @@ Remove user from station by Id
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: API Key
-RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
-$api_instance = new RadioManager\Api\UserApi();
+$apiInstance = new RadioManager\Api\UserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = 789; // int | id of User
 
 try {
-    $result = $api_instance->deleteUserById($id);
+    $result = $apiInstance->deleteUserById($id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserApi->deleteUserById: ', $e->getMessage(), PHP_EOL;
@@ -73,15 +78,20 @@ Get user by id
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: API Key
-RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
-$api_instance = new RadioManager\Api\UserApi();
+$apiInstance = new RadioManager\Api\UserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = 789; // int | id of User
 
 try {
-    $result = $api_instance->getUserById($id);
+    $result = $apiInstance->getUserById($id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserApi->getUserById: ', $e->getMessage(), PHP_EOL;
@@ -123,15 +133,20 @@ Invite user by mail
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: API Key
-RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
-$api_instance = new RadioManager\Api\UserApi();
+$apiInstance = new RadioManager\Api\UserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $data = new \RadioManager\Model\InviteUserData(); // \RadioManager\Model\InviteUserData | Data **(Required)**
 
 try {
-    $result = $api_instance->inviteUserByMail($data);
+    $result = $apiInstance->inviteUserByMail($data);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserApi->inviteUserByMail: ', $e->getMessage(), PHP_EOL;
@@ -173,11 +188,16 @@ List all users.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: API Key
-RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
-$api_instance = new RadioManager\Api\UserApi();
+$apiInstance = new RadioManager\Api\UserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $page = 1; // int | Current page *(Optional)*
 $role_id = 789; // int | Search on Role ID *(Optional)*
 $limit = 789; // int | Results per page *(Optional)*
@@ -185,7 +205,7 @@ $order_by = "order_by_example"; // string | Field to order the results *(Optiona
 $order_direction = "order_direction_example"; // string | Direction of ordering *(Optional)*
 
 try {
-    $result = $api_instance->listUsers($page, $role_id, $limit, $order_by, $order_direction);
+    $result = $apiInstance->listUsers($page, $role_id, $limit, $order_by, $order_direction);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserApi->listUsers: ', $e->getMessage(), PHP_EOL;

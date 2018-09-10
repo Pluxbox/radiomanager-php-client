@@ -24,15 +24,20 @@ Create campaign.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: API Key
-RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
-$api_instance = new RadioManager\Api\CampaignApi();
+$apiInstance = new RadioManager\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $data = new \RadioManager\Model\CampaignDataInput(); // \RadioManager\Model\CampaignDataInput | Data **(Required)**
 
 try {
-    $result = $api_instance->createCampaign($data);
+    $result = $apiInstance->createCampaign($data);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->createCampaign: ', $e->getMessage(), PHP_EOL;
@@ -74,15 +79,20 @@ Delete campaign by id
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: API Key
-RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
-$api_instance = new RadioManager\Api\CampaignApi();
+$apiInstance = new RadioManager\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = 789; // int | ID of Campaign **(Required)**
 
 try {
-    $result = $api_instance->deleteCampaignById($id);
+    $result = $apiInstance->deleteCampaignById($id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->deleteCampaignById: ', $e->getMessage(), PHP_EOL;
@@ -124,16 +134,21 @@ Get campaign by id
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: API Key
-RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
-$api_instance = new RadioManager\Api\CampaignApi();
+$apiInstance = new RadioManager\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = 789; // int | ID of Campaign **(Required)**
 $_external_station_id = 789; // int | Query on a different (content providing) station *(Optional)*
 
 try {
-    $result = $api_instance->getCampaignById($id, $_external_station_id);
+    $result = $apiInstance->getCampaignById($id, $_external_station_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->getCampaignById: ', $e->getMessage(), PHP_EOL;
@@ -176,11 +191,16 @@ List all campaigns.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: API Key
-RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
-$api_instance = new RadioManager\Api\CampaignApi();
+$apiInstance = new RadioManager\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $page = 789; // int | Current page *(Optional)*
 $item_id = 789; // int | Search on Item ID *(Optional)* `(Relation)`
 $model_type_id = 789; // int | Search on ModelType ID *(Optional)* `(Relation)`
@@ -192,7 +212,7 @@ $order_direction = "order_direction_example"; // string | Direction of ordering 
 $_external_station_id = 789; // int | Query on a different (content providing) station *(Optional)*
 
 try {
-    $result = $api_instance->listCampaigns($page, $item_id, $model_type_id, $start_min, $start_max, $limit, $order_by, $order_direction, $_external_station_id);
+    $result = $apiInstance->listCampaigns($page, $item_id, $model_type_id, $start_min, $start_max, $limit, $order_by, $order_direction, $_external_station_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->listCampaigns: ', $e->getMessage(), PHP_EOL;
@@ -242,16 +262,21 @@ Update campaign by id
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: API Key
-RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
+$config = RadioManager\Configuration::getDefaultConfiguration()->setApiKey('api-key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
+// $config = RadioManager\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api-key', 'Bearer');
 
-$api_instance = new RadioManager\Api\CampaignApi();
+$apiInstance = new RadioManager\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $id = 789; // int | ID of Campaign **(Required)**
 $data = new \RadioManager\Model\CampaignDataInput(); // \RadioManager\Model\CampaignDataInput | Data *(Optional)*
 
 try {
-    $result = $api_instance->updateCampaignByID($id, $data);
+    $result = $apiInstance->updateCampaignByID($id, $data);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->updateCampaignByID: ', $e->getMessage(), PHP_EOL;
