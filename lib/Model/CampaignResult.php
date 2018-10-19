@@ -61,7 +61,7 @@ class CampaignResult implements ModelInterface, ArrayAccess
         'updated_at' => '\DateTime',
         'created_at' => '\DateTime',
         'deleted_at' => '\DateTime',
-        'item' => '\RadioManager\Model\Item[]',
+        'item' => '\RadioManager\Model\Item',
         '_external_station_id' => 'int',
         'model_type_id' => 'int',
         'field_values' => 'object',
@@ -430,7 +430,7 @@ class CampaignResult implements ModelInterface, ArrayAccess
     /**
      * Gets item
      *
-     * @return \RadioManager\Model\Item[]
+     * @return \RadioManager\Model\Item
      */
     public function getItem()
     {
@@ -440,7 +440,7 @@ class CampaignResult implements ModelInterface, ArrayAccess
     /**
      * Sets item
      *
-     * @param \RadioManager\Model\Item[] $item item
+     * @param \RadioManager\Model\Item $item item
      *
      * @return $this
      */

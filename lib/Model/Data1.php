@@ -58,6 +58,7 @@ class Data1 implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'start' => '\DateTime',
+        'allow_playlist_past' => 'int',
         'items' => '\RadioManager\Model\ImportItem[]'
     ];
 
@@ -68,6 +69,7 @@ class Data1 implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'start' => 'date-time',
+        'allow_playlist_past' => null,
         'items' => null
     ];
 
@@ -99,6 +101,7 @@ class Data1 implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'start' => 'start',
+        'allow_playlist_past' => 'allow_playlist_past',
         'items' => 'items'
     ];
 
@@ -109,6 +112,7 @@ class Data1 implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'start' => 'setStart',
+        'allow_playlist_past' => 'setAllowPlaylistPast',
         'items' => 'setItems'
     ];
 
@@ -119,6 +123,7 @@ class Data1 implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'start' => 'getStart',
+        'allow_playlist_past' => 'getAllowPlaylistPast',
         'items' => 'getItems'
     ];
 
@@ -183,6 +188,7 @@ class Data1 implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['start'] = isset($data['start']) ? $data['start'] : null;
+        $this->container['allow_playlist_past'] = isset($data['allow_playlist_past']) ? $data['allow_playlist_past'] : null;
         $this->container['items'] = isset($data['items']) ? $data['items'] : null;
     }
 
@@ -231,6 +237,30 @@ class Data1 implements ModelInterface, ArrayAccess
     public function setStart($start)
     {
         $this->container['start'] = $start;
+
+        return $this;
+    }
+
+    /**
+     * Gets allow_playlist_past
+     *
+     * @return int
+     */
+    public function getAllowPlaylistPast()
+    {
+        return $this->container['allow_playlist_past'];
+    }
+
+    /**
+     * Sets allow_playlist_past
+     *
+     * @param int $allow_playlist_past allow_playlist_past
+     *
+     * @return $this
+     */
+    public function setAllowPlaylistPast($allow_playlist_past)
+    {
+        $this->container['allow_playlist_past'] = $allow_playlist_past;
 
         return $this;
     }
