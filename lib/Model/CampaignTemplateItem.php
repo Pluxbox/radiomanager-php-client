@@ -1,6 +1,6 @@
 <?php
 /**
- * CampaignOutputOnly
+ * CampaignTemplateItem
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \RadioManager\ObjectSerializer;
 
 /**
- * CampaignOutputOnly Class Doc Comment
+ * CampaignTemplateItem Class Doc Comment
  *
  * @category Class
  * @package  RadioManager
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class CampaignOutputOnly implements ModelInterface, ArrayAccess
+class CampaignTemplateItem implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CampaignOutputOnly implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'CampaignOutputOnly';
+    protected static $swaggerModelName = 'CampaignTemplateItem';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,12 +57,14 @@ class CampaignOutputOnly implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'int',
-        'updated_at' => '\DateTime',
-        'created_at' => '\DateTime',
-        'deleted_at' => '\DateTime',
-        'item' => '\RadioManager\Model\CampaignTemplateItem',
-        '_external_station_id' => 'int'
+        'model_type_id' => 'int',
+        'external_id' => 'string',
+        'field_values' => 'object',
+        'title' => 'string',
+        'duration' => 'int',
+        'recommended' => 'bool',
+        'static_start' => 'bool',
+        '_deltas' => 'object'
     ];
 
     /**
@@ -71,12 +73,14 @@ class CampaignOutputOnly implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => 'int64',
-        'updated_at' => 'date-time',
-        'created_at' => 'date-time',
-        'deleted_at' => 'date-time',
-        'item' => null,
-        '_external_station_id' => 'int64'
+        'model_type_id' => 'int64',
+        'external_id' => null,
+        'field_values' => null,
+        'title' => null,
+        'duration' => 'int64',
+        'recommended' => null,
+        'static_start' => null,
+        '_deltas' => null
     ];
 
     /**
@@ -106,12 +110,14 @@ class CampaignOutputOnly implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'updated_at' => 'updated_at',
-        'created_at' => 'created_at',
-        'deleted_at' => 'deleted_at',
-        'item' => 'item',
-        '_external_station_id' => '_external_station_id'
+        'model_type_id' => 'model_type_id',
+        'external_id' => 'external_id',
+        'field_values' => 'field_values',
+        'title' => 'title',
+        'duration' => 'duration',
+        'recommended' => 'recommended',
+        'static_start' => 'static_start',
+        '_deltas' => '_deltas'
     ];
 
     /**
@@ -120,12 +126,14 @@ class CampaignOutputOnly implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'updated_at' => 'setUpdatedAt',
-        'created_at' => 'setCreatedAt',
-        'deleted_at' => 'setDeletedAt',
-        'item' => 'setItem',
-        '_external_station_id' => 'setExternalStationId'
+        'model_type_id' => 'setModelTypeId',
+        'external_id' => 'setExternalId',
+        'field_values' => 'setFieldValues',
+        'title' => 'setTitle',
+        'duration' => 'setDuration',
+        'recommended' => 'setRecommended',
+        'static_start' => 'setStaticStart',
+        '_deltas' => 'setDeltas'
     ];
 
     /**
@@ -134,12 +142,14 @@ class CampaignOutputOnly implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'updated_at' => 'getUpdatedAt',
-        'created_at' => 'getCreatedAt',
-        'deleted_at' => 'getDeletedAt',
-        'item' => 'getItem',
-        '_external_station_id' => 'getExternalStationId'
+        'model_type_id' => 'getModelTypeId',
+        'external_id' => 'getExternalId',
+        'field_values' => 'getFieldValues',
+        'title' => 'getTitle',
+        'duration' => 'getDuration',
+        'recommended' => 'getRecommended',
+        'static_start' => 'getStaticStart',
+        '_deltas' => 'getDeltas'
     ];
 
     /**
@@ -202,12 +212,14 @@ class CampaignOutputOnly implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
-        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
-        $this->container['deleted_at'] = isset($data['deleted_at']) ? $data['deleted_at'] : null;
-        $this->container['item'] = isset($data['item']) ? $data['item'] : null;
-        $this->container['_external_station_id'] = isset($data['_external_station_id']) ? $data['_external_station_id'] : null;
+        $this->container['model_type_id'] = isset($data['model_type_id']) ? $data['model_type_id'] : null;
+        $this->container['external_id'] = isset($data['external_id']) ? $data['external_id'] : null;
+        $this->container['field_values'] = isset($data['field_values']) ? $data['field_values'] : null;
+        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        $this->container['duration'] = isset($data['duration']) ? $data['duration'] : null;
+        $this->container['recommended'] = isset($data['recommended']) ? $data['recommended'] : null;
+        $this->container['static_start'] = isset($data['static_start']) ? $data['static_start'] : null;
+        $this->container['_deltas'] = isset($data['_deltas']) ? $data['_deltas'] : null;
     }
 
     /**
@@ -219,18 +231,6 @@ class CampaignOutputOnly implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
-        }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
-        if ($this->container['deleted_at'] === null) {
-            $invalidProperties[] = "'deleted_at' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -243,162 +243,198 @@ class CampaignOutputOnly implements ModelInterface, ArrayAccess
     public function valid()
     {
 
-        if ($this->container['id'] === null) {
-            return false;
-        }
-        if ($this->container['updated_at'] === null) {
-            return false;
-        }
-        if ($this->container['created_at'] === null) {
-            return false;
-        }
-        if ($this->container['deleted_at'] === null) {
-            return false;
-        }
         return true;
     }
 
 
     /**
-     * Gets id
+     * Gets model_type_id
      *
      * @return int
      */
-    public function getId()
+    public function getModelTypeId()
     {
-        return $this->container['id'];
+        return $this->container['model_type_id'];
     }
 
     /**
-     * Sets id
+     * Sets model_type_id
      *
-     * @param int $id id
+     * @param int $model_type_id model_type_id
      *
      * @return $this
      */
-    public function setId($id)
+    public function setModelTypeId($model_type_id)
     {
-        $this->container['id'] = $id;
+        $this->container['model_type_id'] = $model_type_id;
 
         return $this;
     }
 
     /**
-     * Gets updated_at
+     * Gets external_id
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getUpdatedAt()
+    public function getExternalId()
     {
-        return $this->container['updated_at'];
+        return $this->container['external_id'];
     }
 
     /**
-     * Sets updated_at
+     * Sets external_id
      *
-     * @param \DateTime $updated_at updated_at
+     * @param string $external_id external_id
      *
      * @return $this
      */
-    public function setUpdatedAt($updated_at)
+    public function setExternalId($external_id)
     {
-        $this->container['updated_at'] = $updated_at;
+        $this->container['external_id'] = $external_id;
 
         return $this;
     }
 
     /**
-     * Gets created_at
+     * Gets field_values
      *
-     * @return \DateTime
+     * @return object
      */
-    public function getCreatedAt()
+    public function getFieldValues()
     {
-        return $this->container['created_at'];
+        return $this->container['field_values'];
     }
 
     /**
-     * Sets created_at
+     * Sets field_values
      *
-     * @param \DateTime $created_at created_at
+     * @param object $field_values field_values
      *
      * @return $this
      */
-    public function setCreatedAt($created_at)
+    public function setFieldValues($field_values)
     {
-        $this->container['created_at'] = $created_at;
+        $this->container['field_values'] = $field_values;
 
         return $this;
     }
 
     /**
-     * Gets deleted_at
+     * Gets title
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getDeletedAt()
+    public function getTitle()
     {
-        return $this->container['deleted_at'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets deleted_at
+     * Sets title
      *
-     * @param \DateTime $deleted_at deleted_at
+     * @param string $title title
      *
      * @return $this
      */
-    public function setDeletedAt($deleted_at)
+    public function setTitle($title)
     {
-        $this->container['deleted_at'] = $deleted_at;
+        $this->container['title'] = $title;
 
         return $this;
     }
 
     /**
-     * Gets item
-     *
-     * @return \RadioManager\Model\CampaignTemplateItem
-     */
-    public function getItem()
-    {
-        return $this->container['item'];
-    }
-
-    /**
-     * Sets item
-     *
-     * @param \RadioManager\Model\CampaignTemplateItem $item item
-     *
-     * @return $this
-     */
-    public function setItem($item)
-    {
-        $this->container['item'] = $item;
-
-        return $this;
-    }
-
-    /**
-     * Gets _external_station_id
+     * Gets duration
      *
      * @return int
      */
-    public function getExternalStationId()
+    public function getDuration()
     {
-        return $this->container['_external_station_id'];
+        return $this->container['duration'];
     }
 
     /**
-     * Sets _external_station_id
+     * Sets duration
      *
-     * @param int $_external_station_id _external_station_id
+     * @param int $duration duration
      *
      * @return $this
      */
-    public function setExternalStationId($_external_station_id)
+    public function setDuration($duration)
     {
-        $this->container['_external_station_id'] = $_external_station_id;
+        $this->container['duration'] = $duration;
+
+        return $this;
+    }
+
+    /**
+     * Gets recommended
+     *
+     * @return bool
+     */
+    public function getRecommended()
+    {
+        return $this->container['recommended'];
+    }
+
+    /**
+     * Sets recommended
+     *
+     * @param bool $recommended recommended
+     *
+     * @return $this
+     */
+    public function setRecommended($recommended)
+    {
+        $this->container['recommended'] = $recommended;
+
+        return $this;
+    }
+
+    /**
+     * Gets static_start
+     *
+     * @return bool
+     */
+    public function getStaticStart()
+    {
+        return $this->container['static_start'];
+    }
+
+    /**
+     * Sets static_start
+     *
+     * @param bool $static_start static_start
+     *
+     * @return $this
+     */
+    public function setStaticStart($static_start)
+    {
+        $this->container['static_start'] = $static_start;
+
+        return $this;
+    }
+
+    /**
+     * Gets _deltas
+     *
+     * @return object
+     */
+    public function getDeltas()
+    {
+        return $this->container['_deltas'];
+    }
+
+    /**
+     * Sets _deltas
+     *
+     * @param object $_deltas _deltas
+     *
+     * @return $this
+     */
+    public function setDeltas($_deltas)
+    {
+        $this->container['_deltas'] = $_deltas;
 
         return $this;
     }
